@@ -11,19 +11,21 @@ import {
 import first from "./assets/1.png";
 import second from "./assets/2.png";
 import third from "./assets/3.png";
+import CollectionSection from "./components/collectionsect";
 
 function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeAccordion, setActiveAccordion] = useState(null);
 
-  const collections = [
+  const rings = [
     {
       productCode: "ODRGHC001",
       name: "Harmony Curve Diamond Contour Band",
       gold: "1.984 gram",
-      diamondPrice: "0.01 to 0.07",
+      diamondPrice: "$300",
       diamondDetails: "FG VS Round, No. of D- 7",
+      price: "$500",
       image: first,
     },
     {
@@ -31,8 +33,9 @@ function App() {
       name: "The Eternal Blossom Ring",
       grossGold: "2.282 gm",
       gold: "2.200 gm",
-      diamondPrice: "0.18 to 0.22 (0.210gm), 0.01 to 0.07 (0.200gm)",
+      diamondPrice: "$600",
       diamondDetails: "EF VVS VS Round, No. of D- 1, No. of D- 17",
+      price: "$600",
       image: second,
     },
     {
@@ -40,11 +43,15 @@ function App() {
       name: "The Criss-Cross Harmony Ring",
       grossGold: "2.388 gm",
       gold: "2.360 gm",
-      diamondPrice: "plus minus 0.00 size (0.060gm), 0.01 to 0.07 (0.080gm)",
+      diamondPrice: "$500",
       diamondDetails: "EF VVS to VS Round, No. of D- 16, No. of D- 3",
+      price: "$700",
       image: third,
     },
   ];
+  const earrings = [];
+  const pendents = [];
+  const bracelets = [];
 
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? null : section);
@@ -53,47 +60,64 @@ function App() {
   return (
     <div className="min-h-screen text-gray-900 antialiased">
       {/* Navbar */}
-      <nav className="fixed w-full z-40 top-0 left-0 p-4 flex items-center justify-between bg-[#1a3e64]/60 backdrop-blur-sm shadow-sm">
-        {/* Search */}
-        <div className="flex items-center gap-4">
-          <FiSearch
-            size={24}
-            className="text-white cursor-pointer"
-            onClick={() => setSearchOpen(!searchOpen)}
-          />
-          {searchOpen && (
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="px-2 outline-none text-white rounded-2xl"
+      <div className="fixed w-full z-40 top-0 left-0 bg-[#1a3e64]/60 backdrop-blur-sm shadow-sm">
+        <div className="p-4 flex items-center justify-between">
+          {/* Empty left */}
+          <div className="flex items-center gap-4"></div>
+
+          {/* Logo */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <img src={logo} alt="Logo" className="h-14 w-auto object-contain" />
+          </div>
+
+          {/* Icons */}
+          <div className="flex items-center gap-4">
+            <FiSearch
+              size={24}
+              className="text-white cursor-pointer"
+              onClick={() => setSearchOpen(!searchOpen)}
+            />{" "}
+            {searchOpen && (
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="px-2 outline-none text-white rounded-2xl"
+              />
+            )}
+            <FiShoppingCart
+              size={24}
+              className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-yellow-400"
             />
-          )}
+            <FiHeart
+              size={24}
+              className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-red-500"
+            />
+            <FiUser
+              size={24}
+              className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-green-400"
+            />
+          </div>
         </div>
 
-        {/* Logo */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <img src={logo} alt="Logo" className="h-14 w-auto object-contain" />
+        {/* Category Links Bar */}
+        <div className="flex justify-center gap-8 py-2 text-white font-medium">
+          <a href="#rings" className="hover:text-yellow-400 transition">
+            Ring
+          </a>
+          <a href="#earrings" className="hover:text-yellow-400 transition">
+            Earrings
+          </a>
+          <a href="#pendents" className="hover:text-yellow-400 transition">
+            Pendant
+          </a>
+          <a href="#bracelets" className="hover:text-yellow-400 transition">
+            Bracelet
+          </a>
         </div>
+      </div>
 
-        {/* Icons */}
-        {/* Icons */}
-        <div className="flex items-center gap-4">
-          <FiShoppingCart
-            size={24}
-            className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-yellow-400"
-          />
-          <FiHeart
-            size={24}
-            className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-red-500"
-          />
-          <FiUser
-            size={24}
-            className="text-white cursor-pointer transition-transform duration-300 hover:scale-110 hover:text-green-400"
-          />
-        </div>
-      </nav>
       {/* Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -120,28 +144,13 @@ function App() {
         <h2 className="text-5xl font-semibold mb-6 text-[#1a3e64]">
           Collections
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {collections.map((item, idx) => (
-            <div
-              key={idx}
-              className="border rounded-md p-4 flex flex-col gap-2 hover:shadow-lg transition-shadow"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-40 w-full object-contain rounded-md"
-              />
-              <h3 className="font-medium text-[#1a3e64]">{item.name}</h3>
-              <p className="text-sm">Code: {item.productCode}</p>
-              <p className="text-sm">Gold: {item.gold}</p>
-              <p className="text-sm">Diamond: {item.diamondDetails}</p>
-              <p className="text-sm font-semibold">
-                Price: {item.diamondPrice}
-              </p>
-            </div>
-          ))}
-        </div>
+
+        <CollectionSection id="rings" title="Rings" items={rings} />
+        <CollectionSection id="earrings" title="Earrings" items={earrings} />
+        <CollectionSection id="pendents" title="Pendants" items={pendents} />
+        <CollectionSection id="bracelets" title="Bracelets" items={bracelets} />
       </section>
+
       {/* Accordion Sections */}
       <section className="py-15 px-6 bg-gradient-to-t from-gray-50 to-transparent">
         <h1 className="text-4xl font-serif text-[#1a3e64] text-center mb-12">

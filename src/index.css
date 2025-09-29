@@ -1,1 +1,10 @@
 @import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+#rings,
+#earrings,
+#pendents,
+#bracelets {
+  scroll-margin-top: 100px;
+}
