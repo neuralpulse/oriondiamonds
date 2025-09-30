@@ -125,7 +125,7 @@ export default function ProductDetails() {
                 {[9, 10, 14, 18, 22].map((c) => (
                   <div
                     key={c}
-                    className="px-4 py-2 cursor-pointer hover:bg-[#1a3e64]/10"
+                    className="px-4 py-2 cursor-pointer hover:bg-[#0a1833]/10"
                     onClick={() => {
                       setSelectedGold(c);
                       setGoldOpen(false);
@@ -162,7 +162,7 @@ export default function ProductDetails() {
 
           {/* Action Buttons */}
           <div className="flex gap-3">
-            <button className="flex-1 bg-[#1a3e64]/90 text-white py-3 rounded-full font-medium hover:bg-[#1a3e64] flex items-center justify-center gap-2">
+            <button className="flex-1 bg-[#0a1833]/90 text-white py-3 rounded-full font-medium hover:bg-[#0a1833] flex items-center justify-center gap-2">
               <ShoppingCart size={20} />
               Add to Cart
             </button>

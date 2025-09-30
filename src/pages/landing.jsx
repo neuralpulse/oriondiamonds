@@ -50,7 +50,7 @@ export function Landing() {
   };
 
   return (
-    <div className="min-h-screen text-gray-900 antialiased">
+    <div id="hero" className="min-h-screen text-gray-900 antialiased">
       {/* Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -78,7 +78,7 @@ export function Landing() {
 
       {/* Collections Section */}
       <section className="p-8">
-        <h2 className="text-5xl font-semibold mb-6 text-[#1a3e64]">
+        <h2 className="text-5xl font-semibold mb-6 text-[#0a1833]">
           Collections
         </h2>
 
@@ -90,7 +90,7 @@ export function Landing() {
 
       {/* Accordion Sections */}
       <section className="py-15 px-6 bg-gradient-to-t from-gray-50 to-transparent">
-        <h1 className="text-4xl font-serif text-[#1a3e64] text-center mb-12">
+        <h1 className="text-4xl font-serif text-[#0a1833] text-center mb-12">
           Frequently Asked Questions
         </h1>
         {[
@@ -100,32 +100,32 @@ export function Landing() {
               <>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-3 pb-15">
                   <div>
-                    <p className="mt-4 text-lg text-[#1a3e64]">
+                    <p className="mt-4 text-lg text-[#0a1833]">
                       We craft diamonds in controlled lab environments. Orion
                       Diamonds are chemically and optically identical to natural
                       diamonds — but produced with a fraction of the
                       environmental impact and at an accessible price point.
                     </p>
                     <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="p-6 rounded-2xl bg-[#1a3e64]/10 text-[#1a3e64]">
+                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
                         Sustainable & Eco-Friendly
                       </div>
-                      <div className="p-6 rounded-2xl bg-[#1a3e64]/10 text-[#1a3e64]">
+                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
                         Same Brilliance as Natural
                       </div>
-                      <div className="p-6 rounded-2xl bg-[#1a3e64]/10 text-[#1a3e64]">
+                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
                         Affordable Luxury
                       </div>
-                      <div className="p-6 rounded-2xl bg-[#1a3e64]/10 text-[#1a3e64]">
+                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
                         Backed by Science
                       </div>
                     </div>
                   </div>
-                  <div className="relative h-80 rounded-2xl bg-[#1a3e64]/10 p-6 shadow-lg">
-                    <h3 className="font-medium text-5xl text-[#1a3e64]">
+                  <div className="relative h-80 rounded-2xl bg-[#0a1833]/10 p-6 shadow-lg">
+                    <h3 className="font-medium text-5xl text-[#0a1833]">
                       Sustainability Meets Science
                     </h3>
-                    <p className="mt-6 text-[#1a3e64]">
+                    <p className="mt-6 text-[#0a1833]">
                       Orion Diamonds are produced using low-impact processes and
                       strict quality control — every stone is graded and
                       hallmarked.
@@ -140,34 +140,34 @@ export function Landing() {
             content: (
               <>
                 <div className="max-w-6xl mx-auto text-center mb-12 pt-3">
-                  <p className="mt-3 text-[#1a3e64]">
+                  <p className="mt-3 text-[#0a1833]">
                     A clear comparison so customers can choose with confidence.
                   </p>
                 </div>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 pb-15">
-                  <div className="bg-[#1a3e64]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#1a3e64]">Natural</h4>
-                    <ul className="mt-3 text-sm text-[#1a3e64] space-y-2">
+                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
+                    <h4 className="font-medium text-[#0a1833]">Natural</h4>
+                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
                       <li>• Mined from earth</li>
                       <li>• Highest price / environmental cost</li>
                       <li>• Authentic geological origin</li>
                     </ul>
                   </div>
-                  <div className="bg-[#1a3e64]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#1a3e64]">
+                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
+                    <h4 className="font-medium text-[#0a1833]">
                       Artificial (CZ / Moissanite)
                     </h4>
-                    <ul className="mt-3 text-sm text-[#1a3e64] space-y-2">
+                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
                       <li>• Lab-made simulants</li>
                       <li>• Lower price, different composition</li>
                       <li>• Good sparkle, but not diamond chemistry</li>
                     </ul>
                   </div>
-                  <div className="bg-[#1a3e64]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#1a3e64]">
+                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
+                    <h4 className="font-medium text-[#0a1833]">
                       Orion Lab Diamonds
                     </h4>
-                    <ul className="mt-3 text-sm text-[#1a3e64] space-y-2">
+                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
                       <li>• Same chemical composition as natural diamonds</li>
                       <li>• Lower ecological footprint</li>
                       <li>
@@ -185,19 +185,19 @@ export function Landing() {
               <>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-3 pb-15">
                   <div>
-                    <p className="mt-4 text-[#1a3e64]">
+                    <p className="mt-4 text-[#0a1833]">
                       Every Orion diamond is independently graded and
                       hallmarked. Upload or view certificates to verify cut,
                       color, clarity and carat. We display trusted lab logos and
                       provide a unique certificate ID for each stone.
                     </p>
                   </div>
-                  <div className="rounded-2xl bg-[#1a3e64]/10 p-6">
-                    <h3 className="font-medium text-[#1a3e64]">
+                  <div className="rounded-2xl bg-[#0a1833]/10 p-6">
+                    <h3 className="font-medium text-[#0a1833]">
                       Sample Certificate
                     </h3>
-                    <div className="mt-4 border border-[#1a3e64]/30 rounded-lg p-4">
-                      <div className="text-sm text-[#1a3e64]">
+                    <div className="mt-4 border border-[#0a1833]/30 rounded-lg p-4">
+                      <div className="text-sm text-[#0a1833]">
                         Certificate ID:{" "}
                         <span className="font-mono">OR-2025-000123</span>
                       </div>
@@ -210,14 +210,14 @@ export function Landing() {
         ].map((section, idx) => (
           <div key={idx} className="border-b">
             <button
-              className="w-full flex items-center justify-between px-6 py-4 text-left text-[#1a3e64] font-semibold hover:bg-[#1a3e64]/10"
+              className="w-full flex items-center justify-between px-6 py-4 text-left text-[#0a1833] font-semibold hover:bg-[#0a1833]/10"
               onClick={() => toggleAccordion(idx)}
             >
               {section.title}
               <FiMenu />
             </button>
             {activeAccordion === idx && (
-              <div className="px-6 py-4 text-[#1a3e64]">{section.content}</div>
+              <div className="px-6 py-4 text-[#0a1833]">{section.content}</div>
             )}
           </div>
         ))}

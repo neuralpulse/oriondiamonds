@@ -6,7 +6,7 @@ import { Footer } from "./components/footer";
 
 function App() {
   return (
-    <BrowserRouter basename="/oriondiamonds">
+    <BrowserRouter basename="/oriondiamonds/">
       <Navbar />
       <div className="pt-20"></div>
       <Routes>
