@@ -4,10 +4,12 @@ import ProductDetails from "./pages/prod_desc";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Earrings } from "./pages/Earrings";
+import ScrollToTop from "./components/scrolltop";
 
 function App() {
   return (
     <BrowserRouter basename="/oriondiamonds/">
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />

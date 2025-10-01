@@ -16,16 +16,12 @@ export default function ProductDetails() {
   const [activeTab, setActiveTab] = useState("description");
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedGold, setSelectedGold] = useState("");
-  const [selectedDiamond, setSelectedDiamond] = useState("");
   const [goldOpen, setGoldOpen] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   if (!product) return <p>Product not found</p>;
 
   return (
-    <div>
+    <div className="pt-25">
       <div className="grid md:grid-cols-2 gap-4 my-4 max-w-5xl mx-auto p-4">
         {/* Image Gallery */}
         <div className="space-y-4">
