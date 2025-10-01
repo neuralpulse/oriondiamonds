@@ -4,7 +4,7 @@ export default function CollectionSection({ id, title, items }) {
   const navigate = useNavigate();
   return (
     <section className="mt-12">
-      <h1 id={id} className="text-3xl font-semibold mb-6 text-[#0a1833]">
+      <h1 id={id} className="text-5xl font-semibold mb-6 text-[#0a1833]">
         {title}
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

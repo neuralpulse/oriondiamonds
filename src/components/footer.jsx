@@ -1,7 +1,10 @@
 export function Footer() {
   return (
     <div>
-      <section className="py-24 px-6 bg-gradient-to-t from-gray-50 to-transparent">
+      <section
+        id="contact"
+        className="py-24 px-6 bg-gradient-to-t from-gray-50 to-transparent"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-serif text-[#0a1833]">Contact Us</h2>
           <p className="mt-3 text-[#0a1833]">

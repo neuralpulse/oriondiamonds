@@ -1,46 +1,13 @@
 import { useState } from "react";
 import newImage from "../assets/new.jpg";
 import { FiMenu } from "react-icons/fi";
-import first from "../assets/1.png";
-import second from "../assets/2.png";
-import third from "../assets/3.png";
 import CollectionSection from "../components/collectionsect";
-import { Footer } from "../components/footer";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export function Landing() {
   const [activeAccordion, setActiveAccordion] = useState(null);
+  const navigate = useNavigate();
 
-  const rings = [
-    {
-      productCode: "ODRGHC001",
-      name: "Harmony Curve Diamond Contour Band",
-      gold: "1.984 gram",
-      diamondPrice: "30000",
-      diamondDetails: "FG VS Round, No. of D- 7",
-      price: "50000",
-      image: first,
-    },
-    {
-      productCode: "ODRGEB002",
-      name: "The Eternal Blossom Ring",
-      grossGold: "2.282 gm",
-      gold: "2.200 gm",
-      diamondPrice: "60000",
-      diamondDetails: "EF VVS VS Round, No. of D- 1, No. of D- 17",
-      price: "$600",
-      image: second,
-    },
-    {
-      productCode: "ODRGCC003",
-      name: "The Criss-Cross Harmony Ring",
-      grossGold: "2.388 gm",
-      gold: "2.360 gm",
-      diamondPrice: "50000",
-      diamondDetails: "EF VVS to VS Round, No. of D- 16, No. of D- 3",
-      price: "$700",
-      image: third,
-    },
-  ];
   const earrings = [];
   const pendents = [];
   const bracelets = [];
@@ -77,19 +44,130 @@ export function Landing() {
       </header>
 
       {/* Collections Section */}
-      <section className="p-8">
+      <section id="collections" className="p-8">
         <h2 className="text-5xl font-semibold mb-6 text-[#0a1833]">
           Collections
         </h2>
 
-        <CollectionSection id="rings" title="Rings" items={rings} />
-        <CollectionSection id="earrings" title="Earrings" items={earrings} />
-        <CollectionSection id="pendents" title="Pendants" items={pendents} />
-        <CollectionSection id="bracelets" title="Bracelets" items={bracelets} />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-1 auto-rows-[200px]">
+          {/* Earrings - Large highlight card */}
+          <div
+            className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-lg group"
+            onClick={() => {
+              navigate("/earrings");
+            }}
+          >
+            <img
+              src="https://estailofashion.com/cdn/shop/files/151_8_a7f5d752-ca96-4a85-b699-50d51e5a4eb8.jpg?v=1751061678&width=1080"
+              alt="Earrings"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-3xl font-bold text-white">Earrings</h3>
+            </div>
+          </div>
+
+          {/* Pendants */}
+          <div
+            className="relative col-span-2 rounded-2xl overflow-hidden shadow-lg group"
+            onClick={() => {
+              navigate("/pendants");
+            }}
+          >
+            <img
+              src="https://media.istockphoto.com/id/1355399132/photo/model-showing-her-beautiful-necklace-with-diamond-pendant.jpg?s=612x612&w=0&k=20&c=o3C3atmDtQZGoq-czoyrHVz4abSJhI6BXOXvF4mF3CE="
+              alt="Pendants"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-2xl font-semibold text-white">Pendants</h3>
+            </div>
+          </div>
+
+          {/* Bracelets */}
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-lg group"
+            onClick={() => {
+              navigate("/bracelets");
+            }}
+          >
+            <img
+              src="https://www.shutterstock.com/image-photo/beautiful-model-wearing-white-gold-600nw-2347146685.jpg"
+              alt="Bracelets"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-2xl font-semibold text-white">Bracelets</h3>
+            </div>
+          </div>
+
+          {/* Rings */}
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-lg group"
+            onClick={() => {
+              navigate("/rings");
+            }}
+          >
+            <img
+              src="https://img.freepik.com/free-photo/beautiful-engagement-ring-with-diamonds_23-2149509234.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Rings"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 className="text-2xl font-semibold text-white">Rings</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section id="about" className="p-8 bg-gray-50">
+        <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">About Us</h2>
+        <p className="max-w-4xl text-[#0a1833]">
+          Orion Diamonds was founded with a vision to create sustainable,
+          lab-grown diamonds... (add about owners here).
+        </p>
+      </section>
+
+      {/* Learn Section */}
+      <section id="learn" className="p-8">
+        <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">Learn</h2>
+        <p className="text-[#0a1833]">
+          Artificial diamonds vs lab-grown: what makes Orion different...
+        </p>
+      </section>
+
+      {/* Taking Care */}
+      <section id="care" className="p-8 bg-gray-50">
+        <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">
+          Taking Care of Diamonds
+        </h2>
+        <p className="text-[#0a1833]">
+          To maintain the brilliance and longevity of your Orion Diamonds
+          jewellery, follow these simple care tips: Store: Keep your jewellery
+          in a soft pouch or a lined box to prevent scratches. Clean: Use a soft
+          brush and mild soap to gently clean your diamonds. Avoid: Remove your
+          jewellery before swimming, exercising, or handling harsh chemicals.
+          Professional Service: We recommend an annual professional cleaning and
+          inspection.
+        </p>
+      </section>
+
+      {/* Customizations */}
+      <section id="customizations" className="p-8">
+        <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">
+          Customization Process
+        </h2>
+        <p className="text-[#0a1833]">
+          Work with our artisans to design your perfect piece...
+        </p>
       </section>
 
       {/* Accordion Sections */}
-      <section className="py-15 px-6 bg-gradient-to-t from-gray-50 to-transparent">
+      <section
+        id="faqs"
+        className="py-15 px-6 bg-gradient-to-t from-gray-50 to-transparent"
+      >
         <h1 className="text-4xl font-serif text-[#0a1833] text-center mb-12">
           Frequently Asked Questions
         </h1>
@@ -222,6 +300,7 @@ export function Landing() {
           </div>
         ))}
       </section>
+
       <style>
         {`
           @keyframes heroZoomOut {
