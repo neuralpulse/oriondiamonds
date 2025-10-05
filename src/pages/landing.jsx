@@ -1,13 +1,11 @@
 import { useState } from "react";
 import newImage from "../assets/new.jpg";
 import { FiMenu } from "react-icons/fi";
-import CollectionSection from "../components/collectionsect";
-import { Navigate, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import mobhero from "../assets/mobhero.jpg";
 export function Landing() {
   const [activeAccordion, setActiveAccordion] = useState(null);
   const navigate = useNavigate();
-
   const earrings = [];
   const pendents = [];
   const bracelets = [];
@@ -21,6 +19,11 @@ export function Landing() {
       {/* Hero Section */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
+          <img
+            src={mobhero}
+            alt="Hero Mobile"
+            className="block sm:hidden w-full min-h-screen object-cover animate-heroZoomOut"
+          />
           <img
             src={newImage}
             alt="Hero"
@@ -176,31 +179,30 @@ export function Landing() {
             title: "Why Orion?",
             content: (
               <>
-                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-3 pb-15">
-                  <div>
-                    <p className="mt-4 text-lg text-[#0a1833]">
-                      We craft diamonds in controlled lab environments. Orion
-                      Diamonds are chemically and optically identical to natural
-                      diamonds — but produced with a fraction of the
-                      environmental impact and at an accessible price point.
-                    </p>
-                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                        Sustainable & Eco-Friendly
-                      </div>
-                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                        Same Brilliance as Natural
-                      </div>
-                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                        Affordable Luxury
-                      </div>
-                      <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                        Backed by Science
-                      </div>
+                <div className="max-w-6xl mx-auto text-center mb-12 pt-3">
+                  <p className="mt-3 text-[#0a1833]">
+                    We craft diamonds in controlled lab environments. Orion
+                    Diamonds are chemically and optically identical to natural
+                    diamonds — but produced with a fraction of the environmental
+                    impact and at an accessible price point.
+                  </p>
+                  <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
+                      Sustainable & Eco-Friendly
+                    </div>
+                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
+                      Same Brilliance as Natural
+                    </div>
+                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
+                      Affordable Luxury
+                    </div>
+                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
+                      Backed by Science
                     </div>
                   </div>
-                  <div className="relative h-80 rounded-2xl bg-[#0a1833]/10 p-6 shadow-lg">
-                    <h3 className="font-medium text-5xl text-[#0a1833]">
+
+                  <div className="p-6 mt-3 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
+                    <h3 className="font-medium text-2xl text-[#0a1833]">
                       Sustainability Meets Science
                     </h3>
                     <p className="mt-6 text-[#0a1833]">
