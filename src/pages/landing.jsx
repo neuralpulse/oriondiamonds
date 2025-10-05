@@ -51,11 +51,10 @@ export function Landing() {
         <h2 className="text-5xl font-semibold mb-6 text-[#0a1833]">
           Collections
         </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-1 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-1 md:auto-rows-[200px]">
           {/* Earrings - Large highlight card */}
           <div
-            className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-lg group"
+            className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
             onClick={() => {
               navigate("/earrings");
             }}
@@ -69,10 +68,9 @@ export function Landing() {
               <h3 className="text-3xl font-bold text-white">Earrings</h3>
             </div>
           </div>
-
           {/* Pendants */}
           <div
-            className="relative col-span-2 rounded-2xl overflow-hidden shadow-lg group"
+            className="relative md:col-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
             onClick={() => {
               navigate("/pendants");
             }}
@@ -86,10 +84,9 @@ export function Landing() {
               <h3 className="text-2xl font-semibold text-white">Pendants</h3>
             </div>
           </div>
-
           {/* Bracelets */}
           <div
-            className="relative rounded-2xl overflow-hidden shadow-lg group"
+            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
             onClick={() => {
               navigate("/bracelets");
             }}
@@ -103,10 +100,9 @@ export function Landing() {
               <h3 className="text-2xl font-semibold text-white">Bracelets</h3>
             </div>
           </div>
-
           {/* Rings */}
           <div
-            className="relative rounded-2xl overflow-hidden shadow-lg group"
+            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
             onClick={() => {
               navigate("/rings");
             }}
