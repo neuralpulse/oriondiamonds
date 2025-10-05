@@ -38,7 +38,7 @@ export function Landing() {
           <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto text-[#ffffff]">
             Lab-grown diamonds inspired by the celestial brilliance of the Orion
             constellation — chemically identical to mined diamonds, sustainably
-            made, and designed for the modern world.
+            made, and designed for the modern world
           </p>
         </div>
       </header>
@@ -166,11 +166,11 @@ export function Landing() {
       {/* Accordion Sections */}
       <section
         id="faqs"
-        className="py-15 px-6 bg-gradient-to-t from-gray-50 to-transparent"
+        className="py-15 px-8 bg-gradient-to-t from-gray-50 to-transparent"
       >
-        <h1 className="text-4xl font-serif text-[#0a1833] text-center mb-12">
+        <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">
           Frequently Asked Questions
-        </h1>
+        </h2>
         {[
           {
             title: "Why Orion?",

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "../assets/updated.jpeg";
+import logo from "../assets/nobglogo.png";
 import {
   FiSearch,
   FiShoppingCart,
@@ -174,7 +174,6 @@ export function Navbar() {
           { label: "Welcome", id: "hero" },
           { label: "Collection", id: "collections" },
           { label: "About Us", id: "about" },
-          { label: "Care for your Diamond", id: "care" },
           { label: "Customizations", id: "customizations" },
           { label: "FAQs", id: "faqs" },
           { label: "Contact Us", id: "contact" },
@@ -182,7 +181,7 @@ export function Navbar() {
           <button
             key={link.id}
             onClick={() => goToSection(link.id)}
-            className="no-underline hover:underline transition"
+            className="no-underline hover:underline transition cursor-pointer"
           >
             {link.label}
           </button>
@@ -203,7 +202,7 @@ export function Navbar() {
             <button
               key={link.id}
               onClick={() => goToSection(link.id)}
-              className="no-underline hover:underline transition"
+              className="no-underline hover:underline transition cursor-pointer"
             >
               {link.label}
             </button>
