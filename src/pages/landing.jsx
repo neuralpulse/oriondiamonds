@@ -6,9 +6,6 @@ import mobhero from "../assets/mobhero.jpg";
 export function Landing() {
   const [activeAccordion, setActiveAccordion] = useState(null);
   const navigate = useNavigate();
-  const earrings = [];
-  const pendents = [];
-  const bracelets = [];
 
   const toggleAccordion = (section) => {
     setActiveAccordion(activeAccordion === section ? null : section);
@@ -157,9 +154,18 @@ export function Landing() {
         <h2 className="text-4xl font-semibold mb-6 text-[#0a1833]">
           Customization Process
         </h2>
-        <p className="text-[#0a1833]">
-          Work with our artisans to design your perfect piece...
-        </p>
+        <div className="p-10">
+          <section className="max-w-4xl mx-auto text-center">
+            <p className="text-[#0a1833] mb-8">
+              Create your one-of-a-kind diamond piece with our artisans. Choose
+              your design, diamond shape, carat, and setting — we’ll bring your
+              vision to life.
+            </p>
+            <button className="bg-[#0a1833] text-white px-8 py-3 rounded-lg hover:bg-[#142850] transition">
+              Start Customizing
+            </button>
+          </section>
+        </div>
       </section>
 
       {/* Accordion Sections */}

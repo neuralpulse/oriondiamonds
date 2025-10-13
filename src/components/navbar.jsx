@@ -139,10 +139,16 @@ export function Navbar() {
           <FiShoppingCart
             size={24}
             className="text-white cursor-pointer hover:text-yellow-400"
+            onClick={() => {
+              navigate("/my-cart");
+            }}
           />
           <FiHeart
             size={24}
             className="text-white cursor-pointer hover:text-red-500"
+            onClick={() => {
+              navigate("/my-list");
+            }}
           />
           <FiUser
             size={24}
