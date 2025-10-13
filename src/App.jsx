@@ -11,7 +11,7 @@ import { Necklaces } from "./pages/necklaces";
 import { Cart } from "./pages/cart";
 import { Wishlist } from "./pages/wishlist";
 import { NotFound } from "./pages/notfound";
-
+import SearchResults from "./pages/SearchResults";
 function App() {
   return (
     <BrowserRouter basename="/oriondiamonds/">
@@ -26,6 +26,7 @@ function App() {
         <Route path="/pendants" element={<Necklaces />} />
         <Route path="/my-cart" element={<Cart />} />
         <Route path="/my-list" element={<Wishlist />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
