@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { shopifyRequest } from "../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../queries/products";
+import ProductAccordion from "../components/accordian";
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -23,7 +24,6 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState("description");
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -505,61 +505,11 @@ export default function ProductDetails() {
       </div>
 
       {/* Tabs */}
-      <div className="mt-10 bg-white rounded-lg shadow-md p-4">
-        <div className="flex border-b overflow-x-auto">
-          {["description", "specifications", "reviews", "shipping"].map(
-            (tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 font-medium capitalize ${
-                  activeTab === tab
-                    ? "border-b-2 border-[#3c5a85] text-[#3c5a85]"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                {tab}
-              </button>
-            )
-          )}
-        </div>
-        <div className="p-6">
-          {activeTab === "description" && (
-            <div
-              dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-              className="text-gray-700 text-sm"
-            />
-          )}
-          {activeTab === "specifications" && (
-            <table className="w-full text-sm divide-y">
-              <tbody>
-                {product.options.map((opt) => (
-                  <tr key={opt.name}>
-                    <td className="py-2 font-medium">{opt.name}</td>
-                    <td className="py-2 text-gray-900">
-                      {selectedOptions[opt.name]}
-                    </td>
-                  </tr>
-                ))}
-                <tr>
-                  <td className="py-2 font-medium">SKU</td>
-                  <td className="py-2 text-gray-900">{selectedVariant?.sku}</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium">Availability</td>
-                  <td className="py-2 text-gray-900">
-                    {selectedVariant?.availableForSale
-                      ? "In Stock"
-                      : "Out of Stock"}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          )}
-          {activeTab === "reviews" && <p>Reviews coming soon...</p>}
-          {activeTab === "shipping" && <p>Free shipping worldwide.</p>}
-        </div>
-      </div>
+      <ProductAccordion
+        product={product}
+        selectedOptions={selectedOptions}
+        selectedVariant={selectedVariant}
+      />
     </div>
   );
 }

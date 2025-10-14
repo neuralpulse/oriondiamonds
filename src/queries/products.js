@@ -31,6 +31,8 @@ export const GET_PRODUCT_BY_HANDLE = `
               url
               altText
             }
+            weight
+            weightUnit
           }
         }
       }
