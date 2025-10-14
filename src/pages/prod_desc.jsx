@@ -27,6 +27,8 @@ export default function ProductDetails() {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const addToCart = () => {
     if (!selectedVariant) return;
 
@@ -85,6 +87,12 @@ export default function ProductDetails() {
       if (response.data?.product) {
         const productData = response.data.product;
         setProduct(productData);
+
+        // Safe way to set the selected image
+        setSelectedImage(
+          productData?.images?.edges?.[0]?.node?.url ||
+            productData?.featuredImage?.url
+        );
 
         const defaultVariant = productData.variants.edges[0]?.node;
         if (defaultVariant) {
@@ -237,12 +245,41 @@ export default function ProductDetails() {
     <div className="pt-40 max-w-6xl mx-auto px-4">
       <div className="grid md:grid-cols-2 gap-8">
         {/* Image */}
-        <div className="bg-white rounded-lg shadow-md aspect-square flex items-center justify-center max-h-[60vh]">
-          <img
-            src={selectedVariant?.image?.url || product.featuredImage?.url}
-            alt={product.title}
-            className="max-h-full max-w-full object-contain"
-          />
+        {/* Image Gallery */}
+        <div className="flex flex-col gap-4">
+          {/* Main Image */}
+          <div className="bg-white rounded-lg shadow-md aspect-square flex items-center justify-center max-h-[60vh]">
+            <img
+              src={
+                selectedImage ||
+                selectedVariant?.image?.url ||
+                product.featuredImage?.url
+              }
+              alt={product.title}
+              className="max-h-full max-w-full object-contain transition-all duration-300"
+            />
+          </div>
+
+          {/* Thumbnail Strip */}
+          <div className="flex gap-3 overflow-x-auto">
+            {product.images?.edges?.map(({ node }) => (
+              <button
+                key={node.url}
+                onClick={() => setSelectedImage(node.url)}
+                className={`border-2 rounded-lg p-1 flex-shrink-0 transition-all ${
+                  selectedImage === node.url
+                    ? "border-black"
+                    : "border-transparent hover:border-gray-400"
+                }`}
+              >
+                <img
+                  src={node.url}
+                  alt={node.altText || product.title}
+                  className="w-20 h-20 object-cover rounded-md"
+                />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Info */}

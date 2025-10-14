@@ -34,6 +34,14 @@ export const GET_PRODUCT_BY_HANDLE = `
           }
         }
       }
+      images(first: 10) {
+        edges {
+          node {
+            url
+            altText
+          }
+        }
+      }
       featuredImage {
         url
         altText
