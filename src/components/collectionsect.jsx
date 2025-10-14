@@ -6,18 +6,21 @@ export default function CollectionSection({ id, title, items }) {
 
   return (
     <section className="mt-16 mb-12">
+      {/* Section Title */}
       <h1
         id={id}
         className="text-4xl md:text-5xl font-bold mb-10 text-[#0a1833] tracking-tight"
       >
         {title}
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      {/* Responsive Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
         {items && items.length > 0 ? (
           items.map((item, idx) => (
             <div
               key={idx}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2"
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98]"
               onClick={() =>
                 navigate(`/product/${item.handle}`, {
                   state: item,
@@ -25,28 +28,30 @@ export default function CollectionSection({ id, title, items }) {
               }
             >
               {/* Image Container */}
-              <div className="relative overflow-hidden bg-gray-50">
+              <div className="relative overflow-hidden bg-gray-50 aspect-[4/5] sm:aspect-square">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
-                {/* Gradient Overlay on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
+
               {/* Product Info */}
-              <div className="p-5 space-y-2">
-                <h3 className="font-medium text-lg text-[#0a1833] line-clamp-2 group-hover:text-[#1a2f5a] transition-colors">
+              <div className="p-4 sm:p-5 flex flex-col justify-between min-h-[110px]">
+                <h3 className="font-medium text-sm sm:text-lg text-[#0a1833] group-hover:text-[#1a2f5a] transition-colors duration-300 break-words leading-snug">
                   {item.name}
                 </h3>
-                <div className="flex items-baseline gap-2">
-                  <p className="text-lg font-medium text-[#0a1833]">
-                    ₹{item.price.toLocaleString("en-IN")}
-                  </p>
-                </div>
+
+                <p className="text-base sm:text-lg font-semibold text-[#0a1833] mt-2 sm:mt-3">
+                  ₹{item.price.toLocaleString("en-IN")}
+                </p>
               </div>
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
-                <Heart className="w-5 h-5 text-[#0a1833] hover:fill-red-500 hover:text-red-500 transition-colors" />
+
+              {/* Wishlist Icon (visible on mobile too) */}
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 shadow-md hover:scale-110 active:scale-95">
+                <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-[#0a1833] hover:fill-red-500 hover:text-red-500 transition-colors duration-200" />
               </div>
             </div>
           ))

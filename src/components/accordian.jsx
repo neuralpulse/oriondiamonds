@@ -79,11 +79,13 @@ export default function ProductAccordion({
       key: "specifications",
       label: "PRODUCT DETAILS",
       content: product.descriptionHtml ? (
-        <div className="space-y-6">
+        <div className="space-y-1">
+          {/* Parsed specifications from HTML */}
           <ProductSpecs descriptionHtml={product.descriptionHtml} />
-          <table className="w-full text-sm">
+          {/* Variant and option details */}
+          <table className="w-full text-sm border-t border-gray-200">
             <tbody className="divide-y divide-gray-200">
-              {product.options.map((opt) => (
+              {[...product.options].reverse().map((opt) => (
                 <tr
                   key={opt.name}
                   className="hover:bg-white/50 transition-colors"
@@ -96,7 +98,8 @@ export default function ProductAccordion({
                   </td>
                 </tr>
               ))}
-              <tr className="hover:bg-white/50 transition-colors">
+
+              <tr className="hover:bg-white/50 transition-colors border-b border-gray-200">
                 <td className="py-3 font-semibold text-gray-800 w-1/3">
                   Product Weight
                 </td>

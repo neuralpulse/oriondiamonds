@@ -110,7 +110,7 @@ export function Earrings() {
 
   return (
     <div className="m-10 py-10">
-      <CollectionSection title="Rings" items={earrings} />
+      <CollectionSection title="Earrings" items={earrings} />
     </div>
   );
 }
