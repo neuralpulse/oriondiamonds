@@ -178,115 +178,81 @@ export function Landing() {
         </h2>
         {[
           {
-            title: "Why Orion?",
+            title: "What are lab-grown diamonds?",
             content: (
-              <>
-                <div className="max-w-6xl mx-auto text-center mb-12 pt-3">
-                  <p className="mt-3 text-[#0a1833]">
-                    We craft diamonds in controlled lab environments. Orion
-                    Diamonds are chemically and optically identical to natural
-                    diamonds — but produced with a fraction of the environmental
-                    impact and at an accessible price point.
-                  </p>
-                  <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                      Sustainable & Eco-Friendly
-                    </div>
-                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                      Same Brilliance as Natural
-                    </div>
-                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                      Affordable Luxury
-                    </div>
-                    <div className="p-6 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                      Backed by Science
-                    </div>
-                  </div>
-
-                  <div className="p-6 mt-3 rounded-2xl bg-[#0a1833]/10 text-[#0a1833]">
-                    <h3 className="font-medium text-2xl text-[#0a1833]">
-                      Sustainability Meets Science
-                    </h3>
-                    <p className="mt-6 text-[#0a1833]">
-                      Orion Diamonds are produced using low-impact processes and
-                      strict quality control — every stone is graded and
-                      hallmarked.
-                    </p>
-                  </div>
-                </div>
-              </>
+              <p className="text-[#0a1833]">
+                Lab-grown diamonds are real diamonds created in a lab using
+                advanced technology. They have the same physical, chemical, and
+                optical properties as mined diamonds.
+              </p>
             ),
           },
           {
-            title: "Natural vs Artificial vs Orion",
+            title: "Are lab-grown diamonds real diamonds?",
             content: (
-              <>
-                <div className="max-w-6xl mx-auto text-center mb-12 pt-3">
-                  <p className="mt-3 text-[#0a1833]">
-                    A clear comparison so customers can choose with confidence.
-                  </p>
-                </div>
-                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 pb-15">
-                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#0a1833]">Natural</h4>
-                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
-                      <li>• Mined from earth</li>
-                      <li>• Highest price / environmental cost</li>
-                      <li>• Authentic geological origin</li>
-                    </ul>
-                  </div>
-                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#0a1833]">
-                      Artificial (CZ / Moissanite)
-                    </h4>
-                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
-                      <li>• Lab-made simulants</li>
-                      <li>• Lower price, different composition</li>
-                      <li>• Good sparkle, but not diamond chemistry</li>
-                    </ul>
-                  </div>
-                  <div className="bg-[#0a1833]/10 p-6 rounded-2xl">
-                    <h4 className="font-medium text-[#0a1833]">
-                      Orion Lab Diamonds
-                    </h4>
-                    <ul className="mt-3 text-sm text-[#0a1833] space-y-2">
-                      <li>• Same chemical composition as natural diamonds</li>
-                      <li>• Lower ecological footprint</li>
-                      <li>
-                        • Price between simulants and mined stones — great value
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </>
+              <p className="text-[#0a1833]">
+                Yes, lab-grown diamonds are 100% real. They are certified and
+                graded just like mined diamonds.
+              </p>
             ),
           },
           {
-            title: "Hallmarking & Certification",
+            title: "How are lab-grown diamonds made?",
             content: (
-              <>
-                <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center pt-3 pb-15">
-                  <div>
-                    <p className="mt-4 text-[#0a1833]">
-                      Every Orion diamond is independently graded and
-                      hallmarked. Upload or view certificates to verify cut,
-                      color, clarity and carat. We display trusted lab logos and
-                      provide a unique certificate ID for each stone.
-                    </p>
-                  </div>
-                  <div className="rounded-2xl bg-[#0a1833]/10 p-6">
-                    <h3 className="font-medium text-[#0a1833]">
-                      Sample Certificate
-                    </h3>
-                    <div className="mt-4 border border-[#0a1833]/30 rounded-lg p-4">
-                      <div className="text-sm text-[#0a1833]">
-                        Certificate ID:{" "}
-                        <span className="font-mono">OR-2025-000123</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
+              <p className="text-[#0a1833]">
+                They are made using two methods: HPHT (High Pressure High
+                Temperature) or CVD (Chemical Vapor Deposition), replicating the
+                natural diamond-growing process. We prefer and use the CVD
+                method.
+              </p>
+            ),
+          },
+          {
+            title:
+              "Do lab-grown diamonds look different from natural diamonds?",
+            content: (
+              <p className="text-[#0a1833]">
+                Lab-grown diamonds do not hold resale value like mined diamonds.
+                They're ideal for value-conscious buyers who prioritize ethics
+                and aesthetics.
+              </p>
+            ),
+          },
+          {
+            title: "Will a lab-grown diamond last forever?",
+            content: (
+              <p className="text-[#0a1833]">
+                Yes. Just like mined diamonds, they are extremely durable and
+                will last a lifetime.
+              </p>
+            ),
+          },
+          {
+            title: "Why should I choose lab-grown over natural diamonds?",
+            content: (
+              <p className="text-[#0a1833]">
+                Lab-grown diamonds offer the same beauty at a better price, with
+                ethical sourcing and lower environmental impact.
+              </p>
+            ),
+          },
+          {
+            title: "Can I customise lab-grown diamond jewellery?",
+            content: (
+              <p className="text-[#0a1833]">
+                Absolutely. At Orion, we craft each piece to match your vision —
+                from rings to earrings, every design is tailored to your style
+                and preferences.
+              </p>
+            ),
+          },
+          {
+            title: "Can lab-grown diamonds be certified?",
+            content: (
+              <p className="text-[#0a1833]">
+                Absolutely. They are certified by reputable labs like IGI, GIA,
+                or SGL, just like mined diamonds.
+              </p>
             ),
           },
         ].map((section, idx) => (
@@ -299,7 +265,7 @@ export function Landing() {
               <FiMenu />
             </button>
             {activeAccordion === idx && (
-              <div className="px-6 py-4 text-[#0a1833]">{section.content}</div>
+              <div className="px-6 py-6 text-[#0a1833]">{section.content}</div>
             )}
           </div>
         ))}

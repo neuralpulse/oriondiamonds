@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
-  Package,
   ShoppingCart,
   Heart,
   Share2,
-  Truck,
-  Shield,
   Check,
   Link as LinkIcon,
   Facebook,
@@ -18,6 +15,7 @@ import {
 import { shopifyRequest } from "../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../queries/products";
 import ProductAccordion from "../components/accordian";
+import diamondcarot from "../assets/dct.jpg";
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -234,7 +232,10 @@ export default function ProductDetails() {
   if (!product) return <p className="text-center mt-10">Product not found</p>;
 
   // Get all images as an array
-  const allImages = product.images?.edges?.map(({ node }) => node.url) || [];
+  const allImages = [
+    ...(product.images?.edges?.map(({ node }) => node.url) || []),
+    diamondcarot,
+  ];
   const currentImageIndex = allImages.indexOf(
     selectedImage || selectedVariant?.image?.url || product.featuredImage?.url
   );
@@ -305,6 +306,7 @@ export default function ProductDetails() {
 
             {/* Thumbnail Strip */}
             <div className="flex gap-3 overflow-x-auto">
+              {/* Product images */}
               {product.images?.edges?.map(({ node }) => (
                 <button
                   key={node.url}
@@ -322,6 +324,22 @@ export default function ProductDetails() {
                   />
                 </button>
               ))}
+
+              {/* DCT.jpg thumbnail - always first */}
+              <button
+                onClick={() => setSelectedImage(diamondcarot)}
+                className={`border-2 rounded-lg p-1 flex-shrink-0 transition-all ${
+                  selectedImage === diamondcarot
+                    ? "border-black"
+                    : "border-transparent hover:border-gray-400"
+                }`}
+              >
+                <img
+                  src={diamondcarot}
+                  alt="DCT"
+                  className="w-20 h-20 object-cover rounded-md"
+                />
+              </button>
             </div>
           </div>
 
@@ -345,9 +363,9 @@ export default function ProductDetails() {
                   </label>
                   <div className="flex gap-3">
                     {[
-                      { name: "Rose Gold", color: "#B76E79" },
-                      { name: "Yellow Gold", color: "#FFD700" },
-                      { name: "White Gold", color: "#E5E4E2" },
+                      { name: "Rose Gold", color: "#ffcccc" },
+                      { name: "Yellow Gold", color: "#ffcc66" },
+                      { name: "White Gold", color: "#cccccc" },
                     ].map(({ name, color }) => (
                       <label key={name} className="cursor-pointer">
                         <input
@@ -361,7 +379,7 @@ export default function ProductDetails() {
                           className="hidden"
                         />
                         <span
-                          className={`block w-8 h-8 rounded-full border-2 transition-transform ${
+                          className={`block w-8 h-8 rounded-full border-1 transition-transform ${
                             selectedOptions["Gold Color"] === name
                               ? "border-black scale-110"
                               : "border-gray-300"
