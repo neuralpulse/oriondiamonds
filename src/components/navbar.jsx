@@ -20,6 +20,8 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isHero, setIsHero] = useState(true);
   const [hovering, setHovering] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
 
   // Search states (from SearchBar)
   const [searchQuery, setSearchQuery] = useState("");
@@ -121,6 +123,27 @@ export function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
+  // === Sync Cart & Wishlist Counts from localStorage ===
+  useEffect(() => {
+    const updateCounts = () => {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+      setCartCount(cart.length);
+      setWishlistCount(wishlist.length);
+    };
+
+    // Initial load
+    updateCounts();
+
+    // Listen for updates from other components
+    window.addEventListener("cartUpdated", updateCounts);
+    window.addEventListener("wishlistUpdated", updateCounts);
+
+    return () => {
+      window.removeEventListener("cartUpdated", updateCounts);
+      window.removeEventListener("wishlistUpdated", updateCounts);
+    };
+  }, []);
 
   const goToSection = (section) => {
     setMobileMenuOpen(false);
@@ -157,7 +180,7 @@ export function Navbar() {
           <img src={logo} alt="Logo" className="h-12 w-auto object-contain" />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 relative">
           {/* === DESKTOP SEARCH === */}
           {window.innerWidth >= 780 && (
             <div className="relative flex items-center">
@@ -225,21 +248,40 @@ export function Navbar() {
             </div>
           )}
 
-          <FiShoppingCart
-            size={24}
-            className="text-white cursor-pointer hover:text-yellow-400"
-            onClick={() => navigate("/my-cart")}
-          />
-          <FiHeart
-            size={24}
-            className="text-white cursor-pointer hover:text-red-500"
-            onClick={() => navigate("/my-list")}
-          />
+          {/* === CART ICON WITH COUNT === */}
+          <div className="relative">
+            <FiShoppingCart
+              size={24}
+              className="text-white cursor-pointer hover:text-yellow-400"
+              onClick={() => navigate("/my-cart")}
+            />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-yellow-500 text-[#0a1833] text-[10px] font-bold rounded-full px-1.5 py-0.5">
+                {cartCount}
+              </span>
+            )}
+          </div>
+
+          {/* === WISHLIST ICON WITH COUNT === */}
+          <div className="relative">
+            <FiHeart
+              size={24}
+              className="text-white cursor-pointer hover:text-red-500"
+              onClick={() => navigate("/my-list")}
+            />
+            {wishlistCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
+                {wishlistCount}
+              </span>
+            )}
+          </div>
+
           <FiUser
             size={24}
             className="text-white cursor-pointer hover:text-green-400"
           />
 
+          {/* === MOBILE MENU TOGGLE === */}
           <div className="md:hidden">
             {mobileMenuOpen ? (
               <FiX

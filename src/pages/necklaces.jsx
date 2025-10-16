@@ -1,42 +1,116 @@
-import first from "../assets/1.png";
-import second from "../assets/2.png";
-import third from "../assets/3.png";
+import { useState, useEffect } from "react";
 import CollectionSection from "../components/collectionsect";
+import { shopifyRequest } from "../utils/shopify";
+import { GET_NECKLACES_COLLECTION } from "../queries/necklaces_collection";
 
 export function Necklaces() {
-  const necklaces = [
-    {
-      productCode: "ODNK001",
-      name: "Luna Drop Diamond Necklace",
-      gold: "5.2 gm",
-      diamondPrice: "120000",
-      diamondDetails: "FG VS, 35 Stones",
-      price: "₹120000",
-      image: first,
-    },
-    {
-      productCode: "ODNK002",
-      name: "Ethereal Cluster Pendant Necklace",
-      gold: "4.8 gm",
-      diamondPrice: "95000",
-      diamondDetails: "EF VVS, 24 Stones",
-      price: "₹95000",
-      image: second,
-    },
-    {
-      productCode: "ODNK003",
-      name: "Celeste Solitaire Necklace",
-      gold: "3.9 gm",
-      diamondPrice: "110000",
-      diamondDetails: "EF VS1, 1 Stone",
-      price: "₹110000",
-      image: third,
-    },
-  ];
+  const [Necklaces, setNecklaces] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchNecklaces();
+  }, []);
+
+  const fetchNecklaces = async () => {
+    try {
+      setLoading(true);
+      const response = await shopifyRequest(GET_NECKLACES_COLLECTION);
+
+      if (response.data?.collection?.products?.edges) {
+        const transformedNecklaces = transformNecklacesData(
+          response.data.collection.products.edges
+        );
+        setNecklaces(transformedNecklaces);
+      }
+    } catch (err) {
+      console.error("Error fetching rings:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const transformNecklacesData = (productsEdges) => {
+    return productsEdges.map(({ node: product }) => {
+      // Get the first variant as default
+      const firstVariant = product.variants.edges[0]?.node;
+
+      // Extract gold information from variants
+      const goldKarat =
+        firstVariant?.selectedOptions.find((opt) => opt.name === "Gold Karat")
+          ?.value || "";
+
+      const goldColor =
+        firstVariant?.selectedOptions.find((opt) => opt.name === "Gold Color")
+          ?.value || "";
+
+      const diamondGrade =
+        firstVariant?.selectedOptions.find(
+          (opt) => opt.name === "Diamond Grade"
+        )?.value || "";
+
+      // Extract diamond details from description
+      const diamondDetails = extractDiamondDetails(product.description);
+
+      return {
+        productCode: firstVariant?.sku || "",
+        handle: product.handle,
+        name: product.title,
+        gold: `${goldKarat} ${goldColor}`.trim(),
+        goldPrice: firstVariant?.price.amount || "0",
+        diamondDetails: {
+          carat: diamondDetails.carat,
+          quality: diamondGrade || diamondDetails.quality,
+          shape: diamondDetails.shape,
+          count: diamondDetails.count,
+        },
+        price: firstVariant?.price.amount || "0",
+        currency: firstVariant?.price.currencyCode || "INR",
+        image: product.featuredImage?.url || firstVariant?.image?.url || "",
+        images:
+          product.images?.edges?.map((img) => ({
+            url: img.node.url,
+            altText: img.node.altText,
+          })) || [],
+        allVariants: product.variants.edges.map((v) => v.node),
+      };
+    });
+  };
+
+  const extractDiamondDetails = (description) => {
+    const caratMatch = description.match(/Total Diamond Carat:\s*([\d.]+)/);
+    const qualityMatch = description.match(/Diamond Quality:\s*([^\n]+)/);
+    const shapeMatch = description.match(/Diamond Shape:\s*([^\n]+)/);
+    const countMatch = description.match(/Total Diamonds:\s*(\d+)/);
+
+    return {
+      carat: caratMatch?.[1] || "",
+      quality: qualityMatch?.[1]?.trim() || "",
+      shape: shapeMatch?.[1]?.trim() || "",
+      count: countMatch?.[1] || "",
+    };
+  };
+
+  if (loading) {
+    return (
+      <div className="m-10 py-10 text-center">
+        <p>Loading Necklaces...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="m-10 py-10 text-center text-red-600">
+        <p>Error loading Necklaces: {error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="m-10 py-10">
-      <CollectionSection title="Necklaces" items={necklaces} />
+      <CollectionSection title="Necklaces" items={Necklaces} />
     </div>
   );
 }

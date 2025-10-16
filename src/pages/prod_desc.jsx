@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import {
   ShoppingCart,
@@ -18,6 +18,7 @@ import ProductAccordion from "../components/accordian";
 import diamondcarot from "../assets/dct.jpg";
 
 export default function ProductDetails() {
+  const modalRef = useRef(null);
   const { handle } = useParams();
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
@@ -65,6 +66,11 @@ export default function ProductDetails() {
   useEffect(() => {
     fetchProduct();
   }, [handle]);
+  useEffect(() => {
+    if (isModalOpen && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [isModalOpen]);
 
   useEffect(() => {
     if (product) {
@@ -446,17 +452,17 @@ export default function ProductDetails() {
             </div>
 
             {/* Quantity */}
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center gap-3 mt-4 ">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-gray-50"
+                className="w-10 cursor-pointer h-10 border rounded-lg flex items-center justify-center hover:bg-gray-50"
               >
                 -
               </button>
               <span className="w-12 text-center">{quantity}</span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="w-10 h-10 border rounded-lg flex items-center justify-center hover:bg-gray-50"
+                className="w-10 cursor-pointer h-10 border rounded-lg flex items-center justify-center hover:bg-gray-50"
               >
                 +
               </button>
@@ -466,7 +472,7 @@ export default function ProductDetails() {
             <div className="flex gap-3 mt-4">
               <button
                 onClick={addToCart}
-                className="flex-1 bg-black text-white py-3 rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
+                className="flex-1 cursor-pointer bg-black text-white py-3 rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors"
               >
                 <ShoppingCart size={20} />
                 Add to Cart
@@ -475,7 +481,7 @@ export default function ProductDetails() {
               {/* Wishlist Button */}
               <button
                 onClick={toggleWishlist}
-                className={`w-12 h-12 border rounded-full flex items-center justify-center transition-all ${
+                className={`w-12 h-12 border rounded-full flex items-center justify-center cursor-pointer transition-all ${
                   isWishlisted ? "bg-red-50 border-red-500" : "hover:bg-gray-50"
                 }`}
                 title={
@@ -484,7 +490,7 @@ export default function ProductDetails() {
               >
                 <Heart
                   size={20}
-                  className={`transition-colors ${
+                  className={`transition-colors cursor-pointer ${
                     isWishlisted
                       ? "fill-red-500 text-red-500"
                       : "hover:text-red-500"
@@ -496,7 +502,7 @@ export default function ProductDetails() {
               <div className="relative">
                 <button
                   onClick={() => setShowShareMenu(!showShareMenu)}
-                  className="w-12 h-12 border rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
+                  className="w-12 h-12 border rounded-full flex items-center cursor-pointer justify-center hover:bg-gray-50 transition-colors"
                   title="Share product"
                 >
                   <Share2 size={20} />
@@ -581,9 +587,10 @@ export default function ProductDetails() {
       {/* Full Screen Modal */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black z-50 flex items-center justify-center"
+          ref={modalRef}
+          className="fixed inset-0 bg-black z-50 flex items-center justify-center outline-none"
           onKeyDown={handleKeyDown}
-          tabIndex={0}
+          tabIndex={0} // must be focusable
         >
           {/* Close Button */}
           <button

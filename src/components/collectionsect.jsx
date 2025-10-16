@@ -1,11 +1,40 @@
-import { Heart } from "lucide-react";
+import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function CollectionSection({ id, title, items }) {
+export default function CollectionSection({ id, title, items = [] }) {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6); // default for desktop
+
+  // Handle responsive page size
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(8); // 2 per row * 4 rows (mobile)
+      } else {
+        setItemsPerPage(6); // 3 per row * 2 rows (desktop)
+      }
+    };
+
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
+
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
+
+  const goToPage = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
-    <section className="mt-16 mb-12">
+    <section className="mt-12 mb-12">
       {/* Section Title */}
       <h1
         id={id}
@@ -15,9 +44,9 @@ export default function CollectionSection({ id, title, items }) {
       </h1>
 
       {/* Responsive Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-        {items && items.length > 0 ? (
-          items.map((item, idx) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 transition-all duration-500">
+        {currentItems && currentItems.length > 0 ? (
+          currentItems.map((item, idx) => (
             <div
               key={idx}
               className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.98]"
@@ -49,7 +78,7 @@ export default function CollectionSection({ id, title, items }) {
                 </p>
               </div>
 
-              {/* Wishlist Icon (visible on mobile too) */}
+              {/* Wishlist Icon */}
               <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 shadow-md hover:scale-110 active:scale-95">
                 <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-[#0a1833] hover:fill-red-500 hover:text-red-500 transition-colors duration-200" />
               </div>
@@ -81,6 +110,41 @@ export default function CollectionSection({ id, title, items }) {
           </div>
         )}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10">
+          <button
+            onClick={() => goToPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="p-2 rounded-full border hover:bg-gray-100 disabled:opacity-50"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goToPage(i + 1)}
+              className={`w-8 h-8 flex items-center justify-center rounded-full border text-sm font-medium ${
+                currentPage === i + 1
+                  ? "bg-black text-white border-black"
+                  : "hover:bg-gray-100 text-gray-800 border-gray-300"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() => goToPage(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="p-2 rounded-full border hover:bg-gray-100 disabled:opacity-50"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

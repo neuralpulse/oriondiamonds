@@ -51,7 +51,7 @@ export function Landing() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-1 md:auto-rows-[200px]">
           {/* Earrings - Large highlight card */}
           <div
-            className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
+            className="relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto cursor-pointer"
             onClick={() => {
               navigate("/earrings");
             }}
@@ -67,7 +67,7 @@ export function Landing() {
           </div>
           {/* Pendants */}
           <div
-            className="relative md:col-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
+            className="relative md:col-span-2 rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto cursor-pointer"
             onClick={() => {
               navigate("/pendants");
             }}
@@ -83,7 +83,7 @@ export function Landing() {
           </div>
           {/* Bracelets */}
           <div
-            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
+            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto cursor-pointer"
             onClick={() => {
               navigate("/bracelets");
             }}
@@ -99,7 +99,7 @@ export function Landing() {
           </div>
           {/* Rings */}
           <div
-            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto"
+            className="relative rounded-2xl overflow-hidden shadow-lg group h-[200px] md:h-auto cursor-pointer"
             onClick={() => {
               navigate("/rings");
             }}
