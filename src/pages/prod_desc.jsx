@@ -33,6 +33,7 @@ export default function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
 
   const addToCart = () => {
     if (!selectedVariant) return;
@@ -369,9 +370,9 @@ export default function ProductDetails() {
                   </label>
                   <div className="flex gap-3">
                     {[
-                      { name: "Rose Gold", color: "#ffcccc" },
-                      { name: "Yellow Gold", color: "#ffcc66" },
-                      { name: "White Gold", color: "#cccccc" },
+                      { name: "Rose Gold", color: "#edab7b" },
+                      { name: "Yellow Gold", color: "#deb666" },
+                      { name: "White Gold", color: "#e8e8e8" },
                     ].map(({ name, color }) => (
                       <label key={name} className="cursor-pointer">
                         <input
@@ -420,9 +421,39 @@ export default function ProductDetails() {
                   </select>
                 </div>
               )}
+              {/* Ring Size Dropdown (only if product is a ring) */}
+              {handle?.toLowerCase().endsWith("-ring") && (
+                <div className="relative w-48">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Ring Size
+                  </label>
+                  <select
+                    className="w-full border border-gray-300 rounded-xl px-4 py-2 cursor-pointer"
+                    value={selectedOptions["Ring Size"] || ""}
+                    onChange={(e) =>
+                      handleOptionChange("Ring Size", e.target.value)
+                    }
+                  >
+                    <option value="">Select Ring Size</option>
+                    {Array.from({ length: 19 }, (_, i) => i + 4).map((size) => (
+                      <option key={size} value={size}>
+                        {size}
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* Size Guide Link */}
+                  <p
+                    className="text-sm text-gray-600 underline cursor-pointer mt-2"
+                    onClick={() => setShowSizeGuide(true)}
+                  >
+                    View Size Guide
+                  </p>
+                </div>
+              )}
 
               {/* Other Options */}
-              {product.options
+              {/* {product.options
                 .filter(
                   (opt) =>
                     opt.name !== "Gold Color" && opt.name !== "Gold Karat"
@@ -448,7 +479,7 @@ export default function ProductDetails() {
                       ))}
                     </div>
                   </div>
-                ))}
+                ))} */}
             </div>
 
             {/* Quantity */}
@@ -658,6 +689,76 @@ export default function ProductDetails() {
                 />
               </button>
             ))}
+          </div>
+        </div>
+      )}
+      {/* Ring Size Guide Modal */}
+      {showSizeGuide && (
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-2xl p-6 w-[90%] max-w-lg relative max-h-[85vh] overflow-y-auto">
+            <button
+              onClick={() => setShowSizeGuide(false)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-black"
+            >
+              <X size={24} />
+            </button>
+
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              How to Measure Your Ring Size
+            </h2>
+            <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
+              <li>
+                Wrap a string, piece of paper, or fabric around the base of your
+                finger.
+              </li>
+              <li>
+                Make sure it’s snug but not tight, then mark the spot where it
+                overlaps.
+              </li>
+              <li>
+                Measure the length in millimeters (mm) and find your size below.
+              </li>
+            </ol>
+
+            <h3 className="text-lg font-semibold mb-2">Ring Size Guide (mm)</h3>
+            <table className="w-full text-sm border-collapse border border-gray-300 text-center">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="border border-gray-300 p-2">Ring Size</th>
+                  <th className="border border-gray-300 p-2">
+                    Circumference(in mm)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [4, 43.6],
+                  [5, 44.8],
+                  [6, 46.1],
+                  [7, 47.4],
+                  [8, 48.0],
+                  [9, 48.7],
+                  [10, 50.0],
+                  [11, 51.2],
+                  [12, 51.9],
+                  [13, 53.1],
+                  [14, 54.4],
+                  [15, 55.1],
+                  [16, 56.3],
+                  [17, 57.0],
+                  [18, 58.3],
+                  [19, 58.9],
+                  [20, 60.2],
+                  [21, 60.8],
+                  [22, 62.1],
+                ].map(([size, diameter]) => (
+                  <tr key={size}>
+                    <td className="border border-gray-300 p-2">{size}</td>
+                    <td className="border border-gray-300 p-2">{diameter}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       )}
