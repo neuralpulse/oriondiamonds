@@ -12,6 +12,9 @@ import { Cart } from "./pages/cart";
 import { Wishlist } from "./pages/wishlist";
 import { NotFound } from "./pages/notfound";
 import SearchResults from "./pages/SearchResults";
+import { Account } from "./pages/account";
+import { Login } from "./pages/login";
+
 function App() {
   return (
     <BrowserRouter basename="/oriondiamonds/">
@@ -27,6 +30,8 @@ function App() {
         <Route path="/my-cart" element={<Cart />} />
         <Route path="/my-list" element={<Wishlist />} />
         <Route path="/search" element={<SearchResults />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />

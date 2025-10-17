@@ -146,16 +146,22 @@ export function Navbar() {
   }, []);
 
   const goToSection = (section) => {
+    const offset = 100; // height of your navbar in pixels
     setMobileMenuOpen(false);
+
+    const scrollWithOffset = () => {
+      const el = document.getElementById(section);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+
     if (location.pathname !== "/") {
       navigate("/", { replace: true });
-      setTimeout(() => {
-        const el = document.getElementById(section);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      setTimeout(scrollWithOffset, 100); // give time for page to render
     } else {
-      const el = document.getElementById(section);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      scrollWithOffset();
     }
   };
 
@@ -266,7 +272,7 @@ export function Navbar() {
           <div className="relative">
             <FiHeart
               size={24}
-              className="text-white cursor-pointer hover:text-red-500"
+              className="text-white cursor-pointer hover:text-red-500 transition"
               onClick={() => navigate("/my-list")}
             />
             {wishlistCount > 0 && (
@@ -279,6 +285,9 @@ export function Navbar() {
           <FiUser
             size={24}
             className="text-white cursor-pointer hover:text-green-400"
+            onClick={() => {
+              navigate("/account");
+            }}
           />
 
           {/* === MOBILE MENU TOGGLE === */}

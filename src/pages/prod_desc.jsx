@@ -36,7 +36,10 @@ export default function ProductDetails() {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
 
   const addToCart = () => {
-    if (!selectedVariant) return;
+    if (!selectedVariant) {
+      alert("Please select a variant");
+      return;
+    }
 
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
@@ -45,23 +48,29 @@ export default function ProductDetails() {
     );
 
     if (existingItemIndex > -1) {
+      // Update quantity of existing item
       cart[existingItemIndex].quantity += quantity;
     } else {
+      // Add new item to cart
       const newItem = {
-        variantId: selectedVariant.id,
+        variantId: selectedVariant.id, // This is the Shopify GID format
         handle: product.handle,
         title: product.title,
+        variantTitle: selectedVariant.title, // Add this for cart display
         image: selectedVariant.image?.url || product.featuredImage?.url,
         price: parseFloat(selectedVariant.price.amount),
-        quantity,
-        selectedOptions,
+        currencyCode: selectedVariant.price.currencyCode, // Add currency
+        quantity: quantity,
+        selectedOptions: selectedOptions,
       };
       cart.push(newItem);
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
     window.dispatchEvent(new Event("cartUpdated"));
-    alert("Added to cart!");
+
+    // Better user feedback
+    alert(`${quantity} × ${product.title} added to cart!`);
   };
 
   useEffect(() => {
@@ -74,11 +83,30 @@ export default function ProductDetails() {
   }, [isModalOpen]);
 
   useEffect(() => {
-    if (product) {
-      const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
-      setIsWishlisted(wishlist.some((item) => item.id === product.id));
-    }
-  }, [product]);
+    // Add safety check for product
+    if (!product || !product.id) return;
+
+    const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    const inWishlist = wishlist.some((item) => item.id === product.id);
+    setIsWishlisted(inWishlist);
+
+    // Listen for wishlist updates
+    const handleWishlistUpdate = () => {
+      const updatedWishlist = JSON.parse(
+        localStorage.getItem("wishlist") || "[]"
+      );
+      const stillInWishlist = updatedWishlist.some(
+        (item) => item.id === product.id
+      );
+      setIsWishlisted(stillInWishlist);
+    };
+
+    window.addEventListener("wishlistUpdated", handleWishlistUpdate);
+
+    return () => {
+      window.removeEventListener("wishlistUpdated", handleWishlistUpdate);
+    };
+  }, [product?.id]); // Use optional chaining in dependency
 
   const fetchProduct = async () => {
     if (!handle) return;
@@ -142,28 +170,47 @@ export default function ProductDetails() {
   };
 
   const toggleWishlist = () => {
+    if (!product || !product.id) {
+      toast.error("Product information not available");
+      return;
+    }
+
     const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
 
     if (isWishlisted) {
+      // Remove from wishlist
       const newWishlist = wishlist.filter((item) => item.id !== product.id);
       localStorage.setItem("wishlist", JSON.stringify(newWishlist));
       setIsWishlisted(false);
+      toast.success("Removed from wishlist");
+
+      window.dispatchEvent(new Event("wishlistUpdated"));
     } else {
+      if (!selectedVariant) {
+        toast.error("Please select a variant");
+        return;
+      }
+
       const wishlistItem = {
         id: product.id,
+        variantId: selectedVariant.id,
         handle: product.handle,
         title: product.title,
+        variantTitle: selectedVariant.title,
         image: selectedVariant?.image?.url || product.featuredImage?.url,
-        price: selectedVariant?.price?.amount,
+        price: parseFloat(selectedVariant?.price?.amount),
+        currencyCode: selectedVariant?.price?.currencyCode,
         variant: selectedVariant?.id,
+        selectedOptions,
         addedAt: new Date().toISOString(),
       };
+
       wishlist.push(wishlistItem);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       setIsWishlisted(true);
+      toast.success("Added to wishlist!");
+      window.dispatchEvent(new Event("wishlistUpdated"));
     }
-
-    window.dispatchEvent(new Event("wishlistUpdated"));
   };
 
   const handleShare = async (platform) => {
