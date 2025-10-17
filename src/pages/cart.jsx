@@ -58,29 +58,52 @@ export function Cart() {
 
   const calculateTax = () => calculateSubtotal() * 0.18;
   const calculateTotal = () => calculateSubtotal() + calculateTax();
-
   const handleCheckout = async () => {
+    if (!isLoggedIn) {
+      toast.error("Please login to proceed to checkout");
+      navigate("/login");
+      return;
+    }
+
     setLoading(true);
     setError("");
-    try {
-      const lines = cartItems.map((item) => ({
-        merchandiseId: item.variantId,
-        quantity: item.quantity,
-      }));
 
-      const cartResponse = await shopifyRequest(CREATE_CART, {
-        input: { lines },
+    try {
+      console.log("Cart items:", cartItems);
+
+      // Prepare line items with attributes
+      const lines = cartItems.map((item) => {
+        const lineItem = {
+          merchandiseId: item.variantId,
+          quantity: item.quantity,
+        };
+
+        // Add custom attributes (like ring size)
+        if (item.selectedOptions && item.selectedOptions.length > 0) {
+          lineItem.attributes = item.selectedOptions.map((option) => ({
+            key: option.name,
+            value: option.value,
+          }));
+        }
+
+        return lineItem;
       });
 
-      if (cartResponse.errors) {
-        setError(cartResponse.errors[0].message);
-        setLoading(false);
-        return;
-      }
+      console.log("Lines for cart with attributes:", lines);
 
-      const { data: cartData } = cartResponse;
+      // Create cart using new Cart API
+      const cartResponse = await shopifyRequest(CREATE_CART, {
+        input: {
+          lines: lines,
+        },
+      });
+
+      console.log("Cart response:", cartResponse);
+
+      const cartData = cartResponse.data;
 
       if (cartData.cartCreate.userErrors.length > 0) {
+        console.error("Cart user errors:", cartData.cartCreate.userErrors);
         setError(cartData.cartCreate.userErrors[0].message);
         setLoading(false);
         return;
@@ -89,20 +112,45 @@ export function Cart() {
       const cart = cartData.cartCreate.cart;
       const cartId = cart.id;
 
+      console.log("Cart created:", cart);
+
+      // Associate customer with cart
       const customerToken = localStorage.getItem("shopify_customer_token");
+
       if (customerToken) {
-        await shopifyRequest(CART_BUYER_IDENTITY_UPDATE, {
-          cartId,
-          buyerIdentity: { customerAccessToken: customerToken },
-        });
+        const buyerIdentityResponse = await shopifyRequest(
+          CART_BUYER_IDENTITY_UPDATE,
+          {
+            cartId: cartId,
+            buyerIdentity: {
+              customerAccessToken: customerToken,
+            },
+          }
+        );
+
+        console.log("Buyer identity response:", buyerIdentityResponse);
+
+        if (
+          buyerIdentityResponse.data?.cartBuyerIdentityUpdate?.userErrors
+            ?.length > 0
+        ) {
+          console.warn(
+            "Could not associate customer:",
+            buyerIdentityResponse.data.cartBuyerIdentityUpdate.userErrors[0]
+              .message
+          );
+        }
       }
 
+      // Clear cart after successful cart creation
       localStorage.setItem("cart", JSON.stringify([]));
       setCartItems([]);
       window.dispatchEvent(new Event("cartUpdated"));
 
+      // Redirect to Shopify checkout
       window.location.href = cart.checkoutUrl;
     } catch (err) {
+      console.error("Checkout error:", err);
       setError(`Failed to create checkout: ${err.message}`);
       setLoading(false);
     }
@@ -110,7 +158,7 @@ export function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="py-32 text-center max-w-2xl mx-auto px-4 sm:px-6">
+      <div className="py-50 text-center max-w-2xl mx-auto px-4 sm:px-6">
         <ShoppingCart className="w-20 h-20 mx-auto text-gray-300 mb-6" />
         <h1 className="text-4xl font-bold text-[#0a1833] mb-3">
           Your Cart is Empty

@@ -16,6 +16,7 @@ import { shopifyRequest } from "../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../queries/products";
 import ProductAccordion from "../components/accordian";
 import diamondcarot from "../assets/dct.jpg";
+import toast from "react-hot-toast";
 
 export default function ProductDetails() {
   const modalRef = useRef(null);
@@ -37,7 +38,16 @@ export default function ProductDetails() {
 
   const addToCart = () => {
     if (!selectedVariant) {
-      alert("Please select a variant");
+      toast.error("Please select a variant");
+      return;
+    }
+
+    // Check if ring size is required and selected
+    if (
+      handle?.toLowerCase().endsWith("-ring") &&
+      !selectedOptions["Ring Size"]
+    ) {
+      toast.error("Please select a ring size");
       return;
     }
 
@@ -48,29 +58,30 @@ export default function ProductDetails() {
     );
 
     if (existingItemIndex > -1) {
-      // Update quantity of existing item
       cart[existingItemIndex].quantity += quantity;
     } else {
-      // Add new item to cart
       const newItem = {
-        variantId: selectedVariant.id, // This is the Shopify GID format
+        variantId: selectedVariant.id,
         handle: product.handle,
         title: product.title,
-        variantTitle: selectedVariant.title, // Add this for cart display
+        variantTitle: selectedVariant.title,
         image: selectedVariant.image?.url || product.featuredImage?.url,
         price: parseFloat(selectedVariant.price.amount),
-        currencyCode: selectedVariant.price.currencyCode, // Add currency
+        currencyCode: selectedVariant.price.currencyCode,
         quantity: quantity,
-        selectedOptions: selectedOptions,
+        selectedOptions: Object.entries(selectedOptions).map(
+          ([name, value]) => ({
+            name,
+            value,
+          })
+        ), // Convert to array format
       };
       cart.push(newItem);
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
     window.dispatchEvent(new Event("cartUpdated"));
-
-    // Better user feedback
-    alert(`${quantity} × ${product.title} added to cart!`);
+    toast.success(`${quantity} × ${product.title} added to cart!`);
   };
 
   useEffect(() => {

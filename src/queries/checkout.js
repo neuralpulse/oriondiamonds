@@ -10,6 +10,10 @@ export const CREATE_CART = `
             node {
               id
               quantity
+              attributes {
+                key
+                value
+              }
               merchandise {
                 ... on ProductVariant {
                   id

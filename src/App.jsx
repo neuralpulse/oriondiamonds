@@ -14,12 +14,14 @@ import { NotFound } from "./pages/notfound";
 import SearchResults from "./pages/SearchResults";
 import { Account } from "./pages/account";
 import { Login } from "./pages/login";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter basename="/oriondiamonds/">
       <ScrollToTop />
       <Navbar />
+      <Toaster position="bottom-center" />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/product/:handle" element={<ProductDetails />} />
