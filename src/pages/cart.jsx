@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import { CREATE_CART, CART_BUYER_IDENTITY_UPDATE } from "../queries/checkout";
 import { shopifyRequest } from "../utils/shopify";
-
+import toast from "react-hot-toast";
 export function Cart() {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -58,6 +58,8 @@ export function Cart() {
 
   const calculateTax = () => calculateSubtotal() * 0.18;
   const calculateTotal = () => calculateSubtotal() + calculateTax();
+
+  const isLoggedIn = !!localStorage.getItem("shopify_customer_token");
   const handleCheckout = async () => {
     if (!isLoggedIn) {
       toast.error("Please login to proceed to checkout");
@@ -148,7 +150,7 @@ export function Cart() {
       window.dispatchEvent(new Event("cartUpdated"));
 
       // Redirect to Shopify checkout
-      window.location.href = cart.checkoutUrl;
+      window.open(cart.checkoutUrl, "_blank");
     } catch (err) {
       console.error("Checkout error:", err);
       setError(`Failed to create checkout: ${err.message}`);
