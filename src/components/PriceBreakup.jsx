@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { calculateFinalPrice } from "../utils/price";
+import { formatIndianCurrency } from "../utils/formatIndianCurrency";
 
 export default function PriceBreakup({
   descriptionHtml,
@@ -80,23 +81,33 @@ export default function PriceBreakup({
         <tbody>
           <tr className="border-b">
             <td className="py-2 px-3 font-semibold">Diamond Price</td>
-            <td className="py-2 px-3 text-right">₹{priceData.diamondPrice}</td>
+            <td className="py-2 px-3 text-right">
+              ₹{formatIndianCurrency(priceData.diamondPrice)}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="py-2 px-3 font-semibold">Gold Price</td>
-            <td className="py-2 px-3 text-right">₹{priceData.goldPrice}</td>
+            <td className="py-2 px-3 text-right">
+              ₹{formatIndianCurrency(priceData.goldPrice)}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="py-2 px-3 font-semibold">Making Charges</td>
-            <td className="py-2 px-3 text-right">₹{priceData.makingCharge}</td>
+            <td className="py-2 px-3 text-right">
+              ₹{formatIndianCurrency(priceData.makingCharge)}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="py-2 px-3 font-semibold">GST</td>
-            <td className="py-2 px-3 text-right">₹{priceData.gst}</td>
+            <td className="py-2 px-3 text-right">
+              ₹{formatIndianCurrency(priceData.gst)}
+            </td>
           </tr>
           <tr className="bg-gray-50 font-semibold text-gray-900">
             <td className="py-2 px-3">Total Price</td>
-            <td className="py-2 px-3 text-right">₹{priceData.totalPrice}</td>
+            <td className="py-2 px-3 text-right">
+              ₹{formatIndianCurrency(priceData.totalPrice)}
+            </td>
           </tr>
         </tbody>
       </table>

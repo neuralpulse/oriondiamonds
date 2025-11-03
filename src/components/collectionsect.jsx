@@ -8,21 +8,35 @@ export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [loading, setLoading] = useState(true); // ✅ Loader state
+  const [progress, setProgress] = useState(0); // ✅ Progress bar
 
   // Handle responsive page size
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerPage(8); // 2 per row * 4 rows (mobile)
-      } else {
-        setItemsPerPage(8); // 4 per row * 2 rows (desktop)
-      }
+      if (window.innerWidth < 768) setItemsPerPage(8);
+      else setItemsPerPage(8);
     };
-
     updateItemsPerPage();
     window.addEventListener("resize", updateItemsPerPage);
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
+
+  // ✅ Simulate loading progress
+  useEffect(() => {
+    if (items.length > 0) {
+      let progressInterval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            setLoading(false);
+            return 100;
+          }
+          return prev + 10;
+        });
+      }, 100);
+    }
+  }, [items]);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -35,6 +49,28 @@ export default function CollectionSection({ id, title, items = [] }) {
     }
   };
 
+  // ✅ Loader screen
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[70vh] bg-white">
+        <img
+          src="/invlogo.jpg"
+          alt="Loading..."
+          className="w-28 md:w-40 mb-6 animate-pulse"
+        />
+        <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div
+            className="h-2 bg-[#0a1833] transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+        <p className="text-gray-600 mt-3 text-sm font-medium">
+          Loading products...
+        </p>
+      </div>
+    );
+  }
+
   return (
     <section className="mt-12 mb-12 px-3 md:px-0">
       {/* Section Title */}
@@ -45,7 +81,7 @@ export default function CollectionSection({ id, title, items = [] }) {
         {title}
       </h1>
 
-      {/* Responsive Grid - Reduced gap on mobile */}
+      {/* Responsive Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 transition-all duration-500">
         {currentItems && currentItems.length > 0 ? (
           currentItems.map((item, idx) => (
@@ -61,10 +97,9 @@ export default function CollectionSection({ id, title, items = [] }) {
                   alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 />
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* View Button - Shows on Hover */}
+                {/* View Button */}
                 <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <button
                     onClick={(e) => {
@@ -81,7 +116,7 @@ export default function CollectionSection({ id, title, items = [] }) {
 
               {/* Product Info */}
               <div className="p-3 md:p-5 flex flex-col justify-between min-h-[100px] md:min-h-[110px]">
-                <h3 className="font-medium capitalize text-sm md:text-lg text-[#0a1833] group-hover:text-[#1a2f5a] transition-colors duration-300 wrap-break-word leading-snug line-clamp-2">
+                <h3 className="font-medium capitalize text-sm md:text-lg text-[#0a1833] group-hover:text-[#1a2f5a] transition-colors duration-300 leading-snug line-clamp-2">
                   {item.name}
                 </h3>
               </div>
@@ -94,21 +129,6 @@ export default function CollectionSection({ id, title, items = [] }) {
           ))
         ) : (
           <div className="col-span-full flex flex-col items-center justify-center py-16">
-            <div className="w-24 h-24 mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-              <svg
-                className="w-12 h-12 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                />
-              </svg>
-            </div>
             <p className="text-lg text-gray-500 font-medium">
               No products available
             </p>
@@ -119,7 +139,7 @@ export default function CollectionSection({ id, title, items = [] }) {
         )}
       </div>
 
-      {/* Pagination Controls */}
+      {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 mt-10">
           <button

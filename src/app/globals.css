@@ -5,6 +5,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.animate-fadeOut {
+  animation: fadeOut 0.8s ease-out forwards;
+}
+
 #rings,
 #earrings,
 #pendents,

@@ -1,4 +1,21 @@
-[00:00:01.059] Server  LOG      ✓ Ready in 721ms
-[00:14:48.075] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:49.870] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:22:47.158] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:00.718] Server  LOG      ✓ Ready in 454ms
+[00:00:02.036] Server  WARN     ⚠ Cross origin request detected from 192.168.3.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:04.826] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.662] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:36.817] Server  WARN     ⚠ Cross origin request detected from 192.168.29.165 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:36.876] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:13.371] Server  LOG      ✓ Compiled in 0ms
+[00:02:51.359] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:31.715] Server  LOG      ✓ Compiled in 86ms
+[00:04:39.490] Server  LOG      ✓ Compiled in 97ms
+[00:10:19.999] Server  LOG      ✓ Compiled in 129ms
+[00:11:07.126] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:16.284] Server  LOG      ✓ Compiled in 119ms
+[00:13:12.725] Server  LOG      ✓ Compiled in 60ms
+[00:13:34.273] Server  LOG      ✓ Compiled in 67ms
+[00:22:03.435] Server  LOG      ✓ Compiled in 176ms
+[00:22:10.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:34.548] Server  LOG      ✓ Compiled in 68ms
+[00:28:22.140] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

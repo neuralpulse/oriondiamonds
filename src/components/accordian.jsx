@@ -297,7 +297,7 @@ export default function ProductAccordion({
           </p>
           <p className="text-gray-600 flex items-center gap-2">
             <CircleCheckBig className="w-4 h-4 shrink-0" />
-            Delivery in 5–7 business days
+            Delivery in 7-14 business days
           </p>
           <p className="text-gray-600 flex items-center gap-2">
             <CircleCheckBig className="w-4 h-4 shrink-0" />

@@ -32,6 +32,9 @@ export function Footer() {
         <div className="max-w-6xl mx-auto text-center text-[#0a1833] text-sm">
           © {new Date().getFullYear()} Orion Diamonds — All rights reserved
         </div>
+        <div className="max-w-6xl mx-auto text-center text-[#0a1833] text-sm">
+          Powered by Neural Pulse
+        </div>
       </footer>
     </div>
   );

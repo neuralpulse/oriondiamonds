@@ -138,7 +138,7 @@ export default function WishlistPage() {
               </div>
 
               {/* Product Info */}
-              <div className="p-4 flex flex-col flex-1">
+              <div className="p-4 flex flex-col flex-1 ">
                 <h3
                   onClick={() => goToProduct(item.handle)}
                   className="font-semibold text-lg text-[#0a1833] mb-2 cursor-pointer hover:text-[#1a2f5a] line-clamp-2"
@@ -151,10 +151,6 @@ export default function WishlistPage() {
                     {item.variantTitle}
                   </p>
                 )}
-
-                <p className="text-lg font-bold text-[#0a1833] mb-4">
-                  ₹{parseFloat(item.price).toFixed(2)}
-                </p>
 
                 <div className="mt-auto space-y-2">
                   <button

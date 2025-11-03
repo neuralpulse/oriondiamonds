@@ -19,11 +19,11 @@ import {
   ScrollText,
   BadgeCheck,
 } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa6";
 import { shopifyRequest } from "../../../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../../../queries/products";
 import ProductAccordion from "../../../components/accordian";
 import toast from "react-hot-toast";
+import { formatIndianCurrency } from "../../../utils/formatIndianCurrency";
 
 export default function ProductDetails() {
   const modalRef = useRef(null);
@@ -48,9 +48,6 @@ export default function ProductDetails() {
   const handlePriceData = (data) => {
     setTotalPrice(data.totalPrice); // only keep totalPrice
   };
-  const ImageSkeleton = () => (
-    <div className="w-full h-full bg-gray-200 animate-pulse rounded-md" />
-  );
 
   const features = [
     {
@@ -379,6 +376,28 @@ export default function ProductDetails() {
     selectedImage || selectedVariant?.image?.url || product.featuredImage?.url
   );
 
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const handleTouchStart = (e) => {
+    touchStartX = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX - touchStartX;
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) {
+        navigateImage("prev"); // Swipe right → previous image
+      } else {
+        navigateImage("next"); // Swipe left → next image
+      }
+    }
+  };
+
   const handleMouseMove = (e) => {
     if (!isZoomed || window.innerWidth <= 768) return;
 
@@ -423,6 +442,9 @@ export default function ProductDetails() {
                 }
               }}
               onMouseMove={handleMouseMove}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {/* Fade-in image */}
               <img
@@ -507,10 +529,11 @@ export default function ProductDetails() {
           <div className="space-y-6">
             <h1 className="text-3xl font-bold capitalize">{product.title}</h1>
             <p className="text-2xl font-semibold text-gray-900">
-              ₹{totalPrice || "0.00"}{" "}
-              <span className="text-sm text-gray-600">
-                {selectedVariant?.price?.in}
-              </span>
+              {totalPrice === undefined || totalPrice === null ? (
+                <span className="inline-block h-6 w-50 bg-gray-200 rounded animate-pulse"></span>
+              ) : (
+                <>₹{formatIndianCurrency(totalPrice)}</>
+              )}
             </p>
 
             {/* Options */}
@@ -580,7 +603,8 @@ export default function ProductDetails() {
                 </div>
               )}
               {/* Ring Size Dropdown (only if product is a ring) */}
-              {handle?.toLowerCase().endsWith("-ring") && (
+              {(handle?.toLowerCase().endsWith("-ring") ||
+                handle?.toLowerCase().endsWith("-band")) && (
                 <div className="relative w-48">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Ring Size
@@ -801,15 +825,6 @@ export default function ProductDetails() {
                 <span>Free Shipping & Insurance</span>
               </div>
             </div>
-            <a
-              href="https://wa.me/918380043510?text=Hi%20there!%20I%20need%20some%20help%20with%20a%20product%20on%20your%20website."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="fixed bottom-6 right-6 flex items-center justify-center gap-2 bg-[#075E54] text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-600 hover:scale-105 transition-all duration-300"
-            >
-              <FaWhatsapp className="w-6 h-6" />
-              <span>Let us help you out</span>
-            </a>
           </div>
         </div>
 
@@ -828,21 +843,37 @@ export default function ProductDetails() {
           ref={modalRef}
           className="fixed inset-0 bg-white z-50 flex items-center justify-center outline-none"
           onKeyDown={handleKeyDown}
-          tabIndex={0} // must be focusable
+          tabIndex={0}
+          onClick={(e) => {
+            // Close if clicked outside the image
+            if (e.target === e.currentTarget) setIsModalOpen(false);
+          }}
+          onTouchStart={(e) => (touchStartX = e.touches[0].clientX)}
+          onTouchMove={(e) => (touchEndX = e.touches[0].clientX)}
+          onTouchEnd={() => {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > 50) {
+              if (swipeDistance > 0) navigateImage("prev");
+              else navigateImage("next");
+            }
+          }}
         >
           {/* Close Button */}
           <button
             onClick={() => setIsModalOpen(false)}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            className="absolute top-4 right-4 text-black hover:text-gray-300 transition-colors z-10"
             aria-label="Close modal"
           >
             <X size={32} />
           </button>
 
-          {/* Previous Button */}
+          {/* Prev Button */}
           {allImages.length > 1 && (
             <button
-              onClick={() => navigateImage("prev")}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage("prev");
+              }}
               className="absolute left-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2"
               aria-label="Previous image"
             >
@@ -858,13 +889,16 @@ export default function ProductDetails() {
               product.featuredImage?.url
             }
             alt={product.title}
-            className="max-h-full max-w-full object-contain p-4"
+            className="max-h-[90vh] max-w-[90vw] object-contain p-4 rounded-lg"
           />
 
           {/* Next Button */}
           {allImages.length > 1 && (
             <button
-              onClick={() => navigateImage("next")}
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateImage("next");
+              }}
               className="absolute right-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2"
               aria-label="Next image"
             >
@@ -876,29 +910,9 @@ export default function ProductDetails() {
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full text-sm">
             {currentImageIndex + 1} / {allImages.length}
           </div>
-
-          {/* Thumbnail Navigation */}
-          <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] px-4">
-            {allImages.map((imageUrl, index) => (
-              <button
-                key={imageUrl}
-                onClick={() => setSelectedImage(imageUrl)}
-                className={`border-2 rounded-lg shrink-0 transition-all ${
-                  index === currentImageIndex
-                    ? "border-black"
-                    : "border-transparent hover:border-gray-400"
-                }`}
-              >
-                <img
-                  src={imageUrl}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="w-16 h-16 object-cover rounded-md"
-                />
-              </button>
-            ))}
-          </div>
         </div>
       )}
+
       {/* Ring Size Guide Modal */}
       {showSizeGuide && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
@@ -911,7 +925,8 @@ export default function ProductDetails() {
             </button>
 
             {/* If product is ring → show ring instructions */}
-            {handle?.toLowerCase().endsWith("-ring") ? (
+            {handle?.toLowerCase().endsWith("-ring") ||
+            handle?.toLowerCase().endsWith("-band") ? (
               <>
                 <h2 className="text-2xl font-semibold mb-4 text-center">
                   How to Measure Your Ring Size
