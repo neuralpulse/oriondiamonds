@@ -83,7 +83,7 @@ function DiamondDetails({ descriptionHtml }) {
               Shape
             </th>
             <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
-              Weight
+              Weight (ct)
             </th>
             <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
               Dimensions (mm)
