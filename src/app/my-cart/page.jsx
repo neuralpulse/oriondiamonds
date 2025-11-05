@@ -3,18 +3,17 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
-import {
-  CREATE_CART,
-  CART_BUYER_IDENTITY_UPDATE,
-} from "../../queries/checkout";
 import { shopifyRequest } from "../../utils/shopify";
+import { GET_PRODUCT_BY_HANDLE } from "../../queries/products";
 import toast from "react-hot-toast";
+import CartItemPriceBreakup from "../../components/CartItemPriceBreakup";
 
 export default function CartPage() {
   const router = useRouter();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     loadCart();
@@ -23,9 +22,39 @@ export default function CartPage() {
     return () => window.removeEventListener("cartUpdated", handleCartUpdate);
   }, []);
 
-  const loadCart = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("shopify_customer_token");
+      setIsLoggedIn(!!token);
+    }
+  }, []);
+
+  const loadCart = async () => {
     const items = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCartItems(items);
+
+    // Fetch product details for each item to get descriptionHtml
+    const enrichedItems = await Promise.all(
+      items.map(async (item) => {
+        if (!item.descriptionHtml && item.handle) {
+          try {
+            const response = await shopifyRequest(GET_PRODUCT_BY_HANDLE, {
+              handle: item.handle,
+            });
+            if (response.data?.product) {
+              return {
+                ...item,
+                descriptionHtml: response.data.product.descriptionHtml,
+              };
+            }
+          } catch (err) {
+            console.error("Error fetching product details:", err);
+          }
+        }
+        return item;
+      })
+    );
+
+    setCartItems(enrichedItems);
   };
 
   const updateQuantity = (variantId, newQuantity) => {
@@ -60,15 +89,6 @@ export default function CartPage() {
       (total, item) => total + parseFloat(item.price) * item.quantity,
       0
     );
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("shopify_customer_token");
-      setIsLoggedIn(!!token);
-    }
-  }, []);
 
   const handleCheckout = async () => {
     alert("Checkout clicked!");
@@ -183,72 +203,78 @@ export default function CartPage() {
             {cartItems.map((item) => (
               <div
                 key={item.variantId}
-                className="bg-white rounded-xl shadow-md p-4 sm:p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start"
+                className="bg-white rounded-xl shadow-md p-4 sm:p-6"
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-28 h-28 sm:w-24 sm:h-24 object-cover rounded-md"
-                />
-                <div className="flex-1 w-full text-center sm:text-left">
-                  <h3 className="font-semibold text-lg text-[#0a1833]">
-                    {item.title}
-                  </h3>
-                  {item.variantTitle &&
-                    item.variantTitle !== "Default Title" && (
-                      <p className="text-sm text-gray-600 mt-1">
-                        {item.variantTitle}
-                      </p>
-                    )}
-                  {item.selectedOptions && item.selectedOptions.length > 0 && (
-                    <div className="text-sm text-gray-600 mt-1">
-                      {item.selectedOptions.map((option, idx) => (
-                        <span key={idx}>
-                          {option.name}: {option.value}
-                          {idx < item.selectedOptions.length - 1 && " • "}
-                        </span>
-                      ))}
+                <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-28 h-28 sm:w-24 sm:h-24 object-cover rounded-md"
+                  />
+                  <div className="flex-1 w-full text-center sm:text-left">
+                    <h3 className="font-semibold text-lg text-[#0a1833]">
+                      {item.title}
+                    </h3>
+                    {item.variantTitle &&
+                      item.variantTitle !== "Default Title" && (
+                        <p className="text-sm text-gray-600 mt-1">
+                          {item.variantTitle}
+                        </p>
+                      )}
+                    {item.selectedOptions &&
+                      item.selectedOptions.length > 0 && (
+                        <div className="text-sm text-gray-600 mt-1">
+                          {item.selectedOptions.map((option, idx) => (
+                            <span key={idx}>
+                              {option.name}: {option.value}
+                              {idx < item.selectedOptions.length - 1 && " • "}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    <p className="text-lg font-bold text-[#0a1833] mt-2">
+                      ₹{parseFloat(item.calculatedPrice).toFixed(2)}
+                    </p>
+                  </div>
+
+                  <div className="flex sm:flex-col items-center justify-between gap-3 sm:gap-2 w-full sm:w-auto">
+                    <button
+                      onClick={() => removeItem(item.variantId)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                    <div className="flex items-center justify-center border rounded-md">
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.variantId, item.quantity - 1)
+                        }
+                        className="p-2 hover:bg-gray-100 disabled:opacity-50"
+                        disabled={item.quantity <= 1}
+                      >
+                        <Minus size={16} />
+                      </button>
+                      <span className="px-3 font-semibold text-gray-800">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() =>
+                          updateQuantity(item.variantId, item.quantity + 1)
+                        }
+                        className="p-2 hover:bg-gray-100"
+                      >
+                        <Plus size={16} />
+                      </button>
                     </div>
-                  )}
-                  <p className="text-lg font-bold text-[#0a1833] mt-2">
-                    ₹{parseFloat(item.calculatedPrice).toFixed(2)}
-                  </p>
+                    <p className="mt-4 text-lg font-bold text-[#0a1833]">
+                      Total: ₹
+                      {(item.calculatedPrice * item.quantity).toFixed(2)}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex sm:flex-col items-center justify-between gap-3 sm:gap-2 w-full sm:w-auto">
-                  <button
-                    onClick={() => removeItem(item.variantId)}
-                    className="text-red-600 hover:text-red-800"
-                  >
-                    <Trash2 size={18} />
-                  </button>
-                  <div className="flex items-center justify-center border rounded-md">
-                    <button
-                      onClick={() =>
-                        updateQuantity(item.variantId, item.quantity - 1)
-                      }
-                      className="p-2 hover:bg-gray-100 disabled:opacity-50"
-                      disabled={item.quantity <= 1}
-                    >
-                      <Minus size={16} />
-                    </button>
-                    <span className="px-3 font-semibold text-gray-800">
-                      {item.quantity}
-                    </span>
-                    <button
-                      onClick={() =>
-                        updateQuantity(item.variantId, item.quantity + 1)
-                      }
-                      className="p-2 hover:bg-gray-100"
-                    >
-                      <Plus size={16} />
-                    </button>
-                  </div>
-                  <p className="mt-4 text-lg font-bold text-[#0a1833]">
-                    Total Price: ₹
-                    {(item.calculatedPrice * item.quantity).toFixed(2)}
-                  </p>
-                </div>
+                {/* Price Breakup Component */}
+                <CartItemPriceBreakup item={item} />
               </div>
             ))}
           </div>

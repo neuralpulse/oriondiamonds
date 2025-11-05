@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp, CircleCheckBig } from "lucide-react";
 import PriceBreakup from "./PriceBreakup";
 /* ---------- DIAMOND DETAILS ---------- */
+/* ---------- DIAMOND DETAILS ---------- */
 function DiamondDetails({ descriptionHtml }) {
   const [diamondData, setDiamondData] = useState([]);
 
@@ -10,6 +11,7 @@ function DiamondDetails({ descriptionHtml }) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(descriptionHtml, "text/html");
       const liElements = doc.querySelectorAll(".product-description ul li");
+      const paragraphs = doc.querySelectorAll(".product-description p");
 
       const specMap = {};
       liElements.forEach((li) => {
@@ -25,6 +27,18 @@ function DiamondDetails({ descriptionHtml }) {
         }
       });
 
+      // Extract dimensions from paragraphs
+      paragraphs.forEach((p) => {
+        const strongEl = p.querySelector("strong");
+        if (strongEl) {
+          const key = strongEl.textContent.replace(":", "").trim();
+          const value = p.textContent.replace(strongEl.textContent, "").trim();
+          if (key === "Dimensions" && value) {
+            specMap[key] = value;
+          }
+        }
+      });
+
       // Extract relevant values
       const shapes =
         specMap["Diamond Shape"]?.split(",").map((v) => v.trim()) || [];
@@ -34,13 +48,16 @@ function DiamondDetails({ descriptionHtml }) {
         specMap["Total Diamonds"]?.split(",").map((v) => v.trim()) || [];
       const totalWeights =
         specMap["Total Diamond Weight"]?.split(",").map((v) => v.trim()) || [];
+      const dimensions =
+        specMap["Dimensions"]?.split(",").map((v) => v.trim()) || [];
 
       // Determine number of rows (based on max array length)
       const rowCount = Math.max(
         shapes.length,
         weights.length,
         numbers.length,
-        totalWeights.length
+        totalWeights.length,
+        dimensions.length
       );
 
       const rows = Array.from({ length: rowCount }, (_, i) => ({
@@ -48,6 +65,7 @@ function DiamondDetails({ descriptionHtml }) {
         weight: weights[i] || "-",
         number: numbers[i] || "-",
         totalWeight: totalWeights[i] || "-",
+        dimensions: dimensions[i] || "-",
       }));
 
       setDiamondData(rows);
@@ -58,7 +76,7 @@ function DiamondDetails({ descriptionHtml }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-sm border border-gray-200 ">
+      <table className="w-full text-sm border border-gray-200">
         <thead className="bg-gray-100 text-gray-800">
           <tr>
             <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
@@ -66,6 +84,9 @@ function DiamondDetails({ descriptionHtml }) {
             </th>
             <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
               Weight
+            </th>
+            <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
+              Dimensions (mm)
             </th>
             <th className="py-2 px-3 text-left font-semibold border-b border-gray-200">
               Number
@@ -83,6 +104,7 @@ function DiamondDetails({ descriptionHtml }) {
             >
               <td className="py-2 px-3 text-gray-800">{row.shape}</td>
               <td className="py-2 px-3 text-gray-700">{row.weight}</td>
+              <td className="py-2 px-3 text-gray-700">{row.dimensions}</td>
               <td className="py-2 px-3 text-gray-700">{row.number}</td>
               <td className="py-2 px-3 text-gray-700">{row.totalWeight}</td>
             </tr>

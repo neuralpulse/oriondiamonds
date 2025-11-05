@@ -46,7 +46,7 @@ export default function ProductDetails() {
   const [totalPrice, setTotalPrice] = useState(null);
 
   const handlePriceData = (data) => {
-    setTotalPrice(data.totalPrice); // only keep totalPrice
+    setTotalPrice(data.totalPrice);
   };
 
   const features = [
@@ -82,6 +82,14 @@ export default function ProductDetails() {
       !selectedOptions["Ring Size"]
     ) {
       toast.error("Please select a ring size");
+      return;
+    }
+
+    if (
+      handle?.toLowerCase().endsWith("-bracelet") &&
+      !selectedOptions["Bracelet Size"]
+    ) {
+      toast.error("Please select a Wrist size");
       return;
     }
 

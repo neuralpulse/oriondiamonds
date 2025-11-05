@@ -3,13 +3,12 @@
 import { Heart, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { formatIndianCurrency } from "../utils/formatIndianCurrency";
 
 export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
-  const [loading, setLoading] = useState(true); // ✅ Loader state
-  const [progress, setProgress] = useState(0); // ✅ Progress bar
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   // Handle responsive page size
   useEffect(() => {
@@ -22,22 +21,6 @@ export default function CollectionSection({ id, title, items = [] }) {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  // ✅ Simulate loading progress
-  useEffect(() => {
-    if (items.length > 0) {
-      let progressInterval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(progressInterval);
-            setLoading(false);
-            return 100;
-          }
-          return prev + 10;
-        });
-      }, 100);
-    }
-  }, [items]);
-
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
@@ -48,28 +31,6 @@ export default function CollectionSection({ id, title, items = [] }) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
-  // ✅ Loader screen
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[70vh] bg-white">
-        <img
-          src="/invlogo.jpg"
-          alt="Loading..."
-          className="w-28 md:w-40 mb-6 animate-pulse"
-        />
-        <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className="h-2 bg-[#0a1833] transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        <p className="text-gray-600 mt-3 text-sm font-medium">
-          Loading products...
-        </p>
-      </div>
-    );
-  }
 
   return (
     <section className="mt-12 mb-12 px-3 md:px-0">
@@ -115,15 +76,20 @@ export default function CollectionSection({ id, title, items = [] }) {
               </div>
 
               {/* Product Info */}
-              <div className="p-3 md:p-5 flex flex-col justify-between min-h-[100px] md:min-h-[110px]">
-                <h3 className="font-medium capitalize text-sm md:text-lg text-[#0a1833] group-hover:text-[#1a2f5a] transition-colors duration-300 leading-snug line-clamp-2">
+              <div className="p-3 md:p-5 flex flex-col justify-between min-h-[120px] md:min-h-[130px]">
+                <h3 className="font-medium capitalize text-sm md:text-lg text-[#0a1833] group-hover:text-[#1a2f5a] transition-colors duration-300 leading-snug line-clamp-2 mb-2">
                   {item.name}
                 </h3>
-              </div>
 
-              {/* Wishlist Icon */}
-              <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/90 backdrop-blur-sm p-1.5 md:p-2 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 shadow-md hover:scale-110 active:scale-95 z-10">
-                <Heart className="w-4 h-4 md:w-6 md:h-6 text-[#0a1833] hover:fill-red-500 hover:text-red-500 transition-colors duration-200" />
+                {/* Price Display */}
+                <div className="mt-auto">
+                  <p className="text-xs md:text-sm text-gray-500 mb-1">
+                    Starting from (10K Gold)
+                  </p>
+                  <p className="text-lg md:text-xl font-bold text-[#0a1833]">
+                    ₹{formatIndianCurrency(item.price)}
+                  </p>
+                </div>
               </div>
             </div>
           ))

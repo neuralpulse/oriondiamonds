@@ -1,21 +1,90 @@
-[00:00:00.718] Server  LOG      ✓ Ready in 454ms
-[00:00:02.036] Server  WARN     ⚠ Cross origin request detected from 192.168.3.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:04.826] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:06.662] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:36.817] Server  WARN     ⚠ Cross origin request detected from 192.168.29.165 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:36.876] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:13.371] Server  LOG      ✓ Compiled in 0ms
-[00:02:51.359] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:04:31.715] Server  LOG      ✓ Compiled in 86ms
-[00:04:39.490] Server  LOG      ✓ Compiled in 97ms
-[00:10:19.999] Server  LOG      ✓ Compiled in 129ms
-[00:11:07.126] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:12:16.284] Server  LOG      ✓ Compiled in 119ms
-[00:13:12.725] Server  LOG      ✓ Compiled in 60ms
-[00:13:34.273] Server  LOG      ✓ Compiled in 67ms
-[00:22:03.435] Server  LOG      ✓ Compiled in 176ms
-[00:22:10.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:34.548] Server  LOG      ✓ Compiled in 68ms
-[00:28:22.140] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.628] Server  LOG      ✓ Ready in 1388ms
+[00:00:06.167] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.086] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:11.764] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:12.729] Browser LOG     Parsed specs: {"10K Gold":"4.56g","14K Gold":"5.1g","18K Gold":"6g","Diamond Shape":"MARQUESE, EMERALD Total Diamonds: 7, 7 Diamond Weight: 0.2, 0.2 Total Diamond Weight: 1.4, 1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3, 4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"0.2, 0.2","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: MARQUESE, EMERALD Total Diamonds: 7, 7 Diamond Weight: 0.2, 0.2 Total Diamond Weight: 1.4, 1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3, 4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"7, 7"}
+[00:00:12.729] Browser LOG     Extracted data: {"diamonds":[{"count":7,"shape":"MARQUESE","weight":0.2},{"count":7,"shape":"EMERALD Total Diamonds: 7","weight":0.2},{"count":0,"shape":"7 Diamond Weight: 0.2","weight":0},{"count":0,"shape":"0.2 Total Diamond Weight: 1.4","weight":0},{"count":0,"shape":"1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3","weight":0},{"count":0,"shape":"4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0}],"goldKarat":"10K","goldWeight":4.56}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"1.3376g","14K Gold":"1.496g","18K Gold":"1.76g","Diamond Shape":"Round Total Diamonds: 1, 20 Diamond Weight: 1, 0.01 Total Diamond Weight: 1, 0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"1, 0.01","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Round Total Diamonds: 1, 20 Diamond Weight: 1, 0.01 Total Diamond Weight: 1, 0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1, 20"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Round Total Diamonds: 1","weight":1},{"count":20,"shape":"20 Diamond Weight: 1","weight":0.01},{"count":0,"shape":"0.01 Total Diamond Weight: 1","weight":0},{"count":0,"shape":"0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0}],"goldKarat":"10K","goldWeight":1.3376}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"0.836g","14K Gold":"0.935g","18K Gold":"1.1g","Diamond Shape":"Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"1","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":1}],"goldKarat":"10K","goldWeight":0.836}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"0.304g","14K Gold":"0.34g","18K Gold":"0.4g","Diamond Shape":"Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"0.31","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0.31}],"goldKarat":"10K","goldWeight":0.304}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"4.56g","14K Gold":"5.1g","18K Gold":"6g","Diamond Shape":"MARQUESE, EMERALD Total Diamonds: 7, 7 Diamond Weight: 0.2, 0.2 Total Diamond Weight: 1.4, 1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3, 4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"0.2, 0.2","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: MARQUESE, EMERALD Total Diamonds: 7, 7 Diamond Weight: 0.2, 0.2 Total Diamond Weight: 1.4, 1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3, 4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"7, 7"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":7,"shape":"MARQUESE","weight":0.2},{"count":7,"shape":"EMERALD Total Diamonds: 7","weight":0.2},{"count":0,"shape":"7 Diamond Weight: 0.2","weight":0},{"count":0,"shape":"0.2 Total Diamond Weight: 1.4","weight":0},{"count":0,"shape":"1.4ct Metal Weights 10K Gold: 4.56g 14K Gold: 5.1g 18K Gold: 6g Silver: 4.08g Platinum: 8.52g Size: Dimensions: 6*3","weight":0},{"count":0,"shape":"4*3 These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0}],"goldKarat":"10K","goldWeight":4.56}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"1.3376g","14K Gold":"1.496g","18K Gold":"1.76g","Diamond Shape":"Round Total Diamonds: 1, 20 Diamond Weight: 1, 0.01 Total Diamond Weight: 1, 0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"1, 0.01","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Round Total Diamonds: 1, 20 Diamond Weight: 1, 0.01 Total Diamond Weight: 1, 0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1, 20"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Round Total Diamonds: 1","weight":1},{"count":20,"shape":"20 Diamond Weight: 1","weight":0.01},{"count":0,"shape":"0.01 Total Diamond Weight: 1","weight":0},{"count":0,"shape":"0.2ct Metal Weights 10K Gold: 1.3376g 14K Gold: 1.496g 18K Gold: 1.76g Silver: 1.1968g Platinum: 2.4992g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0}],"goldKarat":"10K","goldWeight":1.3376}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"0.836g","14K Gold":"0.935g","18K Gold":"1.1g","Diamond Shape":"Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"1","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Round Total Diamonds: 1 Diamond Weight: 1 Total Diamond Weight: 1ct Metal Weights 10K Gold: 0.836g 14K Gold: 0.935g 18K Gold: 1.1g Silver: 0.748g Platinum: 1.562g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":1}],"goldKarat":"10K","goldWeight":0.836}
+[00:00:12.730] Browser LOG     Parsed specs: {"10K Gold":"0.304g","14K Gold":"0.34g","18K Gold":"0.4g","Diamond Shape":"Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Diamond Weight":"0.31","Product Specifications Gold Purity":"Available in 10K, 14K, and 18K Diamond Shape: Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","Total Diamonds":"1"}
+[00:00:12.730] Browser LOG     Extracted data: {"diamonds":[{"count":1,"shape":"Baguette Total Diamonds: 1 Diamond Weight: 0.31 Total Diamond Weight: 0.31ct Metal Weights 10K Gold: 0.304g 14K Gold: 0.34g 18K Gold: 0.4g Silver: 0.272g Platinum: 0.568g Size: Dimensions: These exquisite jewels feature premium quality diamonds set in your choice of gold karat and color.","weight":0.31}],"goldKarat":"10K","goldWeight":0.304}
+[00:00:13.958] Browser LOG     Calculated price: 67027.27
+[00:00:14.685] Browser LOG     Calculated price: 35099.25
+[00:00:14.939] Browser LOG     Calculated price: 28174.97
+[00:00:15.280] Browser LOG     Calculated price: 7712.3
+[00:00:15.586] Browser LOG     Calculated price: 67027.27
+[00:00:15.896] Browser LOG     Calculated price: 35099.25
+[00:00:16.199] Browser LOG     Calculated price: 28174.97
+[00:00:16.464] Browser LOG     Calculated price: 7712.3
+[00:05:11.844] Server  LOG      ✓ Compiled in 102ms
+[00:05:19.573] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:05:19.576] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:05:19.578] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:05:19.580] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:05:19.581] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:05:19.582] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:05:19.583] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
+[00:11:13.783] Server  LOG      ✓ Compiled in 68ms
+[00:11:32.488] Server  LOG      ✓ Compiled in 173ms
+[00:11:33.996] Server  LOG      ✓ Compiled in 26ms
+[00:11:43.212] Server  LOG      ✓ Compiled in 191ms
+[00:11:50.425] Server  LOG      ✓ Compiled in 71ms
+[00:12:07.434] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:13.259] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:57.835] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:12:57.836] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:12:57.838] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:12:57.839] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:12:57.840] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:12:57.841] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:12:57.842] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
+[00:48:20.160] Server  LOG      ✓ Compiled in 111ms
+[00:51:15.598] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:51:15.601] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:51:15.602] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:51:15.604] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:51:15.605] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:51:15.606] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:51:15.607] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
+[00:52:19.306] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:52:19.308] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:52:19.309] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:52:19.311] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:52:19.313] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:52:19.314] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:52:19.316] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
+[00:53:34.620] Server  LOG      ✓ Compiled in 72ms
+[00:58:23.994] Server  LOG      ✓ Compiled in 105ms
+[00:58:28.605] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:58:28.606] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:58:28.608] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:58:28.609] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:58:28.610] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:58:28.612] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:58:28.613] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
+[00:58:55.297] Server  LOG      ✓ Compiled in 85ms
+[00:58:58.500] Server  LOG      ✓ Compiled in 19ms
+[00:59:06.425] Server  LOG      ✓ Compiled in 29ms
+[00:59:53.829] Server  LOG      ✓ Compiled in 66ms
+[01:11:47.545] Server  LOG      ✓ Compiled in 119ms
+[01:12:58.377] Server  LOG      ✓ Compiled in 40ms
+[01:13:01.038] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:10.002] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:13:43.726] Server  LOG      ✓ Compiled in 40ms
+[01:14:29.782] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[01:14:29.783] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[01:14:29.783] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[01:14:29.784] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[01:14:29.784] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[01:14:29.784] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[01:14:29.785] Server  LOG     Extracted - Shapes: ["Pear"] "Counts:" [34] "Weights:" [0.78] "Gold:" 15.466
