@@ -1,10 +1,1 @@
-{
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/bracelets/page": "app/bracelets/page.js",
-  "/earrings/page": "app/earrings/page.js",
-  "/my-cart/page": "app/my-cart/page.js",
-  "/page": "app/page.js",
-  "/pendants/page": "app/pendants/page.js",
-  "/product/[handle]/page": "app/product/[handle]/page.js",
-  "/rings/page": "app/rings/page.js"
-}
+{}

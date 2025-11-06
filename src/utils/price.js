@@ -72,11 +72,11 @@ export async function calculateFinalPrice({
     let adjusted = base;
 
     if (weight >= 1) {
-      // ≥ 1ct → +80%
-      adjusted = base * 1.8;
+      // ≥ 1ct → +200%
+      adjusted = base * 3.0;
     } else {
-      // < 1ct → +50% + ₹900
-      adjusted = base * 1.5 + 900;
+      // < 1ct → +150% + ₹900
+      adjusted = base * 2.5 + 900;
     }
 
     totalDiamondPrice += adjusted;
