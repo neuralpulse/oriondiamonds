@@ -242,11 +242,11 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
         const base = weight * count * rate;
         let adjusted = base;
         if (weight >= 1) {
-            // ≥ 1ct → +80%
-            adjusted = base * 1.8;
+            // ≥ 1ct → +200%
+            adjusted = base * 3.0;
         } else {
-            // < 1ct → +50% + ₹900
-            adjusted = base * 1.5 + 900;
+            // < 1ct → +150% + ₹900
+            adjusted = base * 2.5 + 900;
         }
         totalDiamondPrice += adjusted;
     }
@@ -716,7 +716,7 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                 className: "py-2 px-3 text-left font-semibold border-b border-gray-200",
-                                children: "Weight"
+                                children: "Weight (ct)"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
                                 lineNumber: 85,

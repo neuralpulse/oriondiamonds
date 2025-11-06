@@ -489,10 +489,6 @@
     top: 50%;
   }
 
-  .top-2 {
-    top: calc(var(--spacing) * 2);
-  }
-
   .top-3 {
     top: calc(var(--spacing) * 3);
   }
@@ -621,10 +617,6 @@
 
   .m-6 {
     margin: calc(var(--spacing) * 6);
-  }
-
-  .m-10 {
-    margin: calc(var(--spacing) * 10);
   }
 
   .mx-auto {
@@ -1552,10 +1544,6 @@
     padding: calc(var(--spacing) * 1);
   }
 
-  .p-1\.5 {
-    padding: calc(var(--spacing) * 1.5);
-  }
-
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -1652,8 +1640,16 @@
     padding-block: calc(var(--spacing) * 12);
   }
 
+  .py-15 {
+    padding-block: calc(var(--spacing) * 15);
+  }
+
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
+  }
+
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
   }
 
   .py-24 {
@@ -1964,12 +1960,6 @@
     backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
   }
 
-  .backdrop-blur-sm {
-    --tw-backdrop-blur: blur(var(--blur-sm));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
-    backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
-  }
-
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -2104,15 +2094,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:scale-110:hover {
-      --tw-scale-x: 110%;
-      --tw-scale-y: 110%;
-      --tw-scale-z: 110%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:scale-\[1\.02\]:hover {
       scale: 1.02;
     }
@@ -2210,12 +2191,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:fill-red-500:hover {
-      fill: var(--color-red-500);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-\[\#1a2f5a\]:hover {
       color: #1a2f5a;
     }
@@ -2305,13 +2280,6 @@
   .focus\:outline-none:focus {
     --tw-outline-style: none;
     outline-style: none;
-  }
-
-  .active\:scale-95:active {
-    --tw-scale-x: 95%;
-    --tw-scale-y: 95%;
-    --tw-scale-z: 95%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
 
   .active\:scale-\[0\.98\]:active {
@@ -2482,18 +2450,6 @@
   }
 
   @media (min-width: 48rem) {
-    .md\:top-4 {
-      top: calc(var(--spacing) * 4);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:right-4 {
-      right: calc(var(--spacing) * 4);
-    }
-  }
-
-  @media (min-width: 48rem) {
     .md\:bottom-6 {
       bottom: calc(var(--spacing) * 6);
     }
@@ -2536,12 +2492,6 @@
   }
 
   @media (min-width: 48rem) {
-    .md\:h-6 {
-      height: calc(var(--spacing) * 6);
-    }
-  }
-
-  @media (min-width: 48rem) {
     .md\:min-h-\[130px\] {
       min-height: 130px;
     }
@@ -2556,12 +2506,6 @@
   @media (min-width: 48rem) {
     .md\:w-5 {
       width: calc(var(--spacing) * 5);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:w-6 {
-      width: calc(var(--spacing) * 6);
     }
   }
 
@@ -2634,12 +2578,6 @@
   @media (min-width: 48rem) {
     .md\:rounded-xl {
       border-radius: var(--radius-xl);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:p-2 {
-      padding: calc(var(--spacing) * 2);
     }
   }
 
@@ -2761,20 +2699,6 @@
     .md\:text-xl {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .md\:opacity-0 {
-      opacity: 0;
-    }
-  }
-
-  @media (min-width: 48rem) {
-    @media (hover: hover) {
-      .md\:group-hover\:opacity-100:is(:where(.group):hover *) {
-        opacity: 1;
-      }
     }
   }
 
