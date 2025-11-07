@@ -14,14 +14,14 @@ export function Footer() {
           <div className="mt-6 flex flex-col gap-2">
             <span>
               Email:{" "}
-              <a href="mailto:orionmail@example.com" className="underline">
+              <a href="mailto:info@oriondiamonds.in" className="underline">
                 info@oriondiamonds.in
               </a>
             </span>
             <span>
               Phone:{" "}
-              <a href="tel:+918380043510" className="underline">
-                +91 8380043510
+              <a href="tel:+917022253092" className="underline">
+                +91 7022253092
               </a>
             </span>
           </div>

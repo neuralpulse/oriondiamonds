@@ -1445,19 +1445,39 @@ function Landing() {
                                     "If you'd like to reach out directly, you can contact us at",
                                     " ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                        children: "info@oriondiamonds.in"
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            href: "mailto:info@oriondiamonds.in",
+                                            className: "underline",
+                                            children: "info@oriondiamonds.in"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 568,
+                                            columnNumber: 17
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
                                         lineNumber: 567,
                                         columnNumber: 15
                                     }, this),
-                                    " or call us on",
+                                    " ",
+                                    "or call us on",
                                     " ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                        children: "+91 8380043510"
-                                    }, void 0, false, {
+                                        children: [
+                                            " ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "tel:+917022253092",
+                                                className: "underline",
+                                                children: "+91 7022253092"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/app/page.jsx",
+                                                lineNumber: 575,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 568,
+                                        lineNumber: 573,
                                         columnNumber: 15
                                     }, this),
                                     "."
@@ -1494,7 +1514,7 @@ function Landing() {
                             children: "Frequently Asked Questions"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 577,
+                            lineNumber: 588,
                             columnNumber: 11
                         }, this),
                         [
@@ -1505,7 +1525,7 @@ function Landing() {
                                     children: "Lab-grown diamonds are real diamonds created in a lab using advanced technology. They have the same physical, chemical, and optical properties as mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 584,
+                                    lineNumber: 595,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1516,7 +1536,7 @@ function Landing() {
                                     children: "Yes, lab-grown diamonds are 100% real. They are certified and graded just like mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 594,
+                                    lineNumber: 605,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1527,7 +1547,7 @@ function Landing() {
                                     children: "They are made using two methods: HPHT (High Pressure High Temperature) or CVD (Chemical Vapor Deposition), replicating the natural diamond-growing process. We prefer and use the CVD method."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 603,
+                                    lineNumber: 614,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1538,7 +1558,7 @@ function Landing() {
                                     children: "Lab-grown diamonds do not hold resale value like mined diamonds. They're ideal for value-conscious buyers who prioritize ethics and aesthetics."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 615,
+                                    lineNumber: 626,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1549,7 +1569,7 @@ function Landing() {
                                     children: "Yes. Just like mined diamonds, they are extremely durable and will last a lifetime."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 625,
+                                    lineNumber: 636,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1560,7 +1580,7 @@ function Landing() {
                                     children: "Lab-grown diamonds offer the same beauty at a better price, with ethical sourcing and lower environmental impact."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 634,
+                                    lineNumber: 645,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1571,7 +1591,7 @@ function Landing() {
                                     children: "Absolutely. At Orion, we craft each piece to match your vision – from rings to earrings, every design is tailored to your style and preferences."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 643,
+                                    lineNumber: 654,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1582,7 +1602,7 @@ function Landing() {
                                     children: "Absolutely. They are certified by reputable labs like IGI, GIA, or SGL, just like mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 653,
+                                    lineNumber: 664,
                                     columnNumber: 17
                                 }, this)
                             }
@@ -1596,13 +1616,13 @@ function Landing() {
                                             section.title,
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FiMenu"], {}, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 666,
+                                                lineNumber: 677,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 661,
+                                        lineNumber: 672,
                                         columnNumber: 15
                                     }, this),
                                     activeAccordion === idx && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1610,24 +1630,24 @@ function Landing() {
                                         children: section.content
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 669,
+                                        lineNumber: 680,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, idx, true, {
                                 fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 660,
+                                lineNumber: 671,
                                 columnNumber: 13
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 576,
+                    lineNumber: 587,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 575,
+                lineNumber: 586,
                 columnNumber: 7
             }, this)
         ]

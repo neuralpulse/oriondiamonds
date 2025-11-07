@@ -564,8 +564,19 @@ export default function Landing() {
           <div className="text-center mt-12 text-[#0a1833]">
             <p className="text-lg">
               If you'd like to reach out directly, you can contact us at{" "}
-              <strong>info@oriondiamonds.in</strong> or call us on{" "}
-              <strong>+91 8380043510</strong>.
+              <strong>
+                <a href="mailto:info@oriondiamonds.in" className="underline">
+                  info@oriondiamonds.in
+                </a>
+              </strong>{" "}
+              or call us on{" "}
+              <strong>
+                {" "}
+                <a href="tel:+917022253092" className="underline">
+                  +91 7022253092
+                </a>
+              </strong>
+              .
             </p>
           </div>
         </div>

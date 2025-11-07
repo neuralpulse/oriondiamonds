@@ -794,7 +794,7 @@ function Footer() {
                                         "Email:",
                                         " ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                            href: "mailto:orionmail@example.com",
+                                            href: "mailto:info@oriondiamonds.in",
                                             className: "underline",
                                             children: "info@oriondiamonds.in"
                                         }, void 0, false, {
@@ -813,9 +813,9 @@ function Footer() {
                                         "Phone:",
                                         " ",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                            href: "tel:+918380043510",
+                                            href: "tel:+917022253092",
                                             className: "underline",
-                                            children: "+91 8380043510"
+                                            children: "+91 7022253092"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Footer.jsx",
                                             lineNumber: 23,

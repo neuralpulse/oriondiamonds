@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
         <Providers>{children}</Providers>
         <a
-          href="https://wa.me/918380043510?text=Hi%20there!%20I%20need%20some%20help%20with%20a%20product%20on%20your%20website."
+          href="https://wa.me/917022253092?text=Hi%20there!%20I%20need%20some%20help%20with%20a%20product%20on%20your%20website."
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-4 md:bottom-6 right-4 flex items-center justify-center gap-1 bg-[#064f46] text-white px-4 py-2 md:px-5 md:py-3 lg:px-5 lg:py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-600 hover:scale-105 transition-all duration-300"
