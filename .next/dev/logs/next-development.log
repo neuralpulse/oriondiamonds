@@ -1,23 +1,576 @@
-[00:00:01.054] Server  LOG      ✓ Ready in 700ms
-[00:00:07.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.728] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:14.831] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:23.888] Server  LOG      ✓ Compiled in 160ms
-[00:00:24.032] Browser ERROR   %s is an async Client Component. Only Server Components can be async at the moment. This error is often caused by accidentally adding `'use client'` to a module that was originally written for the server. <SearchResultsPage>
-[00:00:24.032] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'q')
-[00:00:24.032] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'q')
-[00:00:24.032] Browser ERROR   A component was suspended by an uncached promise. Creating promises inside a Client Component or hook is not yet supported, except via a Suspense-compatible library or framework.
-[00:00:24.032] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'q')
-[00:00:24.032] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'q')
-[00:00:24.032] Browser ERROR   A component was suspended by an uncached promise. Creating promises inside a Client Component or hook is not yet supported, except via a Suspense-compatible library or framework.
-[00:00:24.434] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'q')
-[00:00:47.060] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:00:47.129] Server  LOG      ✓ Compiled in 57ms
-[00:00:47.970] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:54.433] Server  LOG      ✓ Compiled in 192ms
-[00:05:00.251] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:03.954] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:38.681] Server  LOG      ✓ Compiled in 90ms
-[00:05:44.152] Server  LOG      ✓ Compiled in 43ms
-[00:05:47.852] Server  LOG      ✓ Compiled in 20ms
-[00:05:55.407] Server  LOG      ✓ Compiled in 42ms
+[00:00:00.764] Server  LOG      ✓ Ready in 528ms
+[00:00:06.129] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.030] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:21.395] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:32.695] Server  LOG      ✓ Compiled in 166ms
+[00:28:56.956] Server  LOG        Reload env: .env
+[00:30:16.819] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:30:26.885] Server  ERROR    ⨯ ./src/app/admin/pricing/page.jsx
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:30:27.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:27.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:27.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:27.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:27.565] Browser ERROR   uncaughtError: Error: ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:30:27.730] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:27.730] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:30:28.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:00.684] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:01.010] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:01.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:01.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:04.324] Server  ERROR    ⨯ ./src/app/admin/pricing/page.jsx
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:31:04.485] Browser ERROR   uncaughtError: Error: ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:31:04.628] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:04.628] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:05.560] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:05.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:10.389] Server  ERROR    ⨯ ./src/app/admin/pricing/page.jsx
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:31:10.390] Server  ERROR    ⨯ ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal.jsx"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:31:10.525] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal.jsx"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:10.561] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal.jsx"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:11.880] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal.jsx"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:12.562] Browser ERROR   ./src/app/admin/pricing/page.jsx:7:9
+Module not found: Can't resolve '../../../components/AdminPricingPortal.jsx'
+   5 |
+   6 | const AdminPricingPortal = dynamic(
+>  7 |   () => import("../../../components/AdminPricingPortal.jsx"),
+     |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |   {
+   9 |     ssr: false,
+  10 |   }
+
+Import traces:
+  Client Component Browser:
+    ./src/app/admin/pricing/page.jsx [Client Component Browser]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/admin/pricing/page.jsx [Client Component SSR]
+    ./src/app/admin/pricing/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:31:31.269] Server  LOG      ✓ Compiled in 79ms
+[00:31:31.768] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:31.993] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:31:54.418] Server  LOG      ✓ Compiled in 85ms
+[00:32:19.499] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:01.011] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:24.443] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:31.146] Server  LOG        Reload env: .env
+[00:48:36.265] Server  LOG        Reload env: .env
+[00:48:36.433] Server  LOG      ✓ Compiled in 132ms
+[00:48:36.559] Server  LOG      ✓ Compiled in 0ms
+[00:48:45.963] Server  LOG        Reload env: .env
+[00:48:46.037] Server  LOG      ✓ Compiled in 17ms
+[00:49:19.012] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:49:38.698] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:49:38.794] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:49:44.664] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:05.632] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:57.262] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

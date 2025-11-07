@@ -1,3 +1,51 @@
+// src/utils/price.js (UPDATED)
+
+const API_URL =
+  process.env.NEXT_PUBLIC_PRICING_API_URL || "http://localhost:3001";
+
+// Cache for pricing config
+let cachedConfig = null;
+let lastFetch = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// Fetch pricing configuration from API
+async function getPricingConfig() {
+  const now = Date.now();
+
+  // Return cached config if still valid
+  if (cachedConfig && now - lastFetch < CACHE_DURATION) {
+    return cachedConfig;
+  }
+
+  try {
+    const response = await fetch(`${API_URL}/api/pricing-config`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch pricing config");
+    }
+
+    cachedConfig = await response.json();
+    lastFetch = now;
+    return cachedConfig;
+  } catch (error) {
+    console.error("Error fetching pricing config:", error);
+
+    // Return default config as fallback
+    return {
+      diamondMargins: {
+        lessThan1ct: { multiplier: 2.2, flatAddition: 900 },
+        greaterThan1ct: { multiplier: 2.7, flatAddition: 0 },
+        baseFees: { fee1: 150, fee2: 700 },
+      },
+      makingCharges: {
+        lessThan2g: { ratePerGram: 950 },
+        greaterThan2g: { ratePerGram: 700 },
+        multiplier: 1.75,
+      },
+      gstRate: 0.03,
+    };
+  }
+}
+
 // Utility: find rate from range-based diamond price chart
 function findRate(weight, ranges) {
   for (const [min, max, rate] of ranges) {
@@ -8,10 +56,13 @@ function findRate(weight, ranges) {
 
 // === MAIN PRICE FUNCTION ===
 export async function calculateFinalPrice({
-  diamonds = [], // array of { shape, weight, count }
+  diamonds = [],
   goldWeight = 0,
-  goldKarat = "18K", // '10K', '14K', or '18K'
+  goldKarat = "18K",
 }) {
+  // Fetch current pricing configuration
+  const config = await getPricingConfig();
+
   let totalDiamondPrice = 0;
 
   for (const d of diamonds) {
@@ -67,25 +118,30 @@ export async function calculateFinalPrice({
       }
     }
 
-    // === Base and adjustment ===
+    // === Base and adjustment (using config) ===
     const base = weight * count * rate;
     let adjusted = base;
 
     if (weight >= 1) {
-      // ≥ 1ct → +200%
-      adjusted = base * 2.7;
+      // ≥ 1ct → use config multiplier
+      adjusted =
+        base * config.diamondMargins.greaterThan1ct.multiplier +
+        config.diamondMargins.greaterThan1ct.flatAddition;
     } else {
-      // < 1ct → +150% + ₹900
-      adjusted = base * 2.2 + 900;
+      // < 1ct → use config multiplier + flat addition
+      adjusted =
+        base * config.diamondMargins.lessThan1ct.multiplier +
+        config.diamondMargins.lessThan1ct.flatAddition;
     }
 
     totalDiamondPrice += adjusted;
   }
 
-  // ✅ Add flat ₹150 + ₹700 once after all diamonds
-  totalDiamondPrice += 150 + 700;
+  // Add base fees from config
+  totalDiamondPrice +=
+    config.diamondMargins.baseFees.fee1 + config.diamondMargins.baseFees.fee2;
 
-  // === 2️⃣ Get gold price from API ===
+  // === Get gold price from API ===
   const res = await fetch("https://gold-price-india.onrender.com/api/gold/24k");
   const json = await res.json();
   const gold24Price = parseFloat(json.price) || 0;
@@ -99,13 +155,17 @@ export async function calculateFinalPrice({
   const selectedGoldRate = goldRates[goldKarat] || goldRates["18K"] || 0;
   const goldPrice = selectedGoldRate * goldWeight;
 
-  // === 3️⃣ Making charges (75% increase) ===
-  let makingCharge = goldWeight >= 2 ? goldWeight * 700 : goldWeight * 950;
-  makingCharge *= 1.75;
+  // === Making charges (using config) ===
+  let makingCharge =
+    goldWeight >= 2
+      ? goldWeight * config.makingCharges.greaterThan2g.ratePerGram
+      : goldWeight * config.makingCharges.lessThan2g.ratePerGram;
 
-  // === 4️⃣ Subtotal, GST, and Total ===
+  makingCharge *= config.makingCharges.multiplier;
+
+  // === Subtotal, GST, and Total ===
   const subtotal = totalDiamondPrice + goldPrice + makingCharge;
-  const gst = subtotal * 0.03;
+  const gst = subtotal * config.gstRate;
   const grandTotal = subtotal + gst;
 
   // === Round neatly ===
@@ -117,4 +177,10 @@ export async function calculateFinalPrice({
     gst: Number(gst.toFixed(2)),
     totalPrice: Number(grandTotal.toFixed(2)),
   };
+}
+
+// Clear the config cache (useful for admin updates)
+export function clearPricingCache() {
+  cachedConfig = null;
+  lastFetch = 0;
 }
