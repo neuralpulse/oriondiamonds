@@ -134,7 +134,22 @@ async function transformRingsData(productsEdges) {
     })
   );
 
-  return transformedProducts;
+  return transformedProducts.sort((a, b) => {
+    const titleA = a.name.toLowerCase();
+    const titleB = b.name.toLowerCase();
+
+    const aHasBands = titleA.includes("band");
+    const bHasBands = titleB.includes("band");
+    const aHasSolitaires = titleA.includes("solitaire");
+    const bHasSolitaires = titleB.includes("solitaire");
+
+    if (aHasBands && !bHasBands) return -1;
+    if (!aHasBands && bHasBands) return 1;
+    if (aHasSolitaires && !bHasSolitaires) return -1;
+    if (!aHasSolitaires && bHasSolitaires) return 1;
+
+    return 0;
+  });
 }
 
 export default async function RingsPage() {

@@ -177,6 +177,7 @@ function ProductSpecs({
       "Silver",
       "Platinum",
       "Dimensions",
+      "Dimensions",
     ];
 
     // ✅ Parse main list items
@@ -207,7 +208,7 @@ function ProductSpecs({
       if (strongEl) {
         const key = strongEl.textContent.replace(":", "").trim();
         const value = p.textContent.replace(strongEl.textContent, "").trim();
-        if (["Size", "Dimensions"].includes(key) && value) {
+        if (["Size"].includes(key) && value) {
           parsedSpecs.push({ key, value });
         }
       }

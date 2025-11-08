@@ -868,6 +868,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
             "18K Gold",
             "Silver",
             "Platinum",
+            "Dimensions",
             "Dimensions"
         ];
         // ✅ Parse main list items
@@ -888,8 +889,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                 const key = strongEl.textContent.replace(":", "").trim();
                 const value = p.textContent.replace(strongEl.textContent, "").trim();
                 if ([
-                    "Size",
-                    "Dimensions"
+                    "Size"
                 ].includes(key) && value) {
                     parsedSpecs.push({
                         key,
@@ -907,7 +907,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
         children: "No product details available."
     }, void 0, false, {
         fileName: "[project]/src/components/accordian.jsx",
-        lineNumber: 219,
+        lineNumber: 220,
         columnNumber: 44
     }, this);
     const selectedKarat = selectedOptions["Gold Karat"] || "";
@@ -926,7 +926,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                     children: spec.key
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/accordian.jsx",
-                                    lineNumber: 230,
+                                    lineNumber: 231,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -934,23 +934,23 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                     children: spec.value
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/accordian.jsx",
-                                    lineNumber: 233,
+                                    lineNumber: 234,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, spec.key, true, {
                             fileName: "[project]/src/components/accordian.jsx",
-                            lineNumber: 229,
+                            lineNumber: 230,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/accordian.jsx",
-                    lineNumber: 227,
+                    lineNumber: 228,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 226,
+                lineNumber: 227,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -968,7 +968,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                         children: opt.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/accordian.jsx",
-                                        lineNumber: 244,
+                                        lineNumber: 245,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -976,13 +976,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                         children: selectedOptions[opt.name]
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/accordian.jsx",
-                                        lineNumber: 247,
+                                        lineNumber: 248,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, opt.name, true, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 243,
+                                lineNumber: 244,
                                 columnNumber: 13
                             }, this)),
                         goldWeight && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -993,7 +993,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                     children: "Gold Weight"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/accordian.jsx",
-                                    lineNumber: 256,
+                                    lineNumber: 257,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1001,30 +1001,30 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$PriceBr
                                     children: goldWeight.endsWith("g") ? goldWeight : `${goldWeight}g`
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/accordian.jsx",
-                                    lineNumber: 259,
+                                    lineNumber: 260,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/accordian.jsx",
-                            lineNumber: 255,
+                            lineNumber: 256,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/accordian.jsx",
-                    lineNumber: 241,
+                    lineNumber: 242,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 240,
+                lineNumber: 241,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/accordian.jsx",
-        lineNumber: 224,
+        lineNumber: 225,
         columnNumber: 5
     }, this);
 }
@@ -1039,7 +1039,7 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                 descriptionHtml: product.descriptionHtml
             }, void 0, false, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 285,
+                lineNumber: 286,
                 columnNumber: 16
             }, this)
         },
@@ -1053,7 +1053,7 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                 options: product.options
             }, void 0, false, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 291,
+                lineNumber: 292,
                 columnNumber: 9
             }, this)
         },
@@ -1066,7 +1066,7 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                 onPriceData: onPriceData
             }, void 0, false, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 303,
+                lineNumber: 304,
                 columnNumber: 9
             }, this)
         },
@@ -1084,14 +1084,14 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                                 className: "w-4 h-4 shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 317,
+                                lineNumber: 318,
                                 columnNumber: 13
                             }, this),
                             "Free shipping"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/accordian.jsx",
-                        lineNumber: 316,
+                        lineNumber: 317,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1101,14 +1101,14 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                                 className: "w-4 h-4 shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 321,
+                                lineNumber: 322,
                                 columnNumber: 13
                             }, this),
                             "Delivery in 7-14 business days"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/accordian.jsx",
-                        lineNumber: 320,
+                        lineNumber: 321,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1118,20 +1118,20 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                                 className: "w-4 h-4 shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 325,
+                                lineNumber: 326,
                                 columnNumber: 13
                             }, this),
                             "Secure payment via trusted gateways"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/accordian.jsx",
-                        lineNumber: 324,
+                        lineNumber: 325,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 315,
+                lineNumber: 316,
                 columnNumber: 9
             }, this)
         }
@@ -1150,7 +1150,7 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                                 children: tab.label
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 344,
+                                lineNumber: 345,
                                 columnNumber: 13
                             }, this),
                             openTab === tab.key ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {
@@ -1158,20 +1158,20 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                                 className: "stroke-2 text-gray-500"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 346,
+                                lineNumber: 347,
                                 columnNumber: 15
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                 size: 20,
                                 className: "stroke-2 text-gray-500"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/accordian.jsx",
-                                lineNumber: 348,
+                                lineNumber: 349,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/accordian.jsx",
-                        lineNumber: 340,
+                        lineNumber: 341,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1181,23 +1181,23 @@ function ProductAccordion({ product, selectedOptions, selectedVariant, onPriceDa
                             children: tab.content
                         }, void 0, false, {
                             fileName: "[project]/src/components/accordian.jsx",
-                            lineNumber: 358,
+                            lineNumber: 359,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/accordian.jsx",
-                        lineNumber: 351,
+                        lineNumber: 352,
                         columnNumber: 11
                     }, this)
                 ]
             }, tab.key, true, {
                 fileName: "[project]/src/components/accordian.jsx",
-                lineNumber: 336,
+                lineNumber: 337,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/src/components/accordian.jsx",
-        lineNumber: 334,
+        lineNumber: 335,
         columnNumber: 5
     }, this);
 }
