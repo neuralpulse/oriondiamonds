@@ -1,6 +1,13 @@
 "use client";
 
-import { Heart, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import {
+  Heart,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { formatIndianCurrency } from "../utils/formatIndianCurrency";
@@ -9,6 +16,22 @@ export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [sortBy, setSortBy] = useState("price-low");
+  const [priceRange, setPriceRange] = useState([0, 500000]);
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Calculate min and max prices from items
+  const minPrice =
+    items.length > 0 ? Math.min(...items.map((item) => item.price)) : 0;
+  const maxPrice =
+    items.length > 0 ? Math.max(...items.map((item) => item.price)) : 500000;
+
+  // Initialize price range based on actual items
+  useEffect(() => {
+    if (items.length > 0) {
+      setPriceRange([minPrice, maxPrice]);
+    }
+  }, [items]);
 
   // Handle responsive page size
   useEffect(() => {
@@ -21,9 +44,26 @@ export default function CollectionSection({ id, title, items = [] }) {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  const totalPages = Math.ceil(items.length / itemsPerPage);
+  // Filter items by price range
+  const filteredItems = items.filter(
+    (item) => item.price >= priceRange[0] && item.price <= priceRange[1]
+  );
+
+  // Sort filtered items
+  const sortedItems = [...filteredItems].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return a.price - b.price;
+      case "price-high":
+        return b.price - a.price;
+      default:
+        return 0;
+    }
+  });
+
+  const totalPages = Math.ceil(sortedItems.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = items.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = sortedItems.slice(startIndex, startIndex + itemsPerPage);
 
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -32,15 +72,111 @@ export default function CollectionSection({ id, title, items = [] }) {
     }
   };
 
+  // Reset to page 1 when filters/sort change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, priceRange]);
+
+  const handleResetFilters = () => {
+    setSortBy("default");
+    setPriceRange([minPrice, maxPrice]);
+  };
+
+  const isFiltered =
+    sortBy !== "default" ||
+    priceRange[0] !== minPrice ||
+    priceRange[1] !== maxPrice;
+
   return (
     <section className="mt-12 mb-12 px-3 md:px-0">
       {/* Section Title */}
-      <h1
-        id={id}
-        className="text-4xl md:text-5xl font-bold mb-10 text-[#0a1833] tracking-tight"
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <h1
+          id={id}
+          className="text-4xl md:text-5xl font-bold text-[#0a1833] tracking-tight mb-4 md:mb-0"
+        >
+          {title}
+        </h1>
+
+        {/* Mobile Filter Toggle */}
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className="md:hidden flex items-center gap-2 px-4 py-2 bg-[#0a1833] text-white rounded-lg text-sm font-medium"
+        >
+          <SlidersHorizontal size={16} />
+          Filters & Sort
+        </button>
+      </div>
+
+      {/* Filter & Sort Bar */}
+      <div
+        className={`${
+          showFilters ? "block" : "hidden"
+        } md:flex flex-col md:flex-row gap-4 md:gap-6 mb-8 p-4 md:p-6 bg-gray-50 rounded-xl transition-all duration-300`}
       >
-        {title}
-      </h1>
+        {/* Sort By */}
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-[#0a1833] mb-2">
+            Sort By
+          </label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a1833] bg-white text-sm"
+          >
+            <option value="default">Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+
+        {/* Price Range */}
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-[#0a1833] mb-2">
+            Price Range: ₹{formatIndianCurrency(priceRange[0])} - ₹
+            {formatIndianCurrency(priceRange[1])}
+          </label>
+          <div className="flex gap-3 items-center">
+            <input
+              type="number"
+              value={priceRange[0]}
+              onChange={(e) =>
+                setPriceRange([Number(e.target.value), priceRange[1]])
+              }
+              placeholder="Min"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a1833] text-sm"
+            />
+            <span className="text-gray-500">to</span>
+            <input
+              type="number"
+              value={priceRange[1]}
+              onChange={(e) =>
+                setPriceRange([priceRange[0], Number(e.target.value)])
+              }
+              placeholder="Max"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a1833] text-sm"
+            />
+          </div>
+        </div>
+
+        {/* Reset Filters */}
+        {isFiltered && (
+          <div className="flex items-end">
+            <button
+              onClick={handleResetFilters}
+              className="px-4 py-2.5 bg-white border border-gray-300 text-[#0a1833] rounded-lg hover:bg-gray-100 transition-colors text-sm font-medium flex items-center gap-2"
+            >
+              <X size={16} />
+              Reset
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Results Count */}
+      <p className="text-sm text-gray-600 mb-4">
+        Showing {sortedItems.length} of {items.length} products
+      </p>
 
       {/* Responsive Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 transition-all duration-500">
@@ -96,11 +232,19 @@ export default function CollectionSection({ id, title, items = [] }) {
         ) : (
           <div className="col-span-full flex flex-col items-center justify-center py-16">
             <p className="text-lg text-gray-500 font-medium">
-              No products available
+              No products found
             </p>
             <p className="text-sm text-gray-400 mt-1">
-              Check back soon for new arrivals
+              Try adjusting your filters
             </p>
+            {isFiltered && (
+              <button
+                onClick={handleResetFilters}
+                className="mt-4 px-6 py-2 bg-[#0a1833] text-white rounded-lg hover:bg-[#142850] transition-colors text-sm font-medium"
+              >
+                Reset Filters
+              </button>
+            )}
           </div>
         )}
       </div>

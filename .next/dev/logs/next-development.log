@@ -1,10 +1,232 @@
-[00:00:01.065] Server  LOG      ✓ Ready in 722ms
-[00:01:24.226] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:25.329] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:01:40.699] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:03:37.061] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:27.758] Server  LOG      ✓ Compiled in 87ms
-[00:04:33.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:44.594] Server  LOG      ✓ Compiled in 37ms
-[00:06:31.216] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:11:57.291] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.056] Server  LOG      ✓ Ready in 703ms
+[00:00:05.305] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.451] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:54.476] Server  LOG      ✓ Compiled in 85ms
+[00:01:13.371] Server  LOG      ✓ Compiled in 58ms
+[00:01:33.099] Server  LOG      ✓ Compiled in 44ms
+[00:03:31.305] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:27.001] Server  LOG      ✓ Compiled in 306ms
+[00:11:03.758] Server  LOG      ✓ Compiled in 117ms
+[00:11:19.856] Server  LOG      ✓ Compiled in 54ms
+[00:12:13.403] Server  LOG      ✓ Compiled in 110ms
+[00:12:13.785] Browser ERROR   ./src/app/page.jsx:614:17
+Parsing ecmascript source code failed
+  612 |           </div>
+  613 |         </div>
+> 614 |       </section>
+      |                 ^
+> 615 |
+      | ^
+> 616 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  617 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  618 |         <div className="max-w-7xl mx-auto">
+  619 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:12:14.785] Browser ERROR   ./src/app/page.jsx:614:17
+Parsing ecmascript source code failed
+  612 |           </div>
+  613 |         </div>
+> 614 |       </section>
+      |                 ^
+> 615 |
+      | ^
+> 616 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  617 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  618 |         <div className="max-w-7xl mx-auto">
+  619 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:13:57.784] Browser ERROR   ./src/app/page.jsx:613:17
+Parsing ecmascript source code failed
+  611 |           </div>
+  612 |         </div>
+> 613 |       </section>
+      |                 ^
+> 614 |
+      | ^
+> 615 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  616 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  617 |         <div className="max-w-7xl mx-auto">
+  618 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:13:58.785] Browser ERROR   ./src/app/page.jsx:613:17
+Parsing ecmascript source code failed
+  611 |           </div>
+  612 |         </div>
+> 613 |       </section>
+      |                 ^
+> 614 |
+      | ^
+> 615 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  616 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  617 |         <div className="max-w-7xl mx-auto">
+  618 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:13:58.785] Browser ERROR   ./src/app/page.jsx:613:17
+Parsing ecmascript source code failed
+  611 |           </div>
+  612 |         </div>
+> 613 |       </section>
+      |                 ^
+> 614 |
+      | ^
+> 615 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  616 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  617 |         <div className="max-w-7xl mx-auto">
+  618 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:13:59.784] Browser ERROR   ./src/app/page.jsx:613:17
+Parsing ecmascript source code failed
+  611 |           </div>
+  612 |         </div>
+> 613 |       </section>
+      |                 ^
+> 614 |
+      | ^
+> 615 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  616 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  617 |         <div className="max-w-7xl mx-auto">
+  618 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:14:01.785] Browser ERROR   ./src/app/page.jsx:614:17
+Parsing ecmascript source code failed
+  612 |           </div>
+  613 |         </div>
+> 614 |       </section>
+      |                 ^
+> 615 |
+      | ^
+> 616 |       {/* Accordion Sections */}
+      | ^^^^^^^
+  617 |       <section id="faqs" className="py-16 px-6 md:px-16 lg:px-24 bg-gray-50">
+  618 |         <div className="max-w-7xl mx-auto">
+  619 |           <h2 className="text-4xl font-semibold mb-8 text-[#0a1833]">
+
+Expected '</', got 'jsx text (
+
+      )'
+
+Import traces:
+  Client Component Browser:
+    ./src/app/page.jsx [Client Component Browser]
+    ./src/app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/page.jsx [Client Component SSR]
+    ./src/app/page.jsx [Server Component]
+[00:17:37.999] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:33.401] Server  LOG      ✓ Compiled in 102ms
+[00:18:38.991] Server  LOG      ✓ Compiled in 31ms
+[00:18:43.537] Server  LOG      ✓ Compiled in 21ms
+[00:18:51.111] Server  LOG      ✓ Compiled in 56ms
+[00:50:18.153] Server  LOG      ✓ Compiled in 495ms
+[00:50:22.449] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:20.698] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:52:54.692] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:16.668] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:33.396] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:55:11.891] Server  LOG     Extracted - Shapes: ["EMERALD"] "Counts:" [42] "Weights:" [0.179048] "Gold:" 13.68
+[00:55:11.893] Server  LOG     Extracted - Shapes: ["Emerald","pear","oval"] "Counts:" [5,11,5] "Weights:" [1.016,0.64545,0.66] "Gold:" 11.666
+[00:55:11.894] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [7] "Weights:" [0.11] "Gold:" 1.8316
+[00:55:11.895] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [31] "Weights:" [0.78323] "Gold:" 18.5288
+[00:55:11.896] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [62] "Weights:" [0.1] "Gold:" 15.592
+[00:55:11.896] Server  LOG     Extracted - Shapes: ["Emerald","Marq","Oval","Pear"] "Counts:" [3,4,4,4] "Weights:" [0.1,0.1,0.1,0.1] "Gold:" 2.1812
+[00:55:11.897] Server  LOG     Extracted - Shapes: ["Marquise"] "Counts:" [56] "Weights:" [0.15] "Gold:" 10.298
+[00:55:11.898] Server  LOG     Extracted - Shapes: ["Cushion"] "Counts:" [44] "Weights:" [0.1] "Gold:" 10.0928
+[00:55:11.899] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.11] "Gold:" 6.004
+[00:55:11.900] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [13] "Weights:" [0.11] "Gold:" 3.3288
+[00:55:11.901] Server  LOG     Extracted - Shapes: ["Oval"] "Counts:" [79] "Weights:" [0.15] "Gold:" 8.512
+[00:55:11.902] Server  LOG     Extracted - Shapes: ["Radiant","Round"] "Counts:" [32,448] "Weights:" [0.015,0.005] "Gold:" 12.7908
+[00:55:11.902] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [48] "Weights:" [0.146] "Gold:" 9.614
+[00:55:11.903] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.5] "Gold:" 12.6312
+[00:55:11.904] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [30] "Weights:" [0.065] "Gold:" 7.676
+[00:55:11.905] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [28] "Weights:" [0.85] "Gold:" 16.796
+[00:55:11.905] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [47] "Weights:" [0.11] "Gold:" 10.602
+[00:55:11.906] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [37] "Weights:" [0.3] "Gold:" 14.8276
+[00:55:11.907] Server  LOG     Extracted - Shapes: ["Marquise","Pear","Emerald","Heart","Round"] "Counts:" [4,6,7,6,7] "Weights:" [0.0525,0.355,0.4] "Gold:" 8.17
+[00:55:11.907] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:55:11.908] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:55:11.909] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:55:11.910] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:55:11.911] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:55:11.912] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[01:38:23.871] Server  LOG      ✓ Compiled in 117ms
+[01:38:28.942] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:38:50.861] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

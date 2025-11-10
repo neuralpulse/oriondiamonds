@@ -23,21 +23,52 @@ export default function Landing() {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, phone, itemType, message } = formData;
-    const subject = `Customization Request from ${name}`;
-    const body = `Hello Orion Diamonds Team,%0D%0A%0D%0AHere are my customization details:%0D%0A%0D%0AFull Name: ${name}%0D%0AEmail: ${email}%0D%0APhone Number: ${phone}%0D%0AItem Type: ${itemType}%0D%0AMessage:%0D%0A${message}%0D%0A%0D%0ARegards,%0D%0A${name}`;
+  const handleSubmit = () => {
+    // Validate all fields are filled
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.itemType ||
+      !formData.message
+    ) {
+      alert("Please fill in all fields");
+      return;
+    }
 
-    window.location.href = `mailto:info@oriondiamonds.in?subject=${encodeURIComponent(
-      subject
-    )}&body=${body}`;
+    // Format the message for WhatsApp
+    const whatsappMessage =
+      `*New Customization Request*%0A%0A` +
+      `*Name:* ${encodeURIComponent(formData.name)}%0A` +
+      `*Email:* ${encodeURIComponent(formData.email)}%0A` +
+      `*Phone:* ${encodeURIComponent(formData.phone)}%0A` +
+      `*Item Type:* ${encodeURIComponent(formData.itemType)}%0A` +
+      `*Message:* ${encodeURIComponent(formData.message)}`;
+
+    // WhatsApp number (remove the + sign and any spaces)
+    const whatsappNumber = "917022253092";
+
+    // Open WhatsApp with pre-filled message
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`,
+      "_blank"
+    );
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      itemType: "",
+      message: "",
+    });
   };
 
   return (
@@ -543,7 +574,7 @@ export default function Landing() {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#0a1833] text-white py-3 rounded-lg hover:bg-[#142850] transition"
+                  className="w-full bg-[#0a1833]  text-white py-3 rounded-lg hover:bg-[#142850] transition"
                 >
                   SUBMIT
                 </button>

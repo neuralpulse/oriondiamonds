@@ -794,6 +794,25 @@ function Footer() {
                                     fileName: "[project]/src/components/Footer.jsx",
                                     lineNumber: 21,
                                     columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    children: [
+                                        "Instagram:",
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            href: "https://www.instagram.com/oriondiamonds.in?igsh=MWdqZW00ODczZ2tqNA%3D%3D&utm_source=qr",
+                                            className: "underline",
+                                            children: "oriondiamonds.in"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/Footer.jsx",
+                                            lineNumber: 29,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/Footer.jsx",
+                                    lineNumber: 27,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
@@ -824,7 +843,7 @@ function Footer() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/Footer.jsx",
-                        lineNumber: 32,
+                        lineNumber: 41,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -832,13 +851,13 @@ function Footer() {
                         children: "Powered by Neural Pulse"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Footer.jsx",
-                        lineNumber: 35,
+                        lineNumber: 44,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Footer.jsx",
-                lineNumber: 31,
+                lineNumber: 40,
                 columnNumber: 7
             }, this)
         ]

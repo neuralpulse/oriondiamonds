@@ -24,6 +24,15 @@ export function Footer() {
                 +91 7022253092
               </a>
             </span>
+            <span>
+              Instagram:{" "}
+              <a
+                href="https://www.instagram.com/oriondiamonds.in?igsh=MWdqZW00ODczZ2tqNA%3D%3D&utm_source=qr"
+                className="underline"
+              >
+                oriondiamonds.in
+              </a>
+            </span>
           </div>
         </div>
       </section>
