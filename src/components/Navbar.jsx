@@ -10,6 +10,7 @@ import {
   FiUser,
   FiMenu,
   FiX,
+  FiPhone,
 } from "react-icons/fi";
 import { Loader, X } from "lucide-react";
 import { shopifyRequest } from "../utils/shopify";
@@ -194,6 +195,7 @@ export function Navbar() {
     >
       {/* === NAVBAR TOP === */}
       <div className="p-4 flex items-center justify-between relative">
+        {/* === LOGO === */}
         <div onClick={() => goToSection("hero")} className="cursor-pointer">
           <img
             src="/nobglogo.png"
@@ -202,13 +204,14 @@ export function Navbar() {
           />
         </div>
 
+        {/* === NAVBAR RIGHT ICONS === */}
         <div className="flex items-center gap-2 sm:gap-3 relative">
           {/* === DESKTOP SEARCH === */}
           {isMounted && !isMobile && (
             <div className="relative flex items-center">
               <FiSearch
-                size={22}
-                className="text-white cursor-pointer shrink-0"
+                size={20}
+                className="text-white cursor-pointer shrink-0 hover:text-yellow-400 transition"
                 onClick={() => setDesktopSearchOpen(!desktopSearchOpen)}
               />
               {desktopSearchOpen && (
@@ -233,7 +236,7 @@ export function Navbar() {
                       onClick={handleClearSearch}
                       className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
                     >
-                      <X size={16} />
+                      <X size={14} />
                     </button>
                   )}
                   {isSearching && (
@@ -248,8 +251,8 @@ export function Navbar() {
           {isMounted && isMobile && (
             <>
               <FiSearch
-                size={22}
-                className="text-white cursor-pointer"
+                size={18}
+                className="text-white cursor-pointer hover:text-yellow-400 transition"
                 onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
               />
               {mobileSearchOpen && (
@@ -272,11 +275,19 @@ export function Navbar() {
             </>
           )}
 
-          {/* === ICONS === */}
+          {/* === CALL BUTTON (DESKTOP) === */}
+          <a
+            href="tel:+917022253092"
+            className="hidden md:flex items-center justify-center text-white hover:text-yellow-400 transition"
+          >
+            <FiPhone size={20} />
+          </a>
+
+          {/* === CART === */}
           <div className="relative">
             <FiShoppingCart
-              size={22}
-              className="text-white cursor-pointer hover:text-yellow-400"
+              size={20}
+              className="text-white cursor-pointer hover:text-yellow-400 transition"
               onClick={() => router.push("/my-cart")}
             />
             {cartCount > 0 && (
@@ -286,9 +297,10 @@ export function Navbar() {
             )}
           </div>
 
+          {/* === WISHLIST === */}
           <div className="relative">
             <FiHeart
-              size={22}
+              size={20}
               className="text-white cursor-pointer hover:text-red-500 transition"
               onClick={() => router.push("/my-list")}
             />
@@ -299,22 +311,32 @@ export function Navbar() {
             )}
           </div>
 
+          {/* === USER === */}
           <FiUser
-            size={22}
-            className="text-white cursor-pointer hover:text-green-400"
+            size={20}
+            className="text-white cursor-pointer hover:text-green-400 transition"
             onClick={() => router.push("/account")}
           />
 
-          <div className="md:hidden">
+          {/* === MOBILE MENU ICONS === */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Call Icon (same look as others) */}
+            <a
+              href="tel:+911234567890"
+              className="flex items-center justify-center text-white hover:text-yellow-400 transition"
+            >
+              <FiPhone size={18} />
+            </a>
+
             {mobileMenuOpen ? (
               <FiX
-                size={26}
+                size={24}
                 className="text-white cursor-pointer"
                 onClick={() => setMobileMenuOpen(false)}
               />
             ) : (
               <FiMenu
-                size={26}
+                size={24}
                 className="text-white cursor-pointer"
                 onClick={() => setMobileMenuOpen(true)}
               />
