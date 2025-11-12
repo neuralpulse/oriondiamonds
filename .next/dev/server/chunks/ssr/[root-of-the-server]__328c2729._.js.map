@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 28, "column": 0}, "map": {"version":3,"sources":["file:///Users/kushagraverma/Desktop/Neural%20Pulse/Oriondiamonds/src/components/scrolltop.jsx"],"sourcesContent":["\"use client\";\nimport { useEffect } from \"react\";\nimport { usePathname } from \"next/navigation\";\n\nexport default function ScrollToTop() {\n  const pathname = usePathname();\n\n  useEffect(() => {\n    window.scrollTo(0, 0);\n  }, [pathname]);\n\n  return null;\n}\n"],"names":[],"mappings":";;;;AACA;AACA;AAFA;;;AAIe,SAAS;IACtB,MAAM,WAAW,IAAA,iJAAW;IAE5B,IAAA,kNAAS,EAAC;QACR,OAAO,QAAQ,CAAC,GAAG;IACrB,GAAG;QAAC;KAAS;IAEb,OAAO;AACT","debugId":null}},
+    {"offset": {"line": 50, "column": 0}, "map": {"version":3,"sources":["file:///Users/kushagraverma/Desktop/Neural%20Pulse/Oriondiamonds/src/app/providers.jsx"],"sourcesContent":["// app/providers.jsx\n\"use client\";\n\nimport { SessionProvider } from \"next-auth/react\";\n\nexport function Providers({ children }) {\n  return <SessionProvider>{children}</SessionProvider>;\n}\n"],"names":[],"mappings":"AAAA,oBAAoB;;;;;;AAGpB;AAFA;;;AAIO,SAAS,UAAU,EAAE,QAAQ,EAAE;IACpC,qBAAO,8OAAC,iKAAe;kBAAE;;;;;;AAC3B","debugId":null}}]
+}

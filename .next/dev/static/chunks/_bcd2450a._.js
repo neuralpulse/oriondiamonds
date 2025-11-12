@@ -66,11 +66,66 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/utils/price.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// Utility: find rate from range-based diamond price chart
+// src/utils/price.js (UPDATED)
 __turbopack_context__.s([
     "calculateFinalPrice",
-    ()=>calculateFinalPrice
+    ()=>calculateFinalPrice,
+    "clearPricingCache",
+    ()=>clearPricingCache
 ]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
+const API_URL = ("TURBOPACK compile-time value", "https://margin-updater.onrender.com") || "http://localhost:3001";
+// Cache for pricing config
+let cachedConfig = null;
+let lastFetch = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+// Fetch pricing configuration from API
+async function getPricingConfig() {
+    const now = Date.now();
+    // Return cached config if still valid
+    if (cachedConfig && now - lastFetch < CACHE_DURATION) {
+        return cachedConfig;
+    }
+    try {
+        const response = await fetch(`${API_URL}/api/pricing-config`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch pricing config");
+        }
+        cachedConfig = await response.json();
+        lastFetch = now;
+        return cachedConfig;
+    } catch (error) {
+        console.error("Error fetching pricing config:", error);
+        // Return default config as fallback
+        return {
+            diamondMargins: {
+                lessThan1ct: {
+                    multiplier: 2.2,
+                    flatAddition: 900
+                },
+                greaterThan1ct: {
+                    multiplier: 2.7,
+                    flatAddition: 0
+                },
+                baseFees: {
+                    fee1: 150,
+                    fee2: 700
+                }
+            },
+            makingCharges: {
+                lessThan2g: {
+                    ratePerGram: 950
+                },
+                greaterThan2g: {
+                    ratePerGram: 700
+                },
+                multiplier: 1.75
+            },
+            gstRate: 0.03
+        };
+    }
+}
+// Utility: find rate from range-based diamond price chart
 function findRate(weight, ranges) {
     for (const [min, max, rate] of ranges){
         if (weight >= min && weight <= max) return rate;
@@ -78,6 +133,8 @@ function findRate(weight, ranges) {
     return 0;
 }
 async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = "18K" }) {
+    // Fetch current pricing configuration
+    const config = await getPricingConfig();
     let totalDiamondPrice = 0;
     for (const d of diamonds){
         const shape = (d.shape || "").toLowerCase();
@@ -238,21 +295,21 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
                 ]);
             }
         }
-        // === Base and adjustment ===
+        // === Base and adjustment (using config) ===
         const base = weight * count * rate;
         let adjusted = base;
         if (weight >= 1) {
-            // ≥ 1ct → +80%
-            adjusted = base * 1.8;
+            // ≥ 1ct → use config multiplier
+            adjusted = base * config.diamondMargins.greaterThan1ct.multiplier + config.diamondMargins.greaterThan1ct.flatAddition;
         } else {
-            // < 1ct → +50% + ₹900
-            adjusted = base * 1.5 + 900;
+            // < 1ct → use config multiplier + flat addition
+            adjusted = base * config.diamondMargins.lessThan1ct.multiplier + config.diamondMargins.lessThan1ct.flatAddition;
         }
         totalDiamondPrice += adjusted;
     }
-    // ✅ Add flat ₹150 + ₹700 once after all diamonds
-    totalDiamondPrice += 150 + 700;
-    // === 2️⃣ Get gold price from API ===
+    // Add base fees from config
+    totalDiamondPrice += config.diamondMargins.baseFees.fee1 + config.diamondMargins.baseFees.fee2;
+    // === Get gold price from API ===
     const res = await fetch("https://gold-price-india.onrender.com/api/gold/24k");
     const json = await res.json();
     const gold24Price = parseFloat(json.price) || 0;
@@ -263,22 +320,26 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
     };
     const selectedGoldRate = goldRates[goldKarat] || goldRates["18K"] || 0;
     const goldPrice = selectedGoldRate * goldWeight;
-    // === 3️⃣ Making charges (75% increase) ===
-    let makingCharge = goldWeight >= 2 ? goldWeight * 700 : goldWeight * 950;
-    makingCharge *= 1.75;
-    // === 4️⃣ Subtotal, GST, and Total ===
-    const subtotal = totalDiamondPrice + goldPrice + makingCharge;
-    const gst = subtotal * 0.03;
-    const grandTotal = subtotal + gst;
+    // === Making charges (using config) ===
+    let makingCharge = goldWeight >= 2 ? goldWeight * config.makingCharges.greaterThan2g.ratePerGram : goldWeight * config.makingCharges.lessThan2g.ratePerGram;
+    makingCharge *= config.makingCharges.multiplier;
+    // === Subtotal, GST, and Total ===
+    const subtotal = Math.round(totalDiamondPrice + goldPrice + makingCharge);
+    const gst = Math.round(subtotal * config.gstRate);
+    const grandTotal = Math.round(subtotal + gst);
     // === Round neatly ===
     return {
-        diamondPrice: Number(totalDiamondPrice.toFixed(2)),
-        goldPrice: Number(goldPrice.toFixed(2)),
-        makingCharge: Number(makingCharge.toFixed(2)),
-        subtotal: Number(subtotal.toFixed(2)),
-        gst: Number(gst.toFixed(2)),
-        totalPrice: Number(grandTotal.toFixed(2))
+        diamondPrice: Math.round(Number(totalDiamondPrice.toFixed(2))),
+        goldPrice: Math.round(Number(goldPrice.toFixed(2))),
+        makingCharge: Math.round(Number(makingCharge.toFixed(2))),
+        subtotal: Math.round(Number(subtotal.toFixed(2))),
+        gst: Math.round(Number(gst.toFixed(2))),
+        totalPrice: Math.round(grandTotal)
     };
+}
+function clearPricingCache() {
+    cachedConfig = null;
+    lastFetch = 0;
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

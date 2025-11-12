@@ -269,7 +269,7 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
         makingCharge: Number(makingCharge.toFixed(2)),
         subtotal: Number(subtotal.toFixed(2)),
         gst: Number(gst.toFixed(2)),
-        totalPrice: Number(grandTotal.toFixed(2))
+        totalPrice: Math.round(grandTotal)
     };
 }
 function clearPricingCache() {

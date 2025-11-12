@@ -247,34 +247,6 @@ export function Navbar() {
             </div>
           )}
 
-          {/* === MOBILE SEARCH === */}
-          {isMounted && isMobile && (
-            <>
-              <FiSearch
-                size={18}
-                className="text-white cursor-pointer hover:text-yellow-400 transition"
-                onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
-              />
-              {mobileSearchOpen && (
-                <div className="fixed top-16 left-0 w-full bg-[#0a1833] px-4 py-2 z-50 md:hidden">
-                  <form onSubmit={handleSearchSubmit}>
-                    <input
-                      type="text"
-                      ref={mobileSearchRef}
-                      placeholder="Search..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      onFocus={() =>
-                        searchResults.length > 0 && setShowResults(true)
-                      }
-                      className="w-full px-3 py-2 outline-none text-white rounded-lg bg-[#0a1833] border border-gray-500"
-                    />
-                  </form>
-                </div>
-              )}
-            </>
-          )}
-
           {/* === CALL BUTTON (DESKTOP) === */}
           <a
             href="tel:+917022253092"
@@ -283,8 +255,8 @@ export function Navbar() {
             <FiPhone size={20} />
           </a>
 
-          {/* === CART === */}
-          <div className="relative">
+          {/* === CART (DESKTOP ONLY) === */}
+          <div className="hidden md:block relative">
             <FiShoppingCart
               size={20}
               className="text-white cursor-pointer hover:text-yellow-400 transition"
@@ -297,8 +269,8 @@ export function Navbar() {
             )}
           </div>
 
-          {/* === WISHLIST === */}
-          <div className="relative">
+          {/* === WISHLIST (DESKTOP ONLY) === */}
+          <div className="hidden md:block relative">
             <FiHeart
               size={20}
               className="text-white cursor-pointer hover:text-red-500 transition"
@@ -311,23 +283,24 @@ export function Navbar() {
             )}
           </div>
 
-          {/* === USER === */}
+          {/* === USER (DESKTOP ONLY) === */}
           <FiUser
             size={20}
-            className="text-white cursor-pointer hover:text-green-400 transition"
+            className="hidden md:block text-white cursor-pointer hover:text-green-400 transition"
             onClick={() => router.push("/account")}
           />
 
-          {/* === MOBILE MENU ICONS === */}
-          <div className="md:hidden flex items-center gap-2">
-            {/* Mobile Call Icon (same look as others) */}
+          {/* === MOBILE: CALL + HAMBURGER ONLY === */}
+          <div className="md:hidden flex items-center gap-3">
+            {/* Mobile Call Icon */}
             <a
-              href="tel:+911234567890"
+              href="tel:+917022253092"
               className="flex items-center justify-center text-white hover:text-yellow-400 transition"
             >
-              <FiPhone size={18} />
+              <FiPhone size={20} />
             </a>
 
+            {/* Hamburger Menu Toggle */}
             {mobileMenuOpen ? (
               <FiX
                 size={24}
@@ -345,7 +318,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* === NAV LINKS === */}
+      {/* === NAV LINKS (DESKTOP) === */}
       <div className="hidden md:flex justify-center gap-6 md:gap-12 py-2 text-white font-medium text-sm md:text-base">
         {[
           { label: "Home", id: "hero" },
@@ -365,8 +338,8 @@ export function Navbar() {
         ))}
       </div>
 
-      {/* === SEARCH RESULTS === */}
-      {showResults && searchResults.length > 0 && (
+      {/* === SEARCH RESULTS (DESKTOP) === */}
+      {isMounted && !isMobile && showResults && searchResults.length > 0 && (
         <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-full max-w-2xl bg-white border border-gray-200 rounded-lg shadow-xl max-h-96 overflow-y-auto z-50">
           <div className="p-2">
             {searchResults.map(({ node: product }) => (
@@ -393,7 +366,11 @@ export function Navbar() {
           </div>
           <div className="border-t p-3 bg-gray-50 text-center">
             <button
-              onClick={handleSearchSubmit}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+                setShowResults(false);
+              }}
               className="text-sm text-black font-medium hover:underline"
             >
               View all results for "{searchQuery}"
@@ -402,8 +379,10 @@ export function Navbar() {
         </div>
       )}
 
-      {/* === NO RESULTS === */}
-      {showResults &&
+      {/* === NO RESULTS (DESKTOP) === */}
+      {isMounted &&
+        !isMobile &&
+        showResults &&
         !isSearching &&
         searchQuery.length > 2 &&
         searchResults.length === 0 && (
@@ -419,23 +398,191 @@ export function Navbar() {
 
       {/* === MOBILE MENU === */}
       {mobileMenuOpen && (
-        <div className="md:hidden flex flex-col items-center bg-[#0a1833] text-white font-medium text-base py-4 gap-4">
-          {[
-            { label: "Home", id: "hero" },
-            { label: "Collection", id: "collections" },
-            { label: "About Us", id: "about" },
-            { label: "Customizations", id: "customizations" },
-            { label: "FAQs", id: "faqs" },
-            { label: "Contact Us", id: "contact" },
-          ].map((link) => (
-            <button
-              key={link.id}
-              onClick={() => goToSection(link.id)}
-              className="no-underline hover:underline transition cursor-pointer"
+        <div className="md:hidden flex flex-col bg-[#0a1833] text-white">
+          {/* Mobile Icons Section */}
+          <div className="flex items-center justify-around py-4 px-4 border-b border-gray-700">
+            {/* Search Icon */}
+            <div className="flex flex-col items-center gap-1">
+              <FiSearch
+                size={22}
+                className="text-white cursor-pointer hover:text-yellow-400 transition"
+                onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
+              />
+              <span className="text-xs">Search</span>
+            </div>
+
+            {/* Cart Icon */}
+            <div
+              className="flex flex-col items-center gap-1 relative cursor-pointer"
+              onClick={() => {
+                router.push("/my-cart");
+                setMobileMenuOpen(false);
+              }}
             >
-              {link.label}
-            </button>
-          ))}
+              <FiShoppingCart
+                size={22}
+                className="text-white hover:text-yellow-400 transition"
+              />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-yellow-500 text-[#0a1833] text-[10px] font-bold rounded-full px-1.5 py-0.5">
+                  {cartCount}
+                </span>
+              )}
+              <span className="text-xs">Cart</span>
+            </div>
+
+            {/* Wishlist Icon */}
+            <div
+              className="flex flex-col items-center gap-1 relative cursor-pointer"
+              onClick={() => {
+                router.push("/my-list");
+                setMobileMenuOpen(false);
+              }}
+            >
+              <FiHeart
+                size={22}
+                className="text-white hover:text-red-500 transition"
+              />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-bold rounded-full px-1.5 py-0.5">
+                  {wishlistCount}
+                </span>
+              )}
+              <span className="text-xs">Wishlist</span>
+            </div>
+
+            {/* User Icon */}
+            <div
+              className="flex flex-col items-center gap-1 cursor-pointer"
+              onClick={() => {
+                router.push("/account");
+                setMobileMenuOpen(false);
+              }}
+            >
+              <FiUser
+                size={22}
+                className="text-white hover:text-green-400 transition"
+              />
+              <span className="text-xs">Account</span>
+            </div>
+          </div>
+
+          {/* Mobile Search Bar (if opened) */}
+          {mobileSearchOpen && (
+            <div className="px-4 py-3 border-b border-gray-700">
+              <form onSubmit={handleSearchSubmit} className="relative">
+                <input
+                  type="text"
+                  ref={mobileSearchRef}
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() =>
+                    searchResults.length > 0 && setShowResults(true)
+                  }
+                  className="w-full px-3 py-2 pr-8 outline-none text-white rounded-lg bg-[#0a1833] border border-gray-500"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={handleClearSearch}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+                {isSearching && (
+                  <Loader className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 animate-spin" />
+                )}
+              </form>
+
+              {/* Mobile Search Results */}
+              {showResults && searchResults.length > 0 && (
+                <div className="mt-3 bg-white rounded-lg shadow-xl max-h-80 overflow-y-auto">
+                  <div className="p-2">
+                    {searchResults.map(({ node: product }) => (
+                      <Link
+                        key={product.id}
+                        href={`/product/${product.handle}`}
+                        onClick={() => {
+                          handleResultClick();
+                          setMobileMenuOpen(false);
+                          setMobileSearchOpen(false);
+                        }}
+                        className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+                      >
+                        <div className="w-12 h-12 bg-gray-100 rounded overflow-hidden shrink-0">
+                          <img
+                            src={
+                              product.featuredImage?.url || "/placeholder.jpg"
+                            }
+                            alt={product.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-semibold text-gray-900 text-sm truncate">
+                            {product.title}
+                          </h4>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="border-t p-2 bg-gray-50 text-center">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        router.push(
+                          `/search?q=${encodeURIComponent(searchQuery)}`
+                        );
+                        setShowResults(false);
+                        setMobileMenuOpen(false);
+                        setMobileSearchOpen(false);
+                      }}
+                      className="text-xs text-black font-medium hover:underline"
+                    >
+                      View all results for "{searchQuery}"
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Mobile No Results */}
+              {showResults &&
+                !isSearching &&
+                searchQuery.length > 2 &&
+                searchResults.length === 0 && (
+                  <div className="mt-3 bg-white rounded-lg shadow-xl p-4 text-center">
+                    <p className="text-gray-600 text-sm">
+                      No products found for "{searchQuery}"
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Try different keywords or browse our collections
+                    </p>
+                  </div>
+                )}
+            </div>
+          )}
+
+          {/* Navigation Links */}
+          <div className="flex flex-col items-center font-medium text-base py-4 gap-4">
+            {[
+              { label: "Home", id: "hero" },
+              { label: "Collection", id: "collections" },
+              { label: "About Us", id: "about" },
+              { label: "Customizations", id: "customizations" },
+              { label: "FAQs", id: "faqs" },
+              { label: "Contact Us", id: "contact" },
+            ].map((link) => (
+              <button
+                key={link.id}
+                onClick={() => goToSection(link.id)}
+                className="no-underline hover:underline transition cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>

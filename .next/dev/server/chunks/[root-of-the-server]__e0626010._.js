@@ -274,8 +274,10 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/index.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$google$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/providers/google.js [app-route] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$instagram$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/providers/instagram.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$shopify$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/shopify.js [app-route] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$queries$2f$customer$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/queries/customer.js [app-route] (ecmascript)");
+;
 ;
 ;
 ;
@@ -285,17 +287,30 @@ const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$google$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        }),
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$instagram$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])({
+            clientId: process.env.INSTAGRAM_CLIENT_ID,
+            clientSecret: process.env.INSTAGRAM_CLIENT_SECRET
         })
     ],
     callbacks: {
         async signIn ({ user, account, profile }) {
-            if (account.provider === "google") {
+            if (account.provider === "google" || account.provider === "instagram") {
                 try {
                     // Check if customer exists in Shopify or create new one
                     const email = user.email;
-                    const firstName = user.name?.split(" ")[0] || "User";
-                    const lastName = user.name?.split(" ").slice(1).join(" ") || "";
-                    // Try to create customer (will fail if exists)
+                    // Handle name extraction based on provider
+                    let firstName = "User";
+                    let lastName = "";
+                    if (account.provider === "google") {
+                        firstName = user.name?.split(" ")[0] || "User";
+                        lastName = user.name?.split(" ").slice(1).join(" ") || "";
+                    } else if (account.provider === "instagram") {
+                        // Instagram might provide username instead of full name
+                        firstName = profile?.username || user.name?.split(" ")[0] || "User";
+                        lastName = user.name?.split(" ").slice(1).join(" ") || "";
+                    }
+                    // Generate random password for OAuth users
                     const randomPassword = Math.random().toString(36).slice(-12) + "Aa1!";
                     try {
                         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$shopify$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["shopifyRequest"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$queries$2f$customer$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["CUSTOMER_CREATE"], {
@@ -306,24 +321,30 @@ const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules
                                 lastName
                             }
                         });
+                        console.log(`Customer created via ${account.provider}`);
                     } catch (error) {
                         // Customer might already exist, that's okay
-                        console.log("Customer might already exist:", error.message);
+                        console.log(`Customer might already exist (${account.provider}):`, error.message);
                     }
                     return true;
                 } catch (error) {
-                    console.error("Error creating Shopify customer:", error);
+                    console.error(`Error creating Shopify customer via ${account.provider}:`, error);
                     return false;
                 }
             }
             return true;
         },
-        async jwt ({ token, account, user }) {
+        async jwt ({ token, account, user, profile }) {
             // Store user info in token
             if (account && user) {
                 token.email = user.email;
                 token.name = user.name;
                 token.picture = user.image;
+                token.provider = account.provider;
+                // Store Instagram-specific data if available
+                if (account.provider === "instagram" && profile) {
+                    token.username = profile.username;
+                }
             }
             return token;
         },
@@ -332,6 +353,10 @@ const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules
             session.user.email = token.email;
             session.user.name = token.name;
             session.user.image = token.picture;
+            session.user.provider = token.provider;
+            if (token.username) {
+                session.user.username = token.username;
+            }
             return session;
         }
     },

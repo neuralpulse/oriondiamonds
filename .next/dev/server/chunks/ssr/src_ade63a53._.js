@@ -320,17 +320,17 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
     let makingCharge = goldWeight >= 2 ? goldWeight * config.makingCharges.greaterThan2g.ratePerGram : goldWeight * config.makingCharges.lessThan2g.ratePerGram;
     makingCharge *= config.makingCharges.multiplier;
     // === Subtotal, GST, and Total ===
-    const subtotal = totalDiamondPrice + goldPrice + makingCharge;
-    const gst = subtotal * config.gstRate;
-    const grandTotal = subtotal + gst;
+    const subtotal = Math.round(totalDiamondPrice + goldPrice + makingCharge);
+    const gst = Math.round(subtotal * config.gstRate);
+    const grandTotal = Math.round(subtotal + gst);
     // === Round neatly ===
     return {
-        diamondPrice: Number(totalDiamondPrice.toFixed(2)),
-        goldPrice: Number(goldPrice.toFixed(2)),
-        makingCharge: Number(makingCharge.toFixed(2)),
-        subtotal: Number(subtotal.toFixed(2)),
-        gst: Number(gst.toFixed(2)),
-        totalPrice: Number(grandTotal.toFixed(2))
+        diamondPrice: Math.round(Number(totalDiamondPrice.toFixed(2))),
+        goldPrice: Math.round(Number(goldPrice.toFixed(2))),
+        makingCharge: Math.round(Number(makingCharge.toFixed(2))),
+        subtotal: Math.round(Number(subtotal.toFixed(2))),
+        gst: Math.round(Number(gst.toFixed(2))),
+        totalPrice: Math.round(grandTotal)
     };
 }
 function clearPricingCache() {
