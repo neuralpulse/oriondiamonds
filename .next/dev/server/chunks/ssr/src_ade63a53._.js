@@ -325,11 +325,11 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
     const grandTotal = Math.round(subtotal + gst);
     // === Round neatly ===
     return {
-        diamondPrice: Math.round(Number(totalDiamondPrice.toFixed(2))),
-        goldPrice: Math.round(Number(goldPrice.toFixed(2))),
-        makingCharge: Math.round(Number(makingCharge.toFixed(2))),
-        subtotal: Math.round(Number(subtotal.toFixed(2))),
-        gst: Math.round(Number(gst.toFixed(2))),
+        diamondPrice: Math.round(totalDiamondPrice),
+        goldPrice: Math.round(goldPrice),
+        makingCharge: Math.round(makingCharge),
+        subtotal: Math.round(subtotal),
+        gst: Math.round(gst),
         totalPrice: Math.round(grandTotal)
     };
 }
@@ -383,7 +383,7 @@ function formatIndianCurrency(amount, showDecimals = true) {
     }
     return result;
 }
-function formatINR(amount, showDecimals = true) {
+function formatINR(amount, showDecimals = false) {
     return "₹" + formatIndianCurrency(amount, showDecimals);
 }
 }),
@@ -485,11 +485,8 @@ function PriceBreakup({ descriptionHtml, selectedOptions, onPriceData }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                 className: "py-2 px-3 text-right",
-                                children: [
-                                    "₹",
-                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(priceData.diamondPrice)
-                                ]
-                            }, void 0, true, {
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(priceData.diamondPrice)
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
                                 lineNumber: 84,
                                 columnNumber: 13
@@ -513,11 +510,8 @@ function PriceBreakup({ descriptionHtml, selectedOptions, onPriceData }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                 className: "py-2 px-3 text-right",
-                                children: [
-                                    "₹",
-                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(priceData.goldPrice)
-                                ]
-                            }, void 0, true, {
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(priceData.goldPrice)
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
                                 lineNumber: 90,
                                 columnNumber: 13
@@ -541,11 +535,8 @@ function PriceBreakup({ descriptionHtml, selectedOptions, onPriceData }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                 className: "py-2 px-3 text-right",
-                                children: [
-                                    "₹",
-                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(priceData.makingCharge)
-                                ]
-                            }, void 0, true, {
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(priceData.makingCharge)
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
                                 lineNumber: 96,
                                 columnNumber: 13
@@ -569,11 +560,8 @@ function PriceBreakup({ descriptionHtml, selectedOptions, onPriceData }) {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                 className: "py-2 px-3 text-right",
-                                children: [
-                                    "₹",
-                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(priceData.gst)
-                                ]
-                            }, void 0, true, {
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(priceData.gst)
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
                                 lineNumber: 102,
                                 columnNumber: 13
@@ -592,24 +580,21 @@ function PriceBreakup({ descriptionHtml, selectedOptions, onPriceData }) {
                                 children: "Total Price"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
-                                lineNumber: 107,
+                                lineNumber: 105,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                 className: "py-2 px-3 text-right",
-                                children: [
-                                    "₹",
-                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(priceData.totalPrice)
-                                ]
-                            }, void 0, true, {
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(priceData.totalPrice)
+                            }, void 0, false, {
                                 fileName: "[project]/src/components/PriceBreakup.jsx",
-                                lineNumber: 108,
+                                lineNumber: 106,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/PriceBreakup.jsx",
-                        lineNumber: 106,
+                        lineNumber: 104,
                         columnNumber: 11
                     }, this)
                 ]
@@ -1764,11 +1749,8 @@ function ProductDetails() {
                                             lineNumber: 541,
                                             columnNumber: 17
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                                            children: [
-                                                "₹",
-                                                (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatIndianCurrency"])(totalPrice)
-                                            ]
-                                        }, void 0, true)
+                                            children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["formatINR"])(totalPrice)
+                                        }, void 0, false)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/product/[handle]/page.jsx",
                                         lineNumber: 539,

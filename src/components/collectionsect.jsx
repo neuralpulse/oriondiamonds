@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { formatIndianCurrency } from "../utils/formatIndianCurrency";
+import { formatIndianCurrency, formatINR } from "../utils/formatIndianCurrency";
 
 export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
@@ -133,8 +133,7 @@ export default function CollectionSection({ id, title, items = [] }) {
         {/* Price Range */}
         <div className="flex-1">
           <label className="block text-sm font-medium text-[#0a1833] mb-2">
-            Price Range: ₹{formatIndianCurrency(priceRange[0])} - ₹
-            {formatIndianCurrency(priceRange[1])}
+            Price Range: {formatINR(priceRange[0])} -{formatINR(priceRange[1])}
           </label>
           <div className="flex gap-3 items-center">
             <input
@@ -223,7 +222,7 @@ export default function CollectionSection({ id, title, items = [] }) {
                     Starting from (10K Gold)
                   </p>
                   <p className="text-lg md:text-xl font-bold text-[#0a1833]">
-                    ₹{formatIndianCurrency(item.price)}
+                    {formatINR(item.price)}
                   </p>
                 </div>
               </div>

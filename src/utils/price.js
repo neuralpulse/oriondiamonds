@@ -170,12 +170,12 @@ export async function calculateFinalPrice({
 
   // === Round neatly ===
   return {
-    diamondPrice: Math.round(Number(totalDiamondPrice.toFixed(2))),
-    goldPrice: Math.round(Number(goldPrice.toFixed(2))),
-    makingCharge: Math.round(Number(makingCharge.toFixed(2))),
-    subtotal: Math.round(Number(subtotal.toFixed(2))),
-    gst: Math.round(Number(gst.toFixed(2))),
-    totalPrice: Math.round(grandTotal), // Rounded to nearest whole number
+    diamondPrice: Math.round(totalDiamondPrice),
+    goldPrice: Math.round(goldPrice),
+    makingCharge: Math.round(makingCharge),
+    subtotal: Math.round(subtotal),
+    gst: Math.round(gst),
+    totalPrice: Math.round(grandTotal),
   };
 }
 

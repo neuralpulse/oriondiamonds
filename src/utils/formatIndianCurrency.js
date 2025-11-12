@@ -50,6 +50,6 @@ export function formatIndianCurrency(amount, showDecimals = true) {
  * @param {boolean} showDecimals - Whether to show decimal places (default: true)
  * @returns {string} Formatted amount with ₹ symbol
  */
-export function formatINR(amount, showDecimals = true) {
+export function formatINR(amount, showDecimals = false) {
   return "₹" + formatIndianCurrency(amount, showDecimals);
 }

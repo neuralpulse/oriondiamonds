@@ -1,57 +1,45 @@
-[00:00:00.763] Server  LOG      ✓ Ready in 522ms
-[00:00:31.639] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:32.533] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:37.616] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:27.299] Server  LOG      ✓ Compiled in 89ms
-[00:01:42.789] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:47.277] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:08.201] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:02:20.018] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:38.439] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:02:39.752] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:02:40.417] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:02:41.905] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:03:07.960] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:08.739] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:09.393] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:09.872] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:10.044] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:10.258] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:10.422] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:03:10.589] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'preventDefault')
-[00:06:19.289] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:27.329] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:08:14.657] Server  LOG      ✓ Compiled in 57ms
-[00:08:42.624] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:39.936] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:19:09.332] Server  LOG      ✓ Compiled in 21ms
-[00:19:11.260] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:22:38.275] Server  LOG      ✓ Compiled in 28ms
-[00:22:53.477] Server  LOG      ✓ Compiled in 20ms
-[00:22:56.626] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:07.642] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:23:10.071] Server  LOG     Extracted - Shapes: ["EMERALD"] "Counts:" [42] "Weights:" [0.179048] "Gold:" 13.68
-[00:23:10.073] Server  LOG     Extracted - Shapes: ["Emerald","pear","oval"] "Counts:" [5,11,5] "Weights:" [1.016,0.64545,0.66] "Gold:" 11.666
-[00:23:10.074] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [7] "Weights:" [0.11] "Gold:" 1.8316
-[00:23:10.075] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [31] "Weights:" [0.78323] "Gold:" 18.5288
-[00:23:10.076] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [62] "Weights:" [0.1] "Gold:" 15.592
-[00:23:10.078] Server  LOG     Extracted - Shapes: ["Emerald","Marq","Oval","Pear"] "Counts:" [3,4,4,4] "Weights:" [0.1,0.1,0.1,0.1] "Gold:" 2.1812
-[00:23:10.079] Server  LOG     Extracted - Shapes: ["Marquise"] "Counts:" [56] "Weights:" [0.15] "Gold:" 10.298
-[00:23:10.080] Server  LOG     Extracted - Shapes: ["Cushion"] "Counts:" [44] "Weights:" [0.1] "Gold:" 10.0928
-[00:23:10.083] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.11] "Gold:" 6.004
-[00:23:10.084] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [13] "Weights:" [0.11] "Gold:" 3.3288
-[00:23:10.085] Server  LOG     Extracted - Shapes: ["Oval"] "Counts:" [79] "Weights:" [0.15] "Gold:" 8.512
-[00:23:10.086] Server  LOG     Extracted - Shapes: ["Radiant","Round"] "Counts:" [32,448] "Weights:" [0.015,0.005] "Gold:" 12.7908
-[00:23:10.087] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [48] "Weights:" [0.146] "Gold:" 9.614
-[00:23:10.088] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.5] "Gold:" 12.6312
-[00:23:10.089] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [30] "Weights:" [0.065] "Gold:" 7.676
-[00:23:10.089] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [28] "Weights:" [0.85] "Gold:" 16.796
-[00:23:10.090] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [47] "Weights:" [0.11] "Gold:" 10.602
-[00:23:10.091] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [37] "Weights:" [0.3] "Gold:" 14.8276
-[00:23:10.092] Server  LOG     Extracted - Shapes: ["Marquise","Pear","Emerald","Heart","Round"] "Counts:" [4,6,7,6,7] "Weights:" [0.0525,0.355,0.4] "Gold:" 8.17
-[00:23:10.093] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
-[00:23:10.093] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
-[00:23:10.094] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
-[00:23:10.095] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
-[00:23:10.096] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
-[00:23:10.096] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:00:00.636] Server  LOG      ✓ Ready in 422ms
+[00:00:49.744] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:50.641] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:58.204] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:27.934] Server  LOG      ✓ Compiled in 56ms
+[00:04:44.172] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:51.450] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:43.616] Server  LOG      ✓ Compiled in 45ms
+[00:05:43.710] Browser ERROR   uncaughtError: ReferenceError: integerPart is not defined
+[00:05:43.933] Browser ERROR   uncaughtError: ReferenceError: integerPart is not defined
+[00:05:47.725] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:47.762] Server  LOG      ✓ Compiled in 29ms
+[00:05:47.866] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:48.085] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:48.343] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:23.074] Server  LOG      ✓ Compiled in 23ms
+[00:06:29.093] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:34.695] Server  LOG      ✓ Compiled in 47ms
+[00:06:38.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:20.522] Server  LOG      ✓ Compiled in 39ms
+[00:07:56.228] Server  LOG      ✓ Compiled in 13ms
+[00:08:37.968] Server  LOG      ✓ Compiled in 35ms
+[00:08:44.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:07.967] Server  LOG      ✓ Compiled in 36ms
+[00:09:11.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:14.760] Server  LOG      ✓ Compiled in 67ms
+[00:10:14.857] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
+[00:10:15.035] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
+[00:10:20.286] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:20.293] Server  LOG      ✓ Compiled in 46ms
+[00:10:20.836] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:21.155] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:21.649] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:22.483] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
+[00:10:23.207] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
+[00:10:25.711] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:25.794] Server  LOG      ✓ Compiled in 46ms
+[00:10:26.011] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:26.027] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:26.400] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:21.490] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:37.936] Server  LOG      ✓ Compiled in 22ms
+[00:11:43.291] Server  LOG      ✓ Compiled in 39ms
+[00:11:45.053] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:52.443] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

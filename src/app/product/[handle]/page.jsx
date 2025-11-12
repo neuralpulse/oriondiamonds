@@ -23,7 +23,7 @@ import { shopifyRequest } from "../../../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../../../queries/products";
 import ProductAccordion from "../../../components/accordian";
 import toast from "react-hot-toast";
-import { formatIndianCurrency } from "../../../utils/formatIndianCurrency";
+import { formatINR } from "../../../utils/formatIndianCurrency";
 
 export default function ProductDetails() {
   const modalRef = useRef(null);
@@ -540,7 +540,7 @@ export default function ProductDetails() {
               {totalPrice === undefined || totalPrice === null ? (
                 <span className="inline-block h-6 w-50 bg-gray-200 rounded animate-pulse"></span>
               ) : (
-                <>₹{formatIndianCurrency(totalPrice)}</>
+                <>{formatINR(totalPrice)}</>
               )}
             </p>
 
