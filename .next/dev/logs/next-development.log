@@ -1,45 +1,37 @@
-[00:00:00.636] Server  LOG      ✓ Ready in 422ms
-[00:00:49.744] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:50.641] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:58.204] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:04:27.934] Server  LOG      ✓ Compiled in 56ms
-[00:04:44.172] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:51.450] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:43.616] Server  LOG      ✓ Compiled in 45ms
-[00:05:43.710] Browser ERROR   uncaughtError: ReferenceError: integerPart is not defined
-[00:05:43.933] Browser ERROR   uncaughtError: ReferenceError: integerPart is not defined
-[00:05:47.725] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:05:47.762] Server  LOG      ✓ Compiled in 29ms
-[00:05:47.866] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:05:48.085] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:48.343] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:23.074] Server  LOG      ✓ Compiled in 23ms
-[00:06:29.093] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:34.695] Server  LOG      ✓ Compiled in 47ms
-[00:06:38.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:20.522] Server  LOG      ✓ Compiled in 39ms
-[00:07:56.228] Server  LOG      ✓ Compiled in 13ms
-[00:08:37.968] Server  LOG      ✓ Compiled in 35ms
-[00:08:44.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:07.967] Server  LOG      ✓ Compiled in 36ms
-[00:09:11.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:14.760] Server  LOG      ✓ Compiled in 67ms
-[00:10:14.857] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
-[00:10:15.035] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
-[00:10:20.286] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:10:20.293] Server  LOG      ✓ Compiled in 46ms
-[00:10:20.836] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:10:21.155] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:21.649] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:22.483] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
-[00:10:23.207] Browser ERROR   uncaughtError: ReferenceError: formatINR is not defined
-[00:10:25.711] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:10:25.794] Server  LOG      ✓ Compiled in 46ms
-[00:10:26.011] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:10:26.027] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:26.400] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:21.490] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:11:37.936] Server  LOG      ✓ Compiled in 22ms
-[00:11:43.291] Server  LOG      ✓ Compiled in 39ms
-[00:11:45.053] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:52.443] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:00.722] Server  LOG      ✓ Ready in 491ms
+[00:01:56.037] Server  WARN     ⚠ Cross origin request detected from 192.168.29.165 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:01:56.065] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:21.683] Server  LOG      ✓ Compiled in 38ms
+[00:28:16.278] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:17.254] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:28:18.611] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:28:46.520] Server  LOG      ✓ Compiled in 46ms
+[00:28:50.419] Server  LOG      ✓ Compiled in 22ms
+[00:29:15.630] Server  LOG      ✓ Compiled in 39ms
+[00:29:19.924] Server  LOG      ✓ Compiled in 22ms
+[00:30:04.861] Server  LOG     Extracted - Shapes: ["EMERALD"] "Counts:" [42] "Weights:" [0.179048] "Gold:" 13.68
+[00:30:04.863] Server  LOG     Extracted - Shapes: ["Emerald","pear","oval"] "Counts:" [5,11,5] "Weights:" [1.016,0.64545,0.66] "Gold:" 11.666
+[00:30:04.864] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [7] "Weights:" [0.11] "Gold:" 1.8316
+[00:30:04.865] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [31] "Weights:" [0.78323] "Gold:" 18.5288
+[00:30:04.867] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [62] "Weights:" [0.1] "Gold:" 15.592
+[00:30:04.868] Server  LOG     Extracted - Shapes: ["Emerald","Marq","Oval","Pear"] "Counts:" [3,4,4,4] "Weights:" [0.1,0.1,0.1,0.1] "Gold:" 2.1812
+[00:30:04.869] Server  LOG     Extracted - Shapes: ["Marquise"] "Counts:" [56] "Weights:" [0.15] "Gold:" 10.298
+[00:30:04.870] Server  LOG     Extracted - Shapes: ["Cushion"] "Counts:" [44] "Weights:" [0.1] "Gold:" 10.0928
+[00:30:04.871] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.11] "Gold:" 6.004
+[00:30:04.872] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [13] "Weights:" [0.11] "Gold:" 3.3288
+[00:30:04.873] Server  LOG     Extracted - Shapes: ["Oval"] "Counts:" [79] "Weights:" [0.15] "Gold:" 8.512
+[00:30:04.874] Server  LOG     Extracted - Shapes: ["Radiant","Round"] "Counts:" [32,448] "Weights:" [0.015,0.005] "Gold:" 12.7908
+[00:30:04.874] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [48] "Weights:" [0.146] "Gold:" 9.614
+[00:30:04.875] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.5] "Gold:" 12.6312
+[00:30:04.877] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [30] "Weights:" [0.065] "Gold:" 7.676
+[00:30:04.877] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [28] "Weights:" [0.85] "Gold:" 16.796
+[00:30:04.878] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [47] "Weights:" [0.11] "Gold:" 10.602
+[00:30:04.879] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [37] "Weights:" [0.3] "Gold:" 14.8276
+[00:30:04.879] Server  LOG     Extracted - Shapes: ["Marquise","Pear","Emerald","Heart","Round"] "Counts:" [4,6,7,6,7] "Weights:" [0.0525,0.355,0.4] "Gold:" 8.17
+[00:30:04.880] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
+[00:30:04.881] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
+[00:30:04.881] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
+[00:30:04.882] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
+[00:30:04.883] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
+[00:30:04.884] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816

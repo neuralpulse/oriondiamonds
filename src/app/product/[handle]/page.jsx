@@ -44,7 +44,8 @@ export default function ProductDetails() {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [totalPrice, setTotalPrice] = useState(null);
-
+  // Inside the component, after the other useState declarations
+  const [engravingText, setEngravingText] = useState("");
   const handlePriceData = (data) => {
     setTotalPrice(data.totalPrice);
   };
@@ -78,7 +79,8 @@ export default function ProductDetails() {
     }
 
     if (
-      handle?.toLowerCase().endsWith("-ring") &&
+      (handle?.toLowerCase().endsWith("-ring") ||
+        handle?.toLowerCase().endsWith("-band")) &&
       !selectedOptions["Ring Size"]
     ) {
       toast.error("Please select a ring size");
@@ -87,7 +89,7 @@ export default function ProductDetails() {
 
     if (
       handle?.toLowerCase().endsWith("-bracelet") &&
-      !selectedOptions["Bracelet Size"]
+      !selectedOptions["Wrist Size"]
     ) {
       toast.error("Please select a Wrist size");
       return;
@@ -99,26 +101,61 @@ export default function ProductDetails() {
       (item) => item.variantId === selectedVariant.id
     );
 
+    // Build selected options array (include engraving if present)
+    const finalSelectedOptions = [
+      ...Object.entries(selectedOptions).map(([name, value]) => ({
+        name,
+        value,
+      })),
+    ];
+
+    if (
+      (handle?.toLowerCase().endsWith("-ring") ||
+        handle?.toLowerCase().endsWith("-band")) &&
+      engravingText.trim()
+    ) {
+      finalSelectedOptions.push({
+        name: "Engraving",
+        value: engravingText.trim(),
+      });
+    }
+
+    const newItem = {
+      variantId: selectedVariant.id,
+      handle: product.handle,
+      title: product.title,
+      variantTitle: selectedVariant.title,
+      image: selectedVariant.image?.url || product.featuredImage?.url,
+      price: parseFloat(totalPrice),
+      calculatedPrice: parseFloat(totalPrice),
+      currencyCode: selectedVariant.price.currencyCode,
+      quantity: quantity,
+      selectedOptions: finalSelectedOptions, // ← includes engraving
+    };
+
     if (existingItemIndex > -1) {
       cart[existingItemIndex].quantity += quantity;
+      // Also merge engraving if new one exists
+      if (engravingText.trim()) {
+        const engravingExists = cart[existingItemIndex].selectedOptions.some(
+          (opt) => opt.name === "Engraving"
+        );
+        if (engravingExists) {
+          cart[existingItemIndex].selectedOptions = cart[
+            existingItemIndex
+          ].selectedOptions.map((opt) =>
+            opt.name === "Engraving"
+              ? { name: "Engraving", value: engravingText.trim() }
+              : opt
+          );
+        } else {
+          cart[existingItemIndex].selectedOptions.push({
+            name: "Engraving",
+            value: engravingText.trim(),
+          });
+        }
+      }
     } else {
-      const newItem = {
-        variantId: selectedVariant.id,
-        handle: product.handle,
-        title: product.title,
-        variantTitle: selectedVariant.title,
-        image: selectedVariant.image?.url || product.featuredImage?.url,
-        price: parseFloat(totalPrice), // Original price (for reference)
-        calculatedPrice: parseFloat(totalPrice), // ← ADD THIS: Your dynamic calculated price
-        currencyCode: selectedVariant.price.currencyCode,
-        quantity: quantity,
-        selectedOptions: Object.entries(selectedOptions).map(
-          ([name, value]) => ({
-            name,
-            value,
-          })
-        ),
-      };
       cart.push(newItem);
     }
 
@@ -639,8 +676,27 @@ export default function ProductDetails() {
                   >
                     View Size Guide
                   </p>
+
+                  {/* ---------- ENGRAVING FIELD (inside the ring block) ---------- */}
+                  <div className="mt-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Custom Engraving (optional)
+                    </label>
+                    <input
+                      type="text"
+                      maxLength={12}
+                      placeholder="Enter up to 10-12 characters"
+                      value={engravingText}
+                      onChange={(e) => setEngravingText(e.target.value)}
+                      className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      {engravingText.length}/12 characters
+                    </p>
+                  </div>
                 </div>
               )}
+              {/* Engraving Option – only for rings */}
 
               {/* Bracelet Size Dropdown (only if product is a bracelet) */}
               {handle?.toLowerCase().endsWith("-bracelet") && (

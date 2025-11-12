@@ -2340,6 +2340,10 @@
     --tw-ring-color: #0a1833;
   }
 
+  .focus\:ring-black:focus {
+    --tw-ring-color: var(--color-black);
+  }
+
   .focus\:outline-none:focus {
     --tw-outline-style: none;
     outline-style: none;
