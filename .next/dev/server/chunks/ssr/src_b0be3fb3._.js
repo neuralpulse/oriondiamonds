@@ -117,6 +117,7 @@ const GET_CUSTOMER_INFO = `
 "[project]/src/app/login/page.jsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// src/app/login/page.jsx - Fixed redirect loop
 __turbopack_context__.s([
     "default",
     ()=>LoginPage
@@ -129,7 +130,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/react/index.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$queries$2f$customer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/queries/customer.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$shopify$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/shopify.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$cartSync$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/cartSync.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-ssr] (ecmascript)");
 "use client";
+;
+;
 ;
 ;
 ;
@@ -144,17 +149,20 @@ function LoginPage() {
     const [isLogin, setIsLogin] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
+    const hasRedirectedRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(false); // 🔧 FIX: Prevent multiple redirects
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         email: "",
         password: "",
         firstName: "",
         lastName: ""
     });
-    // Redirect if already logged in via Google
+    // 🔧 FIX: Only redirect once when Google auth completes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (status === "authenticated" && session) {
-            localStorage.setItem("customer_email", session.user.email);
-            localStorage.setItem("google_auth", "true");
+        if (status === "authenticated" && session && !hasRedirectedRef.current) {
+            hasRedirectedRef.current = true;
+            // Don't call handleCartSync here - let CartSyncProvider handle it
+            // Just redirect to account
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].success("Logged in successfully!");
             router.push("/account");
         }
     }, [
@@ -180,6 +188,7 @@ function LoginPage() {
         } catch (error) {
             setError("Failed to sign in with Google");
             setLoading(false);
+            hasRedirectedRef.current = false;
         }
     };
     const handleSignup = async (e)=>{
@@ -200,8 +209,10 @@ function LoginPage() {
                 setLoading(false);
                 return;
             }
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].success("Account created! Logging in...");
             await handleLogin(e, true);
-        } catch  {
+        } catch (err) {
+            console.error("Signup error:", err);
             setError("Something went wrong. Please try again.");
             setLoading(false);
         }
@@ -226,12 +237,30 @@ function LoginPage() {
             localStorage.setItem("shopify_customer_token", accessToken);
             localStorage.setItem("shopify_token_expires", expiresAt);
             localStorage.setItem("customer_email", formData.email);
-            router.push("/account");
-        } catch  {
+            // 🔧 FIX: Sync cart silently in background
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].loading("Syncing your cart...");
+            try {
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$cartSync$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mergeLocalAndMongoDBCart"])(formData.email);
+                window.dispatchEvent(new Event("cartUpdated"));
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].dismiss();
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].success("Logged in successfully!");
+            } catch (syncError) {
+                console.error("Cart sync error:", syncError);
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].dismiss();
+                __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].success("Logged in successfully!");
+            }
+            // 🔧 FIX: Redirect after a short delay
+            setTimeout(()=>{
+                router.push("/account");
+            }, 500);
+        } catch (err) {
+            console.error("Login error:", err);
             setError("Something went wrong. Please try again.");
             setLoading(false);
         }
     };
+    // 🔧 FIX: Don't show loading screen for Google auth
+    // Let the page render normally and handle redirect in useEffect
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "jsx-4bd3ff55da11f48a" + " " + "relative min-h-screen mt-10 flex items-center justify-center bg-[#0a1833] overflow-hidden",
         children: [
@@ -246,20 +275,20 @@ function LoginPage() {
                         priority: true
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 118,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "jsx-4bd3ff55da11f48a" + " " + "absolute inset-0 bg-black/50"
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 125,
+                        lineNumber: 155,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/login/page.jsx",
-                lineNumber: 117,
+                lineNumber: 147,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -270,15 +299,15 @@ function LoginPage() {
                         children: isLogin ? "Welcome Back" : "Create Account"
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 130,
+                        lineNumber: 159,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "jsx-4bd3ff55da11f48a" + " " + "text-center text-gray-600 mb-8",
-                        children: isLogin ? "Sign in to access your Orion Diamonds account" : "Join Orion Diamonds — brilliance redefined"
+                        children: isLogin ? "Sign in to access your Orion Diamonds account" : "Join Orion Diamonds – brilliance redefined"
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 133,
+                        lineNumber: 162,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -286,7 +315,7 @@ function LoginPage() {
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 140,
+                        lineNumber: 169,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -304,7 +333,7 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 152,
+                                        lineNumber: 180,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -313,7 +342,7 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 156,
+                                        lineNumber: 184,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -322,7 +351,7 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 160,
+                                        lineNumber: 188,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -331,20 +360,20 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 164,
+                                        lineNumber: 192,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 151,
+                                lineNumber: 179,
                                 columnNumber: 11
                             }, this),
                             loading ? "Signing in..." : "Continue with Google"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 146,
+                        lineNumber: 174,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -356,33 +385,33 @@ function LoginPage() {
                                     className: "jsx-4bd3ff55da11f48a" + " " + "w-full border-t border-gray-300"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.jsx",
-                                    lineNumber: 174,
+                                    lineNumber: 202,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 173,
+                                lineNumber: 201,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "jsx-4bd3ff55da11f48a" + " " + "relative flex justify-center text-sm",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "jsx-4bd3ff55da11f48a" + " " + "px-2 text-gray-500",
+                                    className: "jsx-4bd3ff55da11f48a" + " " + "px-2 text-gray-500 bg-white/90",
                                     children: "Or continue with email"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/login/page.jsx",
-                                    lineNumber: 177,
+                                    lineNumber: 205,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 176,
+                                lineNumber: 204,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 172,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -403,7 +432,7 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a" + " " + "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0a1833] focus:border-[#0a1833] text-sm bg-white/90"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 187,
+                                        lineNumber: 217,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -417,13 +446,13 @@ function LoginPage() {
                                         className: "jsx-4bd3ff55da11f48a" + " " + "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0a1833] focus:border-[#0a1833] text-sm bg-white/90"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/login/page.jsx",
-                                        lineNumber: 197,
+                                        lineNumber: 227,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 186,
+                                lineNumber: 216,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -437,7 +466,7 @@ function LoginPage() {
                                 className: "jsx-4bd3ff55da11f48a" + " " + "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0a1833] focus:border-[#0a1833] text-sm bg-white/90"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 210,
+                                lineNumber: 240,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -451,7 +480,7 @@ function LoginPage() {
                                 className: "jsx-4bd3ff55da11f48a" + " " + "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#0a1833] focus:border-[#0a1833] text-sm bg-white/90"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 221,
+                                lineNumber: 251,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -461,13 +490,13 @@ function LoginPage() {
                                 children: loading ? "Processing..." : isLogin ? "Sign In" : "Sign Up"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/login/page.jsx",
-                                lineNumber: 232,
+                                lineNumber: 262,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 181,
+                        lineNumber: 211,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -482,18 +511,18 @@ function LoginPage() {
                             children: isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"
                         }, void 0, false, {
                             fileName: "[project]/src/app/login/page.jsx",
-                            lineNumber: 242,
+                            lineNumber: 272,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/login/page.jsx",
-                        lineNumber: 241,
+                        lineNumber: 271,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/login/page.jsx",
-                lineNumber: 129,
+                lineNumber: 158,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -503,7 +532,7 @@ function LoginPage() {
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/login/page.jsx",
-        lineNumber: 115,
+        lineNumber: 146,
         columnNumber: 5
     }, this);
 }

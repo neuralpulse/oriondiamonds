@@ -24,6 +24,8 @@ import { GET_PRODUCT_BY_HANDLE } from "../../../queries/products";
 import ProductAccordion from "../../../components/accordian";
 import toast from "react-hot-toast";
 import { formatINR } from "../../../utils/formatIndianCurrency";
+import { useSession } from "next-auth/react";
+import { syncCartToMongoDB } from "../../../utils/cartSync";
 
 export default function ProductDetails() {
   const modalRef = useRef(null);
@@ -44,7 +46,8 @@ export default function ProductDetails() {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [totalPrice, setTotalPrice] = useState(null);
-  // Inside the component, after the other useState declarations
+  const { data: session } = useSession();
+
   const [engravingText, setEngravingText] = useState("");
   const handlePriceData = (data) => {
     setTotalPrice(data.totalPrice);
@@ -72,12 +75,13 @@ export default function ProductDetails() {
       text: "BIS Hallmarked Gold",
     },
   ];
-  const addToCart = () => {
+  const addToCart = async () => {
     if (!selectedVariant) {
       toast.error("Please select a variant");
       return;
     }
 
+    // ----- VALIDATIONS -----
     if (
       (handle?.toLowerCase().endsWith("-ring") ||
         handle?.toLowerCase().endsWith("-band")) &&
@@ -91,17 +95,18 @@ export default function ProductDetails() {
       handle?.toLowerCase().endsWith("-bracelet") &&
       !selectedOptions["Wrist Size"]
     ) {
-      toast.error("Please select a Wrist size");
+      toast.error("Please select a wrist size");
       return;
     }
 
+    // ----- LOAD LOCAL CART -----
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     const existingItemIndex = cart.findIndex(
       (item) => item.variantId === selectedVariant.id
     );
 
-    // Build selected options array (include engraving if present)
+    // ----- SELECTED OPTIONS ARRAY -----
     const finalSelectedOptions = [
       ...Object.entries(selectedOptions).map(([name, value]) => ({
         name,
@@ -109,6 +114,7 @@ export default function ProductDetails() {
       })),
     ];
 
+    // ENGRAVING SUPPORT
     if (
       (handle?.toLowerCase().endsWith("-ring") ||
         handle?.toLowerCase().endsWith("-band")) &&
@@ -120,6 +126,7 @@ export default function ProductDetails() {
       });
     }
 
+    // ----- NEW ITEM OBJECT -----
     const newItem = {
       variantId: selectedVariant.id,
       handle: product.handle,
@@ -130,16 +137,19 @@ export default function ProductDetails() {
       calculatedPrice: parseFloat(totalPrice),
       currencyCode: selectedVariant.price.currencyCode,
       quantity: quantity,
-      selectedOptions: finalSelectedOptions, // ← includes engraving
+      selectedOptions: finalSelectedOptions,
     };
 
+    // ----- MERGE LOGIC -----
     if (existingItemIndex > -1) {
       cart[existingItemIndex].quantity += quantity;
-      // Also merge engraving if new one exists
+
+      // merge engraving
       if (engravingText.trim()) {
         const engravingExists = cart[existingItemIndex].selectedOptions.some(
           (opt) => opt.name === "Engraving"
         );
+
         if (engravingExists) {
           cart[existingItemIndex].selectedOptions = cart[
             existingItemIndex
@@ -159,9 +169,29 @@ export default function ProductDetails() {
       cart.push(newItem);
     }
 
+    // ----- SAVE TO LOCAL STORAGE -----
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update UI immediately (navbar/cart count)
     window.dispatchEvent(new Event("cartUpdated"));
+
     toast.success(`${quantity} × ${product.title} added to cart!`);
+
+    // ----- SYNC TO MONGODB -----
+    const customerEmail =
+      session?.user?.email ||
+      (typeof window !== "undefined"
+        ? localStorage.getItem("customer_email")
+        : null);
+
+    if (customerEmail) {
+      try {
+        await syncCartToMongoDB(customerEmail);
+        console.log("✅ Cart synced to MongoDB instantly");
+      } catch (err) {
+        console.error("MongoDB sync failed:", err);
+      }
+    }
   };
 
   useEffect(() => {

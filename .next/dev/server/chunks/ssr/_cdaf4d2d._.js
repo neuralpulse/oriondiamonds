@@ -259,16 +259,16 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
     let makingCharge = goldWeight >= 2 ? goldWeight * config.makingCharges.greaterThan2g.ratePerGram : goldWeight * config.makingCharges.lessThan2g.ratePerGram;
     makingCharge *= config.makingCharges.multiplier;
     // === Subtotal, GST, and Total ===
-    const subtotal = totalDiamondPrice + goldPrice + makingCharge;
-    const gst = subtotal * config.gstRate;
-    const grandTotal = subtotal + gst;
+    const subtotal = Math.round(totalDiamondPrice + goldPrice + makingCharge);
+    const gst = Math.round(subtotal * config.gstRate);
+    const grandTotal = Math.round(subtotal + gst);
     // === Round neatly ===
     return {
-        diamondPrice: Number(totalDiamondPrice.toFixed(2)),
-        goldPrice: Number(goldPrice.toFixed(2)),
-        makingCharge: Number(makingCharge.toFixed(2)),
-        subtotal: Number(subtotal.toFixed(2)),
-        gst: Number(gst.toFixed(2)),
+        diamondPrice: Math.round(totalDiamondPrice),
+        goldPrice: Math.round(goldPrice),
+        makingCharge: Math.round(makingCharge),
+        subtotal: Math.round(subtotal),
+        gst: Math.round(gst),
         totalPrice: Math.round(grandTotal)
     };
 }
@@ -322,7 +322,7 @@ function formatIndianCurrency(amount, showDecimals = true) {
     }
     return result;
 }
-function formatINR(amount, showDecimals = true) {
+function formatINR(amount, showDecimals = false) {
     return "₹" + formatIndianCurrency(amount, showDecimals);
 }
 }),

@@ -5,6 +5,7 @@ import ScrollToTop from "../components/scrolltop";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./providers";
 import { FaWhatsapp } from "react-icons/fa6";
+import CartSyncProvider from "../components/CartSyncProvider";
 
 export const metadata = {
   title: "Orion Diamonds",
@@ -21,7 +22,10 @@ export default function RootLayout({ children }) {
         <Navbar />
         <Toaster position="bottom-center" />
 
-        <Providers>{children}</Providers>
+        <Providers>
+          <CartSyncProvider>{children}</CartSyncProvider>
+        </Providers>
+
         <a
           href="https://wa.me/917022253092?text=Hi%20there!%20I%20need%20some%20help%20with%20a%20product%20on%20your%20website."
           target="_blank"

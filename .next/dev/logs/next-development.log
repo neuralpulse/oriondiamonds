@@ -1,37 +1,331 @@
-[00:00:00.722] Server  LOG      ✓ Ready in 491ms
-[00:01:56.037] Server  WARN     ⚠ Cross origin request detected from 192.168.29.165 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:01:56.065] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:23:21.683] Server  LOG      ✓ Compiled in 38ms
-[00:28:16.278] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:28:17.254] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:28:18.611] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:28:46.520] Server  LOG      ✓ Compiled in 46ms
-[00:28:50.419] Server  LOG      ✓ Compiled in 22ms
-[00:29:15.630] Server  LOG      ✓ Compiled in 39ms
-[00:29:19.924] Server  LOG      ✓ Compiled in 22ms
-[00:30:04.861] Server  LOG     Extracted - Shapes: ["EMERALD"] "Counts:" [42] "Weights:" [0.179048] "Gold:" 13.68
-[00:30:04.863] Server  LOG     Extracted - Shapes: ["Emerald","pear","oval"] "Counts:" [5,11,5] "Weights:" [1.016,0.64545,0.66] "Gold:" 11.666
-[00:30:04.864] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [7] "Weights:" [0.11] "Gold:" 1.8316
-[00:30:04.865] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [31] "Weights:" [0.78323] "Gold:" 18.5288
-[00:30:04.867] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [62] "Weights:" [0.1] "Gold:" 15.592
-[00:30:04.868] Server  LOG     Extracted - Shapes: ["Emerald","Marq","Oval","Pear"] "Counts:" [3,4,4,4] "Weights:" [0.1,0.1,0.1,0.1] "Gold:" 2.1812
-[00:30:04.869] Server  LOG     Extracted - Shapes: ["Marquise"] "Counts:" [56] "Weights:" [0.15] "Gold:" 10.298
-[00:30:04.870] Server  LOG     Extracted - Shapes: ["Cushion"] "Counts:" [44] "Weights:" [0.1] "Gold:" 10.0928
-[00:30:04.871] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.11] "Gold:" 6.004
-[00:30:04.872] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [13] "Weights:" [0.11] "Gold:" 3.3288
-[00:30:04.873] Server  LOG     Extracted - Shapes: ["Oval"] "Counts:" [79] "Weights:" [0.15] "Gold:" 8.512
-[00:30:04.874] Server  LOG     Extracted - Shapes: ["Radiant","Round"] "Counts:" [32,448] "Weights:" [0.015,0.005] "Gold:" 12.7908
-[00:30:04.874] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [48] "Weights:" [0.146] "Gold:" 9.614
-[00:30:04.875] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [21] "Weights:" [0.5] "Gold:" 12.6312
-[00:30:04.877] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [30] "Weights:" [0.065] "Gold:" 7.676
-[00:30:04.877] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [28] "Weights:" [0.85] "Gold:" 16.796
-[00:30:04.878] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [47] "Weights:" [0.11] "Gold:" 10.602
-[00:30:04.879] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [37] "Weights:" [0.3] "Gold:" 14.8276
-[00:30:04.879] Server  LOG     Extracted - Shapes: ["Marquise","Pear","Emerald","Heart","Round"] "Counts:" [4,6,7,6,7] "Weights:" [0.0525,0.355,0.4] "Gold:" 8.17
-[00:30:04.880] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [18] "Weights:" [0.33] "Gold:" 7.942
-[00:30:04.881] Server  LOG     Extracted - Shapes: ["ROUND"] "Counts:" [21] "Weights:" [0.165] "Gold:" 14.212
-[00:30:04.881] Server  LOG     Extracted - Shapes: ["Emerald"] "Counts:" [31] "Weights:" [0.3] "Gold:" 12.502
-[00:30:04.882] Server  LOG     Extracted - Shapes: ["Round"] "Counts:" [22] "Weights:" [0.09] "Gold:" 9.462
-[00:30:04.883] Server  LOG     Extracted - Shapes: ["Round","Marquese"] "Counts:" [14,56] "Weights:" [0.3,0.17589] "Gold:" 19.76
-[00:30:04.884] Server  LOG     Extracted - Shapes: ["Princess"] "Counts:" [76] "Weights:" [0.06] "Gold:" 8.816
+[00:00:01.007] Server  LOG      ✓ Ready in 663ms
+[00:00:10.012] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:11.101] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:11.525] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:00:11.525] Browser LOG     📥 Loading cart from MongoDB...
+[00:00:12.482] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:12.630] Server  LOG     ✅ MongoDB connected
+[00:00:12.847] Server  ERROR   Error fetching cart: MongooseError: Cannot call `carts.findOne()` before initial connection is complete if `bufferCommands = false`. Make sure you `await mongoose.connect()` if you have `bufferCommands = false`.
+[00:00:12.855] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:00:12.855] Browser LOG     📥 Loading cart from MongoDB...
+[00:00:12.952] Browser ERROR   Error loading cart from MongoDB: {}
+[00:00:13.111] Server  LOG     ✅ MongoDB connected
+[00:00:17.946] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:04.815] Browser LOG     ✅ Item removed from MongoDB
+[00:01:10.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:14.899] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:33.434] Server  ERROR   (node:71388) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[00:01:34.509] Server  LOG     [next-auth][debug][CREATE_STATE] {}
+[00:01:34.510] Server  LOG     [next-auth][debug][CREATE_PKCECODEVERIFIER] {}
+[00:01:34.513] Server  LOG     [next-auth][debug][GET_AUTHORIZATION_URL] {}
+[00:01:35.465] Server  LOG     [next-auth][debug][PROFILE_DATA] {}
+[00:01:35.465] Server  LOG     [next-auth][debug][OAUTH_CALLBACK_RESPONSE] {}
+[00:01:36.250] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:36.447] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:01:36.447] Browser LOG     📦 Merging 1 local items...
+[00:01:36.447] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:36.548] Browser LOG     ✅ Merged cart: 1 total items
+[00:05:42.892] Server  LOG      ✓ Compiled in 214ms
+[00:10:22.238] Server  LOG      ✓ Compiled in 62ms
+[00:10:28.120] Server  LOG      ✓ Compiled in 65ms
+[00:13:30.781] Browser LOG     ✅ Cart cleared in MongoDB
+[00:15:44.792] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:46.208] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:56.657] Server  LOG     [next-auth][debug][CREATE_STATE] {}
+[00:15:56.658] Server  LOG     [next-auth][debug][CREATE_PKCECODEVERIFIER] {}
+[00:15:56.660] Server  LOG     [next-auth][debug][GET_AUTHORIZATION_URL] {}
+[00:15:57.721] Server  LOG     [next-auth][debug][PROFILE_DATA] {}
+[00:15:57.721] Server  LOG     [next-auth][debug][OAUTH_CALLBACK_RESPONSE] {}
+[00:15:58.428] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:58.654] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:15:58.654] Browser LOG     📥 Loading cart from MongoDB...
+[00:15:58.654] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:58.654] Browser LOG     No cart items found in MongoDB
+[00:16:39.190] Server  ERROR    ⨯ ReferenceError: localStorage is not defined
+[00:16:39.349] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:40.545] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:16:40.545] Browser LOG     📦 Merging 1 local items...
+[00:16:40.705] Browser LOG     ✅ Merged cart: 1 total items
+[00:20:24.325] Server  LOG      ✓ Compiled in 84ms
+[00:20:24.527] Browser ERROR   uncaughtError: ReferenceError: cconst is not defined
+[00:20:56.179] Server  ERROR    ⨯ ReferenceError: cconst is not defined
+[00:20:56.526] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:56.779] Browser ERROR   uncaughtError: ReferenceError: cconst is not defined
+[00:21:00.891] Server  LOG      ✓ Compiled in 132ms
+[00:21:00.997] Browser ERROR   ./src/app/my-cart/page.jsx:26:9
+Parsing ecmascript source code failed
+  24 |   const [error, setError] = useState("");
+  25 |   const [isLoggedIn, setIsLoggedIn] = useState(false);
+> 26 |   const[(customerEmail, setCustomerEmail)] = useState(null);
+     |         ^
+  27 |
+  28 |   useEffect(() => {
+  29 |     const emailFromSession = session?.user?.email;
+
+Unexpected token `(`. Expected yield, an identifier, [ or {
+
+Import traces:
+  Client Component Browser:
+    ./src/app/my-cart/page.jsx [Client Component Browser]
+    ./src/app/my-cart/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/my-cart/page.jsx [Client Component SSR]
+    ./src/app/my-cart/page.jsx [Server Component]
+[00:24:16.101] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:24:16.116] Server  LOG      ✓ Compiled in 51ms
+[00:24:16.447] Server  ERROR    ⨯ ReferenceError: localStorage is not defined
+[00:24:16.677] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:18.524] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:24:18.525] Browser LOG     📦 Merging 1 local items...
+[00:24:18.525] Browser LOG     ✅ Merged cart: 1 total items
+[00:24:32.457] Server  LOG      ✓ Compiled in 117ms
+[00:26:00.280] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 | import toast from "react-hot-toast";
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:00.291] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 | import toast from "react-hot-toast";
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:00.526] Browser ERROR   ./src/app/product/[handle]/page.jsx:28:8
+Ecmascript file had an error
+  26 | import { formatINR } from "../../../utils/formatIndianCurrency";
+  27 | import { useSession } from "next-auth/react";
+> 28 | import toast from "react-hot-toast";
+     |        ^^^^^
+  29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+  30 |
+  31 | export default function ProductDetails() {
+
+the name `toast` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+[00:26:00.526] Browser ERROR   ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 | import toast from "react-hot-toast";
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:26:08.298] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 |
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:08.307] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 |
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:08.526] Browser ERROR   ./src/app/product/[handle]/page.jsx:29:1
+Module not found: Can't resolve '../../utils/cartSync'
+  27 | import { useSession } from "next-auth/react";
+  28 |
+> 29 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  30 |
+  31 | export default function ProductDetails() {
+  32 |   const modalRef = useRef(null);
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:26:09.269] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:28:1
+Module not found: Can't resolve '../../utils/cartSync'
+  26 | import { formatINR } from "../../../utils/formatIndianCurrency";
+  27 | import { useSession } from "next-auth/react";
+> 28 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  29 |
+  30 | export default function ProductDetails() {
+  31 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:09.274] Server  ERROR    ⨯ ./src/app/product/[handle]/page.jsx:28:1
+Module not found: Can't resolve '../../utils/cartSync'
+  26 | import { formatINR } from "../../../utils/formatIndianCurrency";
+  27 | import { useSession } from "next-auth/react";
+> 28 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  29 |
+  30 | export default function ProductDetails() {
+  31 |   const modalRef = useRef(null);
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:26:09.526] Browser ERROR   ./src/app/product/[handle]/page.jsx:28:1
+Module not found: Can't resolve '../../utils/cartSync'
+  26 | import { formatINR } from "../../../utils/formatIndianCurrency";
+  27 | import { useSession } from "next-auth/react";
+> 28 | import { syncCartToMongoDB } from "../../utils/cartSync";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  29 |
+  30 | export default function ProductDetails() {
+  31 |   const modalRef = useRef(null);
+
+Import traces:
+  Client Component Browser:
+    ./src/app/product/[handle]/page.jsx [Client Component Browser]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/product/[handle]/page.jsx [Client Component SSR]
+    ./src/app/product/[handle]/page.jsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:26:33.242] Server  LOG      ✓ Compiled in 84ms
+[00:27:27.140] Browser LOG     ✅ Item removed from MongoDB
+[00:27:29.061] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:50.876] Browser LOG     ✅ Synced 1 items to MongoDB
+[00:27:50.876] Browser LOG     ✅ Cart synced to MongoDB instantly
+[00:28:16.757] Browser LOG     ✅ Synced 2 items to MongoDB
+[00:28:16.757] Browser LOG     ✅ Cart synced to MongoDB instantly
+[00:28:36.474] Browser LOG     ✅ Item removed from MongoDB
+[00:29:03.139] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:03.140] Browser LOG     🔄 Starting cart sync for: 1bi23cs116@bit-bangalore.edu.in
+[00:29:03.140] Browser LOG     📥 Loading cart from MongoDB...
+[00:29:03.140] Browser LOG     No cart items found in MongoDB
+[00:29:05.571] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:29:08.628] Server  LOG     [next-auth][debug][CREATE_STATE] {}
+[00:29:08.629] Server  LOG     [next-auth][debug][CREATE_PKCECODEVERIFIER] {}
+[00:29:08.630] Server  LOG     [next-auth][debug][GET_AUTHORIZATION_URL] {}
+[00:29:12.653] Server  LOG     [next-auth][debug][PROFILE_DATA] {}
+[00:29:12.654] Server  LOG     [next-auth][debug][OAUTH_CALLBACK_RESPONSE] {}
+[00:29:13.458] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:13.715] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:29:13.715] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:29:13.715] Browser LOG     📥 Loading cart from MongoDB...
+[00:29:13.715] Browser LOG     ✅ Loaded 1 items from MongoDB
+[00:29:18.897] Browser LOG     ✅ Item removed from MongoDB

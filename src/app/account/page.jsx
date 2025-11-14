@@ -19,23 +19,21 @@ export default function AccountPage() {
   }, [status, session]);
 
   const checkAuthAndFetchData = async () => {
-    const token = localStorage.getItem("shopify_customer_token");
     const expiresAt = localStorage.getItem("shopify_token_expires");
-    const googleAuth = localStorage.getItem("google_auth");
+    const token = localStorage.getItem("shopify_customer_token");
 
-    setIsGoogleAuth(!!googleAuth);
+    const isGoogle = status === "authenticated" && session && !token;
+    setIsGoogleAuth(isGoogle);
 
-    // Check if user is authenticated via Google
-    if (status === "authenticated" && session && googleAuth) {
-      // Use Google session data
+    if (isGoogle) {
       setCustomer({
         firstName: session.user.name?.split(" ")[0] || "User",
         lastName: session.user.name?.split(" ").slice(1).join(" ") || "",
         displayName: session.user.name,
         email: session.user.email,
         image: session.user.image,
-        createdAt: new Date().toISOString(), // We don't have this from Google
-        orders: { edges: [] }, // Google users won't have Shopify order history initially
+        createdAt: new Date().toISOString(),
+        orders: { edges: [] },
       });
       setLoading(false);
       return;

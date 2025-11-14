@@ -148,13 +148,11 @@ function AccountPage() {
         session
     ]);
     const checkAuthAndFetchData = async ()=>{
-        const token = localStorage.getItem("shopify_customer_token");
         const expiresAt = localStorage.getItem("shopify_token_expires");
-        const googleAuth = localStorage.getItem("google_auth");
-        setIsGoogleAuth(!!googleAuth);
-        // Check if user is authenticated via Google
-        if (status === "authenticated" && session && googleAuth) {
-            // Use Google session data
+        const token = localStorage.getItem("shopify_customer_token");
+        const isGoogle = status === "authenticated" && session && !token;
+        setIsGoogleAuth(isGoogle);
+        if (isGoogle) {
             setCustomer({
                 firstName: session.user.name?.split(" ")[0] || "User",
                 lastName: session.user.name?.split(" ").slice(1).join(" ") || "",
@@ -217,7 +215,7 @@ function AccountPage() {
                     className: "animate-spin rounded-full h-12 w-12 border-b-2 border-[#0a1833] mx-auto mb-4"
                 }, void 0, false, {
                     fileName: "[project]/src/app/account/page.jsx",
-                    lineNumber: 90,
+                    lineNumber: 88,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -225,18 +223,18 @@ function AccountPage() {
                     children: "Loading..."
                 }, void 0, false, {
                     fileName: "[project]/src/app/account/page.jsx",
-                    lineNumber: 91,
+                    lineNumber: 89,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/account/page.jsx",
-            lineNumber: 89,
+            lineNumber: 87,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/account/page.jsx",
-        lineNumber: 88,
+        lineNumber: 86,
         columnNumber: 7
     }, this);
     if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -246,12 +244,12 @@ function AccountPage() {
             children: error
         }, void 0, false, {
             fileName: "[project]/src/app/account/page.jsx",
-            lineNumber: 99,
+            lineNumber: 97,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/account/page.jsx",
-        lineNumber: 98,
+        lineNumber: 96,
         columnNumber: 7
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -273,7 +271,7 @@ function AccountPage() {
                                         className: "w-16 h-16 rounded-full border-2 border-[#0a1833]"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/account/page.jsx",
-                                        lineNumber: 112,
+                                        lineNumber: 110,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -287,7 +285,7 @@ function AccountPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 119,
+                                                lineNumber: 117,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -295,7 +293,7 @@ function AccountPage() {
                                                 children: customer?.email
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 122,
+                                                lineNumber: 120,
                                                 columnNumber: 17
                                             }, this),
                                             isGoogleAuth && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -303,19 +301,19 @@ function AccountPage() {
                                                 children: "Signed in with Google"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 124,
+                                                lineNumber: 122,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/account/page.jsx",
-                                        lineNumber: 118,
+                                        lineNumber: 116,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/account/page.jsx",
-                                lineNumber: 109,
+                                lineNumber: 107,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -324,18 +322,18 @@ function AccountPage() {
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/account/page.jsx",
-                                lineNumber: 130,
+                                lineNumber: 128,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/account/page.jsx",
-                        lineNumber: 108,
+                        lineNumber: 106,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/account/page.jsx",
-                    lineNumber: 107,
+                    lineNumber: 105,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -352,7 +350,7 @@ function AccountPage() {
                                             children: "Account Details"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/account/page.jsx",
-                                            lineNumber: 145,
+                                            lineNumber: 143,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -365,7 +363,7 @@ function AccountPage() {
                                                             children: "Name"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 150,
+                                                            lineNumber: 148,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -373,13 +371,13 @@ function AccountPage() {
                                                             children: customer?.displayName
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 151,
+                                                            lineNumber: 149,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 149,
+                                                    lineNumber: 147,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -389,7 +387,7 @@ function AccountPage() {
                                                             children: "Email"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 154,
+                                                            lineNumber: 152,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -397,13 +395,13 @@ function AccountPage() {
                                                             children: customer?.email
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 153,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 153,
+                                                    lineNumber: 151,
                                                     columnNumber: 17
                                                 }, this),
                                                 customer?.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -413,7 +411,7 @@ function AccountPage() {
                                                             children: "Phone"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 159,
+                                                            lineNumber: 157,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -421,13 +419,13 @@ function AccountPage() {
                                                             children: customer.phone
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 158,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 156,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -437,7 +435,7 @@ function AccountPage() {
                                                             children: "Member Since"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 164,
+                                                            lineNumber: 162,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -445,25 +443,25 @@ function AccountPage() {
                                                             children: new Date(customer?.createdAt).toLocaleDateString()
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/account/page.jsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 163,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 163,
+                                                    lineNumber: 161,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/account/page.jsx",
-                                            lineNumber: 148,
+                                            lineNumber: 146,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/account/page.jsx",
-                                    lineNumber: 144,
+                                    lineNumber: 142,
                                     columnNumber: 13
                                 }, this),
                                 customer?.defaultAddress && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -474,7 +472,7 @@ function AccountPage() {
                                             children: "Default Address"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/account/page.jsx",
-                                            lineNumber: 175,
+                                            lineNumber: 173,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -488,21 +486,21 @@ function AccountPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 179,
+                                                    lineNumber: 177,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     children: customer.defaultAddress.address1
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 183,
+                                                    lineNumber: 181,
                                                     columnNumber: 19
                                                 }, this),
                                                 customer.defaultAddress.address2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     children: customer.defaultAddress.address2
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 185,
+                                                    lineNumber: 183,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -516,39 +514,39 @@ function AccountPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 185,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     children: customer.defaultAddress.country
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 192,
+                                                    lineNumber: 190,
                                                     columnNumber: 19
                                                 }, this),
                                                 customer.defaultAddress.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     children: customer.defaultAddress.phone
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 194,
+                                                    lineNumber: 192,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/account/page.jsx",
-                                            lineNumber: 178,
+                                            lineNumber: 176,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/account/page.jsx",
-                                    lineNumber: 174,
+                                    lineNumber: 172,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/account/page.jsx",
-                            lineNumber: 142,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -561,7 +559,7 @@ function AccountPage() {
                                         children: "Order History"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/account/page.jsx",
-                                        lineNumber: 204,
+                                        lineNumber: 202,
                                         columnNumber: 15
                                     }, this),
                                     !customer?.orders?.edges || customer.orders.edges.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -579,12 +577,12 @@ function AccountPage() {
                                                     d: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/account/page.jsx",
-                                                    lineNumber: 217,
+                                                    lineNumber: 215,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 211,
+                                                lineNumber: 209,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -592,7 +590,7 @@ function AccountPage() {
                                                 children: "No orders yet"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 224,
+                                                lineNumber: 222,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -601,13 +599,13 @@ function AccountPage() {
                                                 children: "Start Shopping"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 225,
+                                                lineNumber: 223,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/account/page.jsx",
-                                        lineNumber: 210,
+                                        lineNumber: 208,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "space-y-5",
@@ -627,7 +625,7 @@ function AccountPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 241,
+                                                                        lineNumber: 239,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -635,13 +633,13 @@ function AccountPage() {
                                                                         children: new Date(order.processedAt).toLocaleDateString()
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 244,
+                                                                        lineNumber: 242,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                                lineNumber: 240,
+                                                                lineNumber: 238,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -656,7 +654,7 @@ function AccountPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 249,
+                                                                        lineNumber: 247,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -664,19 +662,19 @@ function AccountPage() {
                                                                         children: order.fulfillmentStatus || "Pending"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 253,
+                                                                        lineNumber: 251,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                                lineNumber: 248,
+                                                                lineNumber: 246,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                        lineNumber: 239,
+                                                        lineNumber: 237,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -690,7 +688,7 @@ function AccountPage() {
                                                                         className: "w-14 h-14 object-cover rounded-lg shadow-sm"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 273,
+                                                                        lineNumber: 271,
                                                                         columnNumber: 31
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -701,7 +699,7 @@ function AccountPage() {
                                                                                 children: item.title
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                                                lineNumber: 280,
+                                                                                lineNumber: 278,
                                                                                 columnNumber: 31
                                                                             }, this),
                                                                             item.variant?.title !== "Default Title" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -709,13 +707,13 @@ function AccountPage() {
                                                                                 children: item.variant?.title
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                                                lineNumber: 284,
+                                                                                lineNumber: 282,
                                                                                 columnNumber: 33
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 279,
+                                                                        lineNumber: 277,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -726,57 +724,57 @@ function AccountPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                                        lineNumber: 289,
+                                                                        lineNumber: 287,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, item.variant?.id, true, {
                                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                                lineNumber: 268,
+                                                                lineNumber: 266,
                                                                 columnNumber: 27
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/account/page.jsx",
-                                                        lineNumber: 266,
+                                                        lineNumber: 264,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, order.id, true, {
                                                 fileName: "[project]/src/app/account/page.jsx",
-                                                lineNumber: 235,
+                                                lineNumber: 233,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/account/page.jsx",
-                                        lineNumber: 233,
+                                        lineNumber: 231,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/account/page.jsx",
-                                lineNumber: 203,
+                                lineNumber: 201,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/account/page.jsx",
-                            lineNumber: 202,
+                            lineNumber: 200,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/account/page.jsx",
-                    lineNumber: 140,
+                    lineNumber: 138,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/account/page.jsx",
-            lineNumber: 105,
+            lineNumber: 103,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/account/page.jsx",
-        lineNumber: 104,
+        lineNumber: 102,
         columnNumber: 5
     }, this);
 }

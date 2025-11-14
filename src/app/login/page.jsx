@@ -1,11 +1,14 @@
+// src/app/login/page.jsx - Fixed redirect loop
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import { CUSTOMER_CREATE, CUSTOMER_LOGIN } from "../../queries/customer";
 import { shopifyRequest } from "../../utils/shopify";
+import { mergeLocalAndMongoDBCart } from "../../utils/cartSync";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,6 +16,7 @@ export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const hasRedirectedRef = useRef(false); // 🔧 FIX: Prevent multiple redirects
 
   const [formData, setFormData] = useState({
     email: "",
@@ -21,11 +25,14 @@ export default function LoginPage() {
     lastName: "",
   });
 
-  // Redirect if already logged in via Google
+  // 🔧 FIX: Only redirect once when Google auth completes
   useEffect(() => {
-    if (status === "authenticated" && session) {
-      localStorage.setItem("customer_email", session.user.email);
-      localStorage.setItem("google_auth", "true");
+    if (status === "authenticated" && session && !hasRedirectedRef.current) {
+      hasRedirectedRef.current = true;
+
+      // Don't call handleCartSync here - let CartSyncProvider handle it
+      // Just redirect to account
+      toast.success("Logged in successfully!");
       router.push("/account");
     }
   }, [status, session, router]);
@@ -47,6 +54,7 @@ export default function LoginPage() {
     } catch (error) {
       setError("Failed to sign in with Google");
       setLoading(false);
+      hasRedirectedRef.current = false;
     }
   };
 
@@ -71,8 +79,10 @@ export default function LoginPage() {
         return;
       }
 
+      toast.success("Account created! Logging in...");
       await handleLogin(e, true);
-    } catch {
+    } catch (err) {
+      console.error("Signup error:", err);
       setError("Something went wrong. Please try again.");
       setLoading(false);
     }
@@ -104,16 +114,36 @@ export default function LoginPage() {
       localStorage.setItem("shopify_token_expires", expiresAt);
       localStorage.setItem("customer_email", formData.email);
 
-      router.push("/account");
-    } catch {
+      // 🔧 FIX: Sync cart silently in background
+      toast.loading("Syncing your cart...");
+
+      try {
+        await mergeLocalAndMongoDBCart(formData.email);
+        window.dispatchEvent(new Event("cartUpdated"));
+        toast.dismiss();
+        toast.success("Logged in successfully!");
+      } catch (syncError) {
+        console.error("Cart sync error:", syncError);
+        toast.dismiss();
+        toast.success("Logged in successfully!");
+      }
+
+      // 🔧 FIX: Redirect after a short delay
+      setTimeout(() => {
+        router.push("/account");
+      }, 500);
+    } catch (err) {
+      console.error("Login error:", err);
       setError("Something went wrong. Please try again.");
       setLoading(false);
     }
   };
 
+  // 🔧 FIX: Don't show loading screen for Google auth
+  // Let the page render normally and handle redirect in useEffect
+
   return (
     <div className="relative min-h-screen mt-10 flex items-center justify-center bg-[#0a1833] overflow-hidden">
-      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src="/new.jpg"
@@ -125,7 +155,6 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-md w-full bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-10 m-6 text-[#0a1833]">
         <h2 className="text-center text-4xl font-serif font-semibold mb-2">
           {isLogin ? "Welcome Back" : "Create Account"}
@@ -133,7 +162,7 @@ export default function LoginPage() {
         <p className="text-center text-gray-600 mb-8">
           {isLogin
             ? "Sign in to access your Orion Diamonds account"
-            : "Join Orion Diamonds — brilliance redefined"}
+            : "Join Orion Diamonds – brilliance redefined"}
         </p>
 
         {error && (
@@ -142,7 +171,6 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Google Sign In Button */}
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
@@ -174,7 +202,9 @@ export default function LoginPage() {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 text-gray-500">Or continue with email</span>
+            <span className="px-2 text-gray-500 bg-white/90">
+              Or continue with email
+            </span>
           </div>
         </div>
 
@@ -254,7 +284,6 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Animation */}
       <style jsx>{`
         @keyframes heroZoomOut {
           0% {

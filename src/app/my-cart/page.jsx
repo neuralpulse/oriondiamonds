@@ -1,86 +1,149 @@
+// src/app/my-cart/page.jsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react";
 import { shopifyRequest } from "../../utils/shopify";
 import { GET_PRODUCT_BY_HANDLE } from "../../queries/products";
 import toast from "react-hot-toast";
 import CartItemPriceBreakup from "../../components/CartItemPriceBreakup";
+import {
+  updateQuantityInMongoDB,
+  removeItemFromMongoDB,
+  clearMongoDBCart,
+} from "../../utils/cartSync";
 
 export default function CartPage() {
   const router = useRouter();
+  const { data: session } = useSession();
+
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [customerEmail, setCustomerEmail] = useState(null);
 
+  // Resolve customerEmail + isLoggedIn safely (client-only)
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const token = localStorage.getItem("shopify_customer_token");
+    const emailFromSession = session?.user?.email || null;
+    const emailFromLocal = localStorage.getItem("customer_email");
+
+    const finalEmail = emailFromSession || emailFromLocal || null;
+    setCustomerEmail(finalEmail);
+    setIsLoggedIn(!!token || !!finalEmail);
+  }, [session]);
+
+  // Load cart from localStorage and react to cartUpdated events
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const loadCart = async () => {
+      const items = JSON.parse(localStorage.getItem("cart") || "[]");
+
+      const enrichedItems = await Promise.all(
+        items.map(async (item) => {
+          if (!item.descriptionHtml && item.handle) {
+            try {
+              const response = await shopifyRequest(GET_PRODUCT_BY_HANDLE, {
+                handle: item.handle,
+              });
+              if (response.data?.product) {
+                return {
+                  ...item,
+                  descriptionHtml: response.data.product.descriptionHtml,
+                };
+              }
+            } catch (err) {
+              console.error("Error fetching product details:", err);
+            }
+          }
+          return item;
+        })
+      );
+
+      setCartItems(enrichedItems);
+    };
+
     loadCart();
+
     const handleCartUpdate = () => loadCart();
     window.addEventListener("cartUpdated", handleCartUpdate);
     return () => window.removeEventListener("cartUpdated", handleCartUpdate);
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("shopify_customer_token");
-      setIsLoggedIn(!!token);
-    }
-  }, []);
-
-  const loadCart = async () => {
-    const items = JSON.parse(localStorage.getItem("cart") || "[]");
-
-    // Fetch product details for each item to get descriptionHtml
-    const enrichedItems = await Promise.all(
-      items.map(async (item) => {
-        if (!item.descriptionHtml && item.handle) {
-          try {
-            const response = await shopifyRequest(GET_PRODUCT_BY_HANDLE, {
-              handle: item.handle,
-            });
-            if (response.data?.product) {
-              return {
-                ...item,
-                descriptionHtml: response.data.product.descriptionHtml,
-              };
-            }
-          } catch (err) {
-            console.error("Error fetching product details:", err);
-          }
-        }
-        return item;
-      })
-    );
-
-    setCartItems(enrichedItems);
-  };
-
-  const updateQuantity = (variantId, newQuantity) => {
+  const updateQuantity = async (variantId, newQuantity) => {
     if (newQuantity < 1) return;
+
     const updatedCart = cartItems.map((item) =>
       item.variantId === variantId ? { ...item, quantity: newQuantity } : item
     );
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    // Update localStorage + UI
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      window.dispatchEvent(new Event("cartUpdated"));
+    }
     setCartItems(updatedCart);
-    window.dispatchEvent(new Event("cartUpdated"));
+
+    // Sync to MongoDB if logged in
+    if (customerEmail) {
+      try {
+        await updateQuantityInMongoDB(customerEmail, variantId, newQuantity);
+        console.log("✅ Quantity updated in MongoDB");
+      } catch (error) {
+        console.error("Failed to sync quantity to MongoDB:", error);
+      }
+    }
   };
 
-  const removeItem = (variantId) => {
+  const removeItem = async (variantId) => {
     const updatedCart = cartItems.filter(
       (item) => item.variantId !== variantId
     );
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      window.dispatchEvent(new Event("cartUpdated"));
+    }
     setCartItems(updatedCart);
-    window.dispatchEvent(new Event("cartUpdated"));
+
+    if (customerEmail) {
+      try {
+        await removeItemFromMongoDB(customerEmail, variantId);
+        console.log("✅ Item removed from MongoDB");
+        toast.success("Item removed from cart");
+      } catch (error) {
+        console.error("Failed to remove item from MongoDB:", error);
+      }
+    } else {
+      toast.success("Item removed from cart");
+    }
   };
 
-  const clearCart = () => {
-    if (window.confirm("Are you sure you want to clear your cart?")) {
+  const clearCart = async () => {
+    if (!window.confirm("Are you sure you want to clear your cart?")) return;
+
+    if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify([]));
-      setCartItems([]);
       window.dispatchEvent(new Event("cartUpdated"));
+    }
+    setCartItems([]);
+
+    if (customerEmail) {
+      try {
+        await clearMongoDBCart(customerEmail);
+        console.log("✅ Cart cleared in MongoDB");
+        toast.success("Cart cleared");
+      } catch (error) {
+        console.error("Failed to clear cart in MongoDB:", error);
+      }
+    } else {
+      toast.success("Cart cleared");
     }
   };
 
@@ -91,55 +154,52 @@ export default function CartPage() {
     );
 
   const handleCheckout = async () => {
-    alert("Checkout clicked!");
-    console.log("🚀 CHECKOUT STARTED");
     if (!isLoggedIn) {
       toast.error("Please login to proceed to checkout");
       router.push("/login");
       return;
     }
-    console.log("✅ User is logged in");
+
     setLoading(true);
     setError("");
 
     try {
-      const customerEmail = localStorage.getItem("customer_email");
+      const email =
+        customerEmail ||
+        (typeof window !== "undefined"
+          ? localStorage.getItem("customer_email")
+          : null);
 
-      if (!customerEmail) {
+      if (!email) {
         toast.error("Customer email not found. Please login again.");
         router.push("/login");
         setLoading(false);
         return;
       }
-      console.log("=== CART ITEMS DEBUG ===");
-      console.log("Number of items:", cartItems.length);
-      cartItems.forEach((item, index) => {
-        console.log(`\nItem ${index + 1}:`);
-        console.log("  Title:", item.title);
-        console.log("  Price:", item.price);
-        console.log("  Calculated Price:", item.calculatedPrice);
-        console.log("  Full item:", item);
-      });
+
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cartItems: cartItems,
-          customerEmail: customerEmail,
+          customerEmail: email,
         }),
       });
 
       const data = await response.json();
 
       if (data.success) {
-        // Clear cart
-        localStorage.setItem("cart", JSON.stringify([]));
+        if (typeof window !== "undefined") {
+          localStorage.setItem("cart", JSON.stringify([]));
+          window.dispatchEvent(new Event("cartUpdated"));
+        }
         setCartItems([]);
-        window.dispatchEvent(new Event("cartUpdated"));
+
+        if (email) {
+          await clearMongoDBCart(email);
+        }
 
         toast.success("Redirecting to payment...");
-
-        // Redirect to Shopify payment page
         window.location.href = data.invoiceUrl;
       } else {
         toast.error(data.error || "Failed to create order");
@@ -177,7 +237,6 @@ export default function CartPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-25 mt-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <h1 className="text-3xl font-bold text-[#0a1833] text-center sm:text-left">
             Shopping Cart
@@ -198,7 +257,6 @@ export default function CartPage() {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {cartItems.map((item) => (
               <div
@@ -273,13 +331,11 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                {/* Price Breakup Component */}
                 <CartItemPriceBreakup item={item} />
               </div>
             ))}
           </div>
 
-          {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-md p-6 sticky top-4">
               <h2 className="text-xl font-bold text-[#0a1833] mb-4">
