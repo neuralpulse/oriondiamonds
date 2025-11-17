@@ -15,10 +15,14 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const imageUrl =
+  let imageUrl =
     product?.featuredImage?.url ||
     product?.images?.edges?.[0]?.node?.url ||
-    "/icon.jpeg";
+    "https://www.oriondiamonds.in/icon.jpeg";
+  if (imageUrl) {
+    const base = imageUrl.split("?")[0];
+    imageUrl = base;
+  }
 
   return {
     title: `${product.title} – Orion Diamonds`,
