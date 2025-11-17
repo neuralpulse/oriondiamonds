@@ -1,271 +1,117 @@
-[00:00:00.917] Server  LOG      ✓ Ready in 610ms
-[00:06:39.138] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:39.988] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:06:40.356] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
-[00:06:40.356] Browser LOG     📥 Loading cart from MongoDB...
-[00:06:42.073] Server  ERROR    ⨯ ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:06:42.202] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:42.650] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:42.650] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:42.653] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:42.669] Server  ERROR    ⨯ ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:06:42.802] Browser ERROR   uncaughtError: Error: ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-[00:06:42.971] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:42.971] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:45.600] Server  LOG     ✅ MongoDB connected
-[00:06:58.511] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:58.511] Browser ERROR   ./src/utils/sheetPricing.js:1:1
-Module not found: Can't resolve 'papaparse'
-> 1 | import Papa from "papaparse";
-    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  2 |
-  3 | let pricingCache = null;
-  4 | let lastFetch = 0;
-
-Import trace:
-  Server Component:
-    ./src/utils/sheetPricing.js
-    ./src/app/bracelets/page.jsx
-
-https://nextjs.org/docs/messages/module-not-found
-[00:06:58.825] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:59.032] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
-[00:06:59.032] Browser LOG     📥 Loading cart from MongoDB...
-[00:06:59.032] Browser LOG     No cart items found in MongoDB
-[00:07:02.545] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.560] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.561] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.562] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.563] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.564] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.564] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.565] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.569] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.570] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.570] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.571] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.572] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.572] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.573] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.574] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.574] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.575] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.575] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.576] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.576] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.577] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.577] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.578] Server  WARN    Duplicate headers found and renamed.
-[00:07:02.578] Server  WARN    Duplicate headers found and renamed.
-[00:07:37.805] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:10:47.527] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.528] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.529] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.529] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.530] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.530] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.531] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.532] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.532] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.533] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.534] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.534] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.536] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.536] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.537] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.538] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.539] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.540] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.540] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.541] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.542] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.542] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.543] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.544] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.544] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.545] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.545] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.546] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.547] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.547] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.548] Server  WARN    Duplicate headers found and renamed.
-[00:10:47.548] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.264] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.265] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.267] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.268] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.269] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.270] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.271] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.272] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.272] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.273] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.273] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.274] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.274] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.275] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.275] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.276] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.276] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.277] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.277] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.278] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.278] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.279] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.279] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.280] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.281] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.282] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.282] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.283] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.283] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.284] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.284] Server  WARN    Duplicate headers found and renamed.
-[00:11:07.285] Server  WARN    Duplicate headers found and renamed.
-[00:11:21.269] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:21.416] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
-[00:11:21.416] Browser LOG     📥 Loading cart from MongoDB...
-[00:11:21.515] Browser LOG     No cart items found in MongoDB
-[00:11:23.790] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:00.774] Server  LOG      ✓ Ready in 528ms
+[00:04:56.725] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:57.524] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:04:57.838] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:04:57.838] Browser LOG     📥 Loading cart from MongoDB...
+[00:04:59.650] Server  LOG     ✅ MongoDB connected
+[00:05:00.675] Browser LOG     No cart items found in MongoDB
+[00:05:01.446] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.473] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.474] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.474] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.475] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.475] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.476] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.477] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.477] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.478] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.479] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.480] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.481] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.482] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.483] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.484] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.484] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.485] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.486] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.486] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.487] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.487] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.488] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.488] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.489] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.489] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.490] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.490] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.491] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.492] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.492] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.493] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.493] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.494] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.494] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.495] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.495] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.496] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.496] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.497] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.497] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.498] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.499] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.499] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.500] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.500] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.503] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.503] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.504] Server  WARN    Duplicate headers found and renamed.
+[00:05:01.504] Server  WARN    Duplicate headers found and renamed.
+[00:05:04.652] Server  WARN    Error: Route "/product/[handle]" used `params.handle`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:05:04.672] Server  WARN    Error: Route "/product/[handle]" used `params.handle`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:05:04.803] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:04.869] Server  ERROR   GraphQL Errors: [{...}]
+[00:05:04.871] Server  ERROR   Error making Shopify request: Error: Variable $handle of type String! was provided invalid value
+[00:05:04.876] Server  ERROR    ⨯ Error: Variable $handle of type String! was provided invalid value
+[00:05:05.104] Browser ERROR   uncaughtError: Error: Variable $handle of type String! was provided invalid value
+[00:06:51.949] Server  LOG      ✓ Compiled in 106ms
+[00:06:52.344] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:52.428] Server  ERROR    ⨯ Error: Invalid OpenGraph type: product
+[00:06:52.737] Server  ERROR    ⨯ Error: Invalid OpenGraph type: product
+[00:06:53.142] Browser ERROR   uncaughtError: Error: Invalid OpenGraph type: product
+[00:07:02.700] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:02.780] Server  ERROR    ⨯ Error: Invalid OpenGraph type: product
+[00:07:03.138] Server  ERROR    ⨯ Error: Invalid OpenGraph type: product
+[00:07:03.139] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:07:03.139] Browser LOG     📥 Loading cart from MongoDB...
+[00:07:03.466] Browser ERROR   uncaughtError: Error: Invalid OpenGraph type: product
+[00:07:03.466] Browser LOG     No cart items found in MongoDB
+[00:07:31.727] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:32.142] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:07:32.142] Browser LOG     📥 Loading cart from MongoDB...
+[00:07:32.142] Browser LOG     No cart items found in MongoDB
+[00:07:35.254] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:35.386] Browser LOG     🔄 Starting cart sync for: kushagra4647@gmail.com
+[00:07:35.386] Browser LOG     📥 Loading cart from MongoDB...
+[00:07:35.692] Browser LOG     No cart items found in MongoDB
+[00:07:37.894] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:07:40.871] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.894] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.895] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.895] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.896] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.896] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.897] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.898] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.898] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.899] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.900] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.900] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.901] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.902] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.902] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.903] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.903] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.904] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.904] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.905] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.906] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.906] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.907] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.907] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.908] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.908] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.909] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.909] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.910] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.910] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.911] Server  WARN    Duplicate headers found and renamed.
+[00:07:40.912] Server  WARN    Duplicate headers found and renamed.
