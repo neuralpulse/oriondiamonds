@@ -2,73 +2,10 @@
 import CollectionSection from "../../components/collectionsect";
 import { shopifyRequest } from "../../utils/shopify";
 import { GET_RINGS_COLLECTION } from "../../queries/collections";
-import { calculateFinalPrice } from "../../utils/price";
+import { getSheetPricing } from "../../utils/sheetPricing";
 
 // Cache for 1 hour
 export const revalidate = 3600;
-
-async function calculateProductPrice(description, selectedKarat = "10K") {
-  try {
-    // Improved regex to capture multiple diamond types
-    const diamondShapeMatch = description.match(
-      /Diamond Shape:\s*([A-Za-z,\s]+?)(?=Total Diamonds|Diamond Weight|$)/i
-    );
-    const totalDiamondsMatch = description.match(
-      /Total Diamonds:\s*([\d,\s]+?)(?=Diamond Weight|Total Diamond Weight|Metal Weights|$)/i
-    );
-    const diamondWeightMatch = description.match(
-      /Diamond Weight:\s*([\d.,\s]+?)(?=Total Diamond Weight|Metal Weights|$)/i
-    );
-    const goldWeightMatch = description.match(
-      new RegExp(`${selectedKarat} Gold:\\s*([\\d.]+)g`, "i")
-    );
-
-    const diamondShapes = diamondShapeMatch
-      ? diamondShapeMatch[1]
-          .trim()
-          .split(",")
-          .map((s) => s.trim())
-          .filter((s) => s)
-      : [];
-
-    const diamondCounts = totalDiamondsMatch
-      ? totalDiamondsMatch[1]
-          .trim()
-          .split(",")
-          .map((s) => s.trim())
-          .filter((s) => s && !isNaN(s))
-          .map((c) => parseInt(c))
-      : [];
-
-    const diamondWeights = diamondWeightMatch
-      ? diamondWeightMatch[1]
-          .trim()
-          .split(",")
-          .map((s) => s.trim())
-          .filter((s) => s && !isNaN(s))
-          .map((w) => parseFloat(w))
-      : [];
-
-    const goldWeight = goldWeightMatch ? parseFloat(goldWeightMatch[1]) : 0;
-
-    const diamonds = diamondShapes.map((shape, i) => ({
-      shape,
-      weight: diamondWeights[i] || 0,
-      count: diamondCounts[i] || 0,
-    }));
-
-    const result = await calculateFinalPrice({
-      diamonds,
-      goldWeight,
-      goldKarat: selectedKarat,
-    });
-
-    return result.totalPrice;
-  } catch (error) {
-    console.error("Error calculating price:", error);
-    return 0;
-  }
-}
 
 function extractDiamondDetails(description) {
   const caratMatch = description.match(/Total Diamond Carat:\s*([\d.]+)/);
@@ -104,10 +41,9 @@ async function transformRingsData(productsEdges) {
 
       const diamondDetails = extractDiamondDetails(product.description);
 
-      const calculatedPrice = await calculateProductPrice(
-        product.description,
-        "10K"
-      );
+      const sheetPricing = await getSheetPricing();
+      const handle = product.handle;
+      const price10K = sheetPricing[handle]?.price10K || 0;
 
       return {
         productCode: firstVariant?.sku || "",
@@ -121,7 +57,7 @@ async function transformRingsData(productsEdges) {
           shape: diamondDetails.shape,
           count: diamondDetails.count,
         },
-        price: calculatedPrice,
+        price: price10K,
         currency: firstVariant?.price.currencyCode || "INR",
         image: product.featuredImage?.url || firstVariant?.image?.url || "",
         images:

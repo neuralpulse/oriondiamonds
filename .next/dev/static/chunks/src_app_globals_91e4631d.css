@@ -745,6 +745,10 @@
     display: inline-block;
   }
 
+  .table {
+    display: table;
+  }
+
   .aspect-4\/5 {
     aspect-ratio: 4 / 5;
   }
