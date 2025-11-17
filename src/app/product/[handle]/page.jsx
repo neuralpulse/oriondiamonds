@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   const imageUrl =
     product?.featuredImage?.url ||
     product?.images?.edges?.[0]?.node?.url ||
-    "https://www.oriondiamonds.in/icon.jpeg";
+    "/icon.jpeg";
 
   return {
     title: `${product.title} – Orion Diamonds`,
