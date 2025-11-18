@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { formatIndianCurrency, formatINR } from "../utils/formatIndianCurrency";
+import { useSearchParams } from "next/navigation";
 
 export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
@@ -19,6 +20,8 @@ export default function CollectionSection({ id, title, items = [] }) {
   const [sortBy, setSortBy] = useState("price-low");
   const [priceRange, setPriceRange] = useState([0, 500000]);
   const [showFilters, setShowFilters] = useState(false);
+  const searchParams = useSearchParams();
+  const initialPage = Number(searchParams.get("page")) || 1;
 
   // Calculate min and max prices from items
   const minPrice =
@@ -68,6 +71,11 @@ export default function CollectionSection({ id, title, items = [] }) {
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("page", page);
+      window.history.replaceState({}, "", url);
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };

@@ -47,6 +47,9 @@ export default function ProductDetails() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [totalPrice, setTotalPrice] = useState(null);
   const { data: session } = useSession();
+  const [thumbsLoaded, setThumbsLoaded] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
+  const totalThumbs = (product?.images?.edges?.length || 0) + 1;
 
   const [engravingText, setEngravingText] = useState("");
   const handlePriceData = (data) => {
@@ -201,6 +204,17 @@ export default function ProductDetails() {
     if (isModalOpen && modalRef.current) {
       modalRef.current.focus();
     }
+  }, [isModalOpen]);
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isModalOpen]);
 
   useEffect(() => {
@@ -554,6 +568,15 @@ export default function ProductDetails() {
               </span>
             </div>
 
+            {!thumbsLoaded && (
+              <div className="w-full h-2 bg-gray-200 rounded-md overflow-hidden mb-2">
+                <div
+                  className="h-full bg-gray-400 animate-pulse transition-all duration-300"
+                  style={{ width: `${(loadedCount / totalThumbs) * 100}%` }}
+                ></div>
+              </div>
+            )}
+
             {/* Thumbnail Strip */}
             <div className="flex gap-3 overflow-x-auto">
               {product.images?.edges?.map(({ node }) => (
@@ -574,6 +597,13 @@ export default function ProductDetails() {
                     src={node.url}
                     alt={node.altText || product.title}
                     className="w-20 h-20 object-cover rounded-md"
+                    onLoad={() => {
+                      setLoadedCount((prev) => {
+                        const next = prev + 1;
+                        if (next === totalThumbs) setThumbsLoaded(true);
+                        return next;
+                      });
+                    }}
                   />
                 </button>
               ))}
@@ -595,6 +625,13 @@ export default function ProductDetails() {
                   src="/dct.jpg"
                   alt="DCT"
                   className="w-20 h-20 object-cover rounded-md"
+                  onLoad={() => {
+                    setLoadedCount((prev) => {
+                      const next = prev + 1;
+                      if (next === totalThumbs) setThumbsLoaded(true);
+                      return next;
+                    });
+                  }}
                 />
               </button>
             </div>
@@ -935,7 +972,7 @@ export default function ProductDetails() {
       {isModalOpen && (
         <div
           ref={modalRef}
-          className="fixed inset-0 bg-white z-50 flex items-center justify-center outline-none"
+          className="fixed inset-0 bg-white z-50 flex items-center justify-center overflow-hidden touch-none"
           onKeyDown={handleKeyDown}
           tabIndex={0}
           onClick={(e) => {
@@ -983,7 +1020,7 @@ export default function ProductDetails() {
               product.featuredImage?.url
             }
             alt={product.title}
-            className="max-h-[90vh] max-w-[90vw] object-contain p-4 rounded-lg"
+            className="h-[90vh] max-w-[90vw] object-contain p-4 rounded-lg"
           />
 
           {/* Next Button */}

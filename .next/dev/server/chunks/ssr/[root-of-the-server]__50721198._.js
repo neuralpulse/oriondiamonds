@@ -105,7 +105,7 @@ const GET_PRODUCT_BY_HANDLE = `
           }
         }
       }
-      images(first: 10) {
+      images(first: 15) {
         edges {
           node {
             url
@@ -186,7 +186,11 @@ async function generateMetadata({ params }) {
             description: "Premium diamond jewellery"
         };
     }
-    const imageUrl = product?.featuredImage?.url || product?.images?.edges?.[0]?.node?.url || "https://www.oriondiamonds.in/icon.jpeg";
+    let imageUrl = product?.featuredImage?.url || product?.images?.edges?.[0]?.node?.url || "https://www.oriondiamonds.in/icon.jpeg";
+    if (imageUrl) {
+        const base = imageUrl.split("?")[0];
+        imageUrl = base;
+    }
     return {
         title: `${product.title} – Orion Diamonds`,
         description: product.description?.slice(0, 150) || "",
@@ -219,7 +223,7 @@ async function ProductPage({ params }) {
         handle: handle
     }, void 0, false, {
         fileName: "[project]/src/app/product/[handle]/page.jsx",
-        lineNumber: 50,
+        lineNumber: 54,
         columnNumber: 10
     }, this);
 }

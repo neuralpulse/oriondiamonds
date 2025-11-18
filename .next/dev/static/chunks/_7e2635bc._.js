@@ -74,6 +74,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function CollectionSection({ id, title, items = [] }) {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -85,6 +86,8 @@ function CollectionSection({ id, title, items = [] }) {
         500000
     ]);
     const [showFilters, setShowFilters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
+    const initialPage = Number(searchParams.get("page")) || 1;
     // Calculate min and max prices from items
     const minPrice = items.length > 0 ? Math.min(...items.map((item)=>item.price)) : 0;
     const maxPrice = items.length > 0 ? Math.max(...items.map((item)=>item.price)) : 500000;
@@ -138,6 +141,9 @@ function CollectionSection({ id, title, items = [] }) {
     const goToPage = (page)=>{
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
+            const url = new URL(window.location.href);
+            url.searchParams.set("page", page);
+            window.history.replaceState({}, "", url);
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -173,7 +179,7 @@ function CollectionSection({ id, title, items = [] }) {
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 94,
+                        lineNumber: 102,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -184,20 +190,20 @@ function CollectionSection({ id, title, items = [] }) {
                                 size: 16
                             }, void 0, false, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 106,
+                                lineNumber: 114,
                                 columnNumber: 11
                             }, this),
                             "Filters & Sort"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 102,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/collectionsect.jsx",
-                lineNumber: 93,
+                lineNumber: 101,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -211,7 +217,7 @@ function CollectionSection({ id, title, items = [] }) {
                                 children: "Sort By"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 119,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -224,7 +230,7 @@ function CollectionSection({ id, title, items = [] }) {
                                         children: "Default"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 127,
+                                        lineNumber: 135,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -232,7 +238,7 @@ function CollectionSection({ id, title, items = [] }) {
                                         children: "Price: Low to High"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 128,
+                                        lineNumber: 136,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -240,19 +246,19 @@ function CollectionSection({ id, title, items = [] }) {
                                         children: "Price: High to Low"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 129,
+                                        lineNumber: 137,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 122,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 118,
+                        lineNumber: 126,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -268,7 +274,7 @@ function CollectionSection({ id, title, items = [] }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 135,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -285,7 +291,7 @@ function CollectionSection({ id, title, items = [] }) {
                                         className: "w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a1833] text-sm"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 139,
+                                        lineNumber: 147,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -293,7 +299,7 @@ function CollectionSection({ id, title, items = [] }) {
                                         children: "to"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 148,
+                                        lineNumber: 156,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -307,19 +313,19 @@ function CollectionSection({ id, title, items = [] }) {
                                         className: "w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0a1833] text-sm"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 149,
+                                        lineNumber: 157,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 138,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 134,
+                        lineNumber: 142,
                         columnNumber: 9
                     }, this),
                     isFiltered && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -332,25 +338,25 @@ function CollectionSection({ id, title, items = [] }) {
                                     size: 16
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/collectionsect.jsx",
-                                    lineNumber: 168,
+                                    lineNumber: 176,
                                     columnNumber: 15
                                 }, this),
                                 "Reset"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 164,
+                            lineNumber: 172,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 163,
+                        lineNumber: 171,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/collectionsect.jsx",
-                lineNumber: 112,
+                lineNumber: 120,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -364,7 +370,7 @@ function CollectionSection({ id, title, items = [] }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/collectionsect.jsx",
-                lineNumber: 176,
+                lineNumber: 184,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -382,14 +388,14 @@ function CollectionSection({ id, title, items = [] }) {
                                         className: "w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 191,
+                                        lineNumber: 199,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 196,
+                                        lineNumber: 204,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -405,25 +411,25 @@ function CollectionSection({ id, title, items = [] }) {
                                                     className: "w-3.5 h-3.5 md:w-4 md:h-4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/collectionsect.jsx",
-                                                    lineNumber: 207,
+                                                    lineNumber: 215,
                                                     columnNumber: 21
                                                 }, this),
                                                 "View Details"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/collectionsect.jsx",
-                                            lineNumber: 200,
+                                            lineNumber: 208,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 199,
+                                        lineNumber: 207,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 190,
+                                lineNumber: 198,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -434,7 +440,7 @@ function CollectionSection({ id, title, items = [] }) {
                                         children: item.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 215,
+                                        lineNumber: 223,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -445,7 +451,7 @@ function CollectionSection({ id, title, items = [] }) {
                                                 children: "Starting from (10K Gold)"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                                lineNumber: 221,
+                                                lineNumber: 229,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -453,25 +459,25 @@ function CollectionSection({ id, title, items = [] }) {
                                                 children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$formatIndianCurrency$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["formatINR"])(item.price)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                                lineNumber: 224,
+                                                lineNumber: 232,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/collectionsect.jsx",
-                                        lineNumber: 220,
+                                        lineNumber: 228,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/collectionsect.jsx",
-                                lineNumber: 214,
+                                lineNumber: 222,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, idx, true, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 184,
+                        lineNumber: 192,
                         columnNumber: 13
                     }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "col-span-full flex flex-col items-center justify-center py-16",
@@ -481,7 +487,7 @@ function CollectionSection({ id, title, items = [] }) {
                             children: "No products found"
                         }, void 0, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 233,
+                            lineNumber: 241,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -489,7 +495,7 @@ function CollectionSection({ id, title, items = [] }) {
                             children: "Try adjusting your filters"
                         }, void 0, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 236,
+                            lineNumber: 244,
                             columnNumber: 13
                         }, this),
                         isFiltered && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -498,18 +504,18 @@ function CollectionSection({ id, title, items = [] }) {
                             children: "Reset Filters"
                         }, void 0, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 240,
+                            lineNumber: 248,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/collectionsect.jsx",
-                    lineNumber: 232,
+                    lineNumber: 240,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/collectionsect.jsx",
-                lineNumber: 181,
+                lineNumber: 189,
                 columnNumber: 7
             }, this),
             totalPages > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -523,12 +529,12 @@ function CollectionSection({ id, title, items = [] }) {
                             size: 20
                         }, void 0, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 259,
+                            lineNumber: 267,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 254,
+                        lineNumber: 262,
                         columnNumber: 11
                     }, this),
                     [
@@ -539,7 +545,7 @@ function CollectionSection({ id, title, items = [] }) {
                             children: i + 1
                         }, i, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 263,
+                            lineNumber: 271,
                             columnNumber: 13
                         }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -550,30 +556,31 @@ function CollectionSection({ id, title, items = [] }) {
                             size: 20
                         }, void 0, false, {
                             fileName: "[project]/src/components/collectionsect.jsx",
-                            lineNumber: 281,
+                            lineNumber: 289,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/collectionsect.jsx",
-                        lineNumber: 276,
+                        lineNumber: 284,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/collectionsect.jsx",
-                lineNumber: 253,
+                lineNumber: 261,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/collectionsect.jsx",
-        lineNumber: 91,
+        lineNumber: 99,
         columnNumber: 5
     }, this);
 }
-_s(CollectionSection, "oDlwYPKMFQaeCQFfjQCJNpeiUgk=", false, function() {
+_s(CollectionSection, "CZV0GHPv9eBhaT6tgz07nWzVDWo=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
 _c = CollectionSection;

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import InstagramProvider from "next-auth/providers/instagram";
 import { shopifyRequest } from "../../../../utils/shopify";
 import { CUSTOMER_CREATE, CUSTOMER_LOGIN } from "../../../../queries/customer";
 const handler = NextAuth({
@@ -7,6 +8,10 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    InstagramProvider({
+      clientId: process.env.INSTAGRAM_CLIENT_ID,
+      clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
     }),
   ],
 
@@ -42,6 +47,35 @@ const handler = NextAuth({
           return false;
         }
       }
+      if (account.provider === "instagram") {
+        try {
+          const email = user.email || `${user.id}@instagram.com`;
+          const firstName = user.name?.split(" ")[0] || "Instagram";
+          const lastName = user.name?.split(" ").slice(1).join(" ") || "User";
+
+          const randomPassword = Math.random().toString(36).slice(-12) + "Aa1!";
+
+          // Create Shopify customer (ignore if exists)
+          try {
+            await shopifyRequest(CUSTOMER_CREATE, {
+              input: {
+                email,
+                password: randomPassword,
+                firstName,
+                lastName,
+              },
+            });
+          } catch (err) {
+            console.log("Customer exists already");
+          }
+
+          return true;
+        } catch (error) {
+          console.error("Instagram sign-in error:", error);
+          return false;
+        }
+      }
+
       return true;
     },
 
