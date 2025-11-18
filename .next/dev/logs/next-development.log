@@ -1,204 +1,135 @@
-[00:00:00.991] Server  LOG      ✓ Ready in 649ms
-[00:00:20.643] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.533] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:24.630] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.655] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.656] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.657] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.657] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.658] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.659] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.660] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.660] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.661] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.662] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.662] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.663] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.664] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.664] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.665] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.665] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.666] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.666] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.667] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.668] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.668] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.669] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.669] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.670] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.670] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.671] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.671] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.672] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.673] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.673] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.674] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.674] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.675] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.675] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.676] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.676] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.677] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.678] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.679] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.679] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.680] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.680] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.681] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.681] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.682] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.682] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.683] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.684] Server  WARN    Duplicate headers found and renamed.
-[00:00:24.684] Server  WARN    Duplicate headers found and renamed.
-[00:00:27.157] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:04:25.325] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:07.709] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:18.462] Server  LOG      ✓ Compiled in 36ms
-[00:12:32.092] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:36.070] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.096] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.097] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.098] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.099] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.099] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.100] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.101] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.101] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.102] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.103] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.103] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.104] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.105] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.105] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.106] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.106] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.107] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.108] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.108] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.109] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.109] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.110] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.110] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.111] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.112] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.112] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.113] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.113] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.120] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.120] Server  WARN    Duplicate headers found and renamed.
-[00:12:36.121] Server  WARN    Duplicate headers found and renamed.
-[00:12:37.364] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:13:18.608] Server  LOG      ✓ Compiled in 56ms
-[00:13:28.673] Server  LOG      ✓ Compiled in 49ms
-[00:14:37.100] Server  LOG      ✓ Compiled in 67ms
-[00:14:51.062] Server  LOG      ✓ Compiled in 39ms
-[00:15:20.890] Server  LOG      ✓ Compiled in 76ms
-[00:15:23.658] Server  LOG      ✓ Compiled in 22ms
-[00:16:01.342] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'images')
-[00:16:22.114] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'images')
-[00:16:22.285] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:22.423] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'images')
-[00:17:38.055] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:17:38.059] Server  LOG      ✓ Compiled in 51ms
-[00:17:38.326] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'featuredImage')
-[00:17:38.804] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'featuredImage')
-[00:18:15.738] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:18:15.744] Server  LOG      ✓ Compiled in 50ms
-[00:18:17.796] Browser ERROR   uncaughtError: ReferenceError: totalThumbs is not defined
-[00:18:23.748] Browser ERROR   uncaughtError: ReferenceError: totalThumbs is not defined
-[00:19:22.533] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:22.548] Server  LOG      ✓ Compiled in 62ms
-[00:19:22.851] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'image')
-[00:19:23.051] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:23.238] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'image')
-[00:20:15.383] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:20:15.405] Server  LOG      ✓ Compiled in 42ms
-[00:20:15.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:19.891] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:22.152] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:20:25.572] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.593] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.594] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.595] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.596] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.597] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.597] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.598] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.600] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.600] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.601] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.602] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.602] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.603] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.604] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.604] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.605] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.606] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.606] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.607] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.608] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.608] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.609] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.610] Server  WARN    Duplicate headers found and renamed.
-[00:20:25.610] Server  WARN    Duplicate headers found and renamed.
-[00:25:07.939] Server  LOG      ✓ Compiled in 101ms
-[00:25:18.383] Server  LOG      ✓ Compiled in 53ms
-[00:25:18.796] Browser ERROR   ./src/components/collectionsect.jsx:25:10
-Ecmascript file had an error
-  23 |   const searchParams = useSearchParams();
-  24 |   const initialPage = Number(searchParams.get("page")) || 1;
-> 25 |   const [currentPage, setCurrentPage] = useState(initialPage);
-     |          ^^^^^^^^^^^
-  26 |
-  27 |   // Calculate min and max prices from items
-  28 |   const minPrice =
-
-the name `currentPage` is defined multiple times
-
-Import trace:
-  Server Component:
-    ./src/components/collectionsect.jsx
-    ./src/app/rings/page.jsx
-[00:25:18.796] Browser ERROR   ./src/components/collectionsect.jsx:25:23
-Ecmascript file had an error
-  23 |   const searchParams = useSearchParams();
-  24 |   const initialPage = Number(searchParams.get("page")) || 1;
-> 25 |   const [currentPage, setCurrentPage] = useState(initialPage);
-     |                       ^^^^^^^^^^^^^^
-  26 |
-  27 |   // Calculate min and max prices from items
-  28 |   const minPrice =
-
-the name `setCurrentPage` is defined multiple times
-
-Import trace:
-  Server Component:
-    ./src/components/collectionsect.jsx
-    ./src/app/rings/page.jsx
-[00:25:22.157] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.158] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.159] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.159] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.160] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.161] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.161] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.162] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.163] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.164] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.165] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.166] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.173] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.174] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.176] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.176] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.177] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.178] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.180] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.182] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.183] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.183] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.184] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.185] Server  WARN    Duplicate headers found and renamed.
-[00:25:22.186] Server  WARN    Duplicate headers found and renamed.
-[00:25:34.434] Server  LOG      ✓ Compiled in 38ms
+[00:00:00.764] Server  LOG      ✓ Ready in 530ms
+[00:00:03.325] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.112] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:06.593] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.611] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.612] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.613] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.613] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.614] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.614] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.615] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.616] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.617] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.617] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.618] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.619] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.619] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.620] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.620] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.621] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.621] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.622] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.623] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.623] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.624] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.624] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.625] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.626] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.626] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.627] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.627] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.628] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.628] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.629] Server  WARN    Duplicate headers found and renamed.
+[00:00:06.630] Server  WARN    Duplicate headers found and renamed.
+[00:00:08.464] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:27.683] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:32.283] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:20.716] Server  LOG      ✓ Compiled in 95ms
+[00:02:45.316] Server  LOG      ✓ Compiled in 41ms
+[00:02:47.349] Server  LOG      ✓ Compiled in 21ms
+[00:02:52.683] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:54.092] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.109] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.110] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.110] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.111] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.111] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.112] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.112] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.113] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.114] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.114] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.115] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.115] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.116] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.116] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.117] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.117] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.118] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.118] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.119] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.120] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.120] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.121] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.122] Server  WARN    Duplicate headers found and renamed.
+[00:02:54.123] Server  WARN    Duplicate headers found and renamed.
+[00:02:56.381] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:59.291] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.316] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.317] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.318] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.318] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.319] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.319] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.320] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.320] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.321] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.322] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.323] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.324] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.324] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.325] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.325] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.326] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.326] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.327] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.327] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.328] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.329] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.329] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.338] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.339] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.340] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.340] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.341] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.341] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.342] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.342] Server  WARN    Duplicate headers found and renamed.
+[00:02:59.343] Server  WARN    Duplicate headers found and renamed.
+[00:04:32.046] Server  LOG      ✓ Compiled in 134ms
+[00:04:48.146] Server  LOG      ✓ Compiled in 53ms
+[00:05:01.496] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:03.038] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:04.749] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:08.931] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:46.396] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.417] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.418] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.418] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.419] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.419] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.420] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.421] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.421] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.422] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.422] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.423] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.424] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.424] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.425] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.426] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.429] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.430] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.430] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.431] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.432] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.433] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.434] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.434] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.435] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.436] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.436] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.437] Server  WARN    Duplicate headers found and renamed.
+[00:05:46.437] Server  WARN    Duplicate headers found and renamed.

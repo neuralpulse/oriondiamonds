@@ -849,24 +849,12 @@
     max-height: 85vh;
   }
 
-  .max-h-\[90vh\] {
-    max-height: 90vh;
-  }
-
-  .max-h-\[100vh\] {
-    max-height: 100vh;
-  }
-
   .max-h-\[800px\] {
     max-height: 800px;
   }
 
   .max-h-full {
     max-height: 100%;
-  }
-
-  .max-h-screen {
-    max-height: 100vh;
   }
 
   .min-h-\[70vh\] {
@@ -1457,6 +1445,10 @@
 
   .bg-gray-200 {
     background-color: var(--color-gray-200);
+  }
+
+  .bg-gray-300 {
+    background-color: var(--color-gray-300);
   }
 
   .bg-gray-400 {

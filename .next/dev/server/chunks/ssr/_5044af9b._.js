@@ -44,7 +44,7 @@ const GET_PRODUCT_BY_HANDLE = `
           }
         }
       }
-      images(first: 10) {
+      images(first: 15) {
         edges {
           node {
             url

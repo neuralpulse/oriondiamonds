@@ -569,9 +569,9 @@ export default function ProductDetails() {
             </div>
 
             {!thumbsLoaded && (
-              <div className="w-full h-2 bg-gray-200 rounded-md overflow-hidden mb-2">
+              <div className="w-full h-2 bg-gray-300 rounded-md overflow-hidden mb-2">
                 <div
-                  className="h-full bg-gray-400 animate-pulse transition-all duration-300"
+                  className="h-full bg-[#0a1833] animate-pulse transition-all duration-300"
                   style={{ width: `${(loadedCount / totalThumbs) * 100}%` }}
                 ></div>
               </div>

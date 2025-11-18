@@ -15,13 +15,13 @@ import { useSearchParams } from "next/navigation";
 
 export default function CollectionSection({ id, title, items = [] }) {
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [sortBy, setSortBy] = useState("price-low");
   const [priceRange, setPriceRange] = useState([0, 500000]);
   const [showFilters, setShowFilters] = useState(false);
   const searchParams = useSearchParams();
   const initialPage = Number(searchParams.get("page")) || 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
 
   // Calculate min and max prices from items
   const minPrice =
@@ -82,7 +82,7 @@ export default function CollectionSection({ id, title, items = [] }) {
 
   // Reset to page 1 when filters/sort change
   useEffect(() => {
-    setCurrentPage(1);
+    setCurrentPage(initialPage);
   }, [sortBy, priceRange]);
 
   const handleResetFilters = () => {
