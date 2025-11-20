@@ -66,33 +66,44 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/utils/price.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/utils/price.js (UPDATED)
+// src/utils/price.js (UPDATED VERSION)
+// Cache for pricing config
 __turbopack_context__.s([
     "calculateFinalPrice",
     ()=>calculateFinalPrice,
+    "clearAllCaches",
+    ()=>clearAllCaches,
+    "clearGoldPriceCache",
+    ()=>clearGoldPriceCache,
     "clearPricingCache",
     ()=>clearPricingCache
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const API_URL = ("TURBOPACK compile-time value", "https://margin-updater.onrender.com") || "http://localhost:3001";
-// Cache for pricing config
 let cachedConfig = null;
-let lastFetch = 0;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-// Fetch pricing configuration from API
+let lastConfigFetch = 0;
+const CONFIG_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+// Cache for gold price
+let cachedGoldPrice = null;
+let lastGoldFetch = 0;
+const GOLD_CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+// Fetch pricing configuration from internal API
 async function getPricingConfig() {
     const now = Date.now();
     // Return cached config if still valid
-    if (cachedConfig && now - lastFetch < CACHE_DURATION) {
+    if (cachedConfig && now - lastConfigFetch < CONFIG_CACHE_DURATION) {
         return cachedConfig;
     }
     try {
-        const response = await fetch(`${API_URL}/api/pricing-config`);
+        // Use internal API route
+        const baseUrl = ("TURBOPACK compile-time value", "http://localhost:3000") || "http://localhost:3000";
+        const response = await fetch(`${baseUrl}/api/pricing-config`, {
+            cache: "no-store"
+        });
         if (!response.ok) {
             throw new Error("Failed to fetch pricing config");
         }
         cachedConfig = await response.json();
-        lastFetch = now;
+        lastConfigFetch = now;
         return cachedConfig;
     } catch (error) {
         console.error("Error fetching pricing config:", error);
@@ -123,6 +134,35 @@ async function getPricingConfig() {
             },
             gstRate: 0.03
         };
+    }
+}
+// Fetch gold price from internal API
+async function getGoldPrice() {
+    const now = Date.now();
+    // Return cached price if still valid
+    if (cachedGoldPrice && now - lastGoldFetch < GOLD_CACHE_DURATION) {
+        return cachedGoldPrice;
+    }
+    try {
+        // Use internal API route
+        const baseUrl = ("TURBOPACK compile-time value", "http://localhost:3000") || "http://localhost:3000";
+        const response = await fetch(`${baseUrl}/api/gold-price`, {
+            cache: "no-store"
+        });
+        if (!response.ok) {
+            throw new Error("Failed to fetch gold price");
+        }
+        const data = await response.json();
+        if (!data.success || !data.price) {
+            throw new Error("Invalid gold price response");
+        }
+        cachedGoldPrice = parseFloat(data.price);
+        lastGoldFetch = now;
+        return cachedGoldPrice;
+    } catch (error) {
+        console.error("Error fetching gold price:", error);
+        // Fallback to a reasonable default
+        return 6500; // Default 24K gold price per gram
     }
 }
 // Utility: find rate from range-based diamond price chart
@@ -309,10 +349,8 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
     }
     // Add base fees from config
     totalDiamondPrice += config.diamondMargins.baseFees.fee1 + config.diamondMargins.baseFees.fee2;
-    // === Get gold price from API ===
-    const res = await fetch("https://gold-price-india.onrender.com/api/gold/24k");
-    const json = await res.json();
-    const gold24Price = parseFloat(json.price) || 0;
+    // === Get gold price from internal API ===
+    const gold24Price = await getGoldPrice();
     const goldRates = {
         "10K": gold24Price * (10 / 24),
         "14K": gold24Price * (14 / 24),
@@ -339,7 +377,15 @@ async function calculateFinalPrice({ diamonds = [], goldWeight = 0, goldKarat = 
 }
 function clearPricingCache() {
     cachedConfig = null;
-    lastFetch = 0;
+    lastConfigFetch = 0;
+}
+function clearGoldPriceCache() {
+    cachedGoldPrice = null;
+    lastGoldFetch = 0;
+}
+function clearAllCaches() {
+    clearPricingCache();
+    clearGoldPriceCache();
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);

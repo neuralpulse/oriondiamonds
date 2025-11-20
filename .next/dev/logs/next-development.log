@@ -1,135 +1,416 @@
-[00:00:00.764] Server  LOG      ✓ Ready in 530ms
-[00:00:03.325] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.112] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:06.593] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.611] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.612] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.613] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.613] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.614] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.614] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.615] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.616] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.617] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.617] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.618] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.619] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.619] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.620] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.620] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.621] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.621] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.622] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.623] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.623] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.624] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.624] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.625] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.626] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.626] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.627] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.627] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.628] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.628] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.629] Server  WARN    Duplicate headers found and renamed.
-[00:00:06.630] Server  WARN    Duplicate headers found and renamed.
-[00:00:08.464] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:27.683] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:32.283] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:20.716] Server  LOG      ✓ Compiled in 95ms
-[00:02:45.316] Server  LOG      ✓ Compiled in 41ms
-[00:02:47.349] Server  LOG      ✓ Compiled in 21ms
-[00:02:52.683] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:54.092] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.109] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.110] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.110] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.111] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.111] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.112] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.112] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.113] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.114] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.114] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.115] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.115] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.116] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.116] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.117] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.117] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.118] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.118] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.119] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.120] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.120] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.121] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.122] Server  WARN    Duplicate headers found and renamed.
-[00:02:54.123] Server  WARN    Duplicate headers found and renamed.
-[00:02:56.381] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:59.291] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.316] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.317] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.318] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.318] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.319] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.319] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.320] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.320] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.321] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.322] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.323] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.324] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.324] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.325] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.325] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.326] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.326] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.327] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.327] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.328] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.329] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.329] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.338] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.339] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.340] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.340] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.341] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.341] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.342] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.342] Server  WARN    Duplicate headers found and renamed.
-[00:02:59.343] Server  WARN    Duplicate headers found and renamed.
-[00:04:32.046] Server  LOG      ✓ Compiled in 134ms
-[00:04:48.146] Server  LOG      ✓ Compiled in 53ms
-[00:05:01.496] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:03.038] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:04.749] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:08.931] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:05:46.396] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.417] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.418] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.418] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.419] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.419] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.420] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.421] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.421] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.422] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.422] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.423] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.424] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.424] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.425] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.426] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.429] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.430] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.430] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.431] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.432] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.433] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.434] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.434] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.435] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.436] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.436] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.437] Server  WARN    Duplicate headers found and renamed.
-[00:05:46.437] Server  WARN    Duplicate headers found and renamed.
+[00:00:01.171] Server  LOG      ✓ Ready in 804ms
+[00:29:17.544] Server  LOG        Reload env: .env
+[00:29:22.447] Server  LOG        Reload env: .env
+[00:29:49.390] Server  LOG        Reload env: .env
+[00:29:54.848] Server  LOG        Reload env: .env
+[00:30:21.805] Server  LOG     Fetching fresh gold price from Groww...
+[00:30:24.282] Server  LOG     ✅ Price updated: ₹13144.64/gram
+[00:31:52.802] Server  LOG     ✅ Initialized pricing config file
+[00:35:24.365] Server  LOG        Reload env: .env
+[00:35:44.166] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:45.370] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:35:49.052] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.102] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.104] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.105] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.106] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.107] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.108] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.109] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.110] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.112] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.113] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.115] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.116] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.117] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.118] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.119] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.120] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.122] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.123] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.124] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.125] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.126] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.127] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.128] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.129] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.131] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.132] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.133] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.134] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.135] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.136] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.137] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.138] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.139] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.140] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.141] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.142] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.143] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.144] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.145] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.146] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.147] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.148] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.149] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.150] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.151] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.152] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.153] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.154] Server  WARN    Duplicate headers found and renamed.
+[00:35:49.154] Server  WARN    Duplicate headers found and renamed.
+[00:35:52.291] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:35:53.366] Server  LOG     Fetching fresh gold price from Groww...
+[00:35:53.404] Server  LOG     Fetching fresh gold price from Groww...
+[00:35:53.422] Server  LOG     Fetching fresh gold price from Groww...
+[00:35:54.044] Server  LOG     ✅ Price updated: ₹13150.18/gram
+[00:35:54.414] Server  LOG     ✅ Price updated: ₹13150.18/gram
+[00:35:54.709] Server  LOG     ✅ Price updated: ₹13150.18/gram
+[00:36:21.683] Server  ERROR    ⨯ ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+
+./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:36:22.024] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:22.024] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:22.889] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:22.889] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:22.889] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:22.889] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:23.465] Browser ERROR   uncaughtError: Error: ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+[00:36:23.672] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:23.672] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:23.672] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:20
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |                    ^^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:23.672] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:10
+Ecmascript file had an error
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | import { useState, useEffect } from "react";
+    |          ^^^^^^^^
+  3 | import {
+  4 |   Save,
+  5 |   RefreshCw,
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+[00:36:46.346] Browser ERROR   ./src/app/admin/pricing/page.jsx:2:5
+Parsing ecmascript source code failed
+  1 | // src/components/AdminPricingPage.jsx (UPDATED)
+> 2 | use "client"
+    |     ^^^^^^^^
+  3 | import { useState, useEffect } from "react";
+  4 | import {
+  5 |   Save,
+
+Expected ';', '}' or <eof>
+[00:37:28.772] Server  LOG      ✓ Compiled in 262ms
+[00:37:29.485] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:08.774] Server  LOG      ✓ Compiled in 139ms
+[00:55:15.094] Server  LOG      ✓ Compiled in 37ms
+[01:03:17.586] Server  LOG      ✓ Compiled in 98ms
+[01:11:19.812] Server  LOG     === PRICING-CONFIG POST ===
+[01:11:19.815] Server  LOG     RAW BODY: {}
+[01:11:19.816] Server  LOG     CLIENT PASSWORD (trimmed): "orion@diamonds$4647"
+[01:11:19.816] Server  LOG     SERVER ADMIN_PASSWORD (trimmed): "orion@diamonds"
+[01:11:40.240] Server  LOG     === PRICING-CONFIG POST ===
+[01:11:40.241] Server  LOG     RAW BODY: {}
+[01:11:40.242] Server  LOG     CLIENT PASSWORD (trimmed): "orion@diamonds$4647"
+[01:11:40.242] Server  LOG     SERVER ADMIN_PASSWORD (trimmed): "orion@diamonds"
+[01:12:05.170] Server  ERROR    ⨯ No HTTP methods exported in '[project]/src/app/api/pricing-config/reset/route.js'. Export a named export for each HTTP method.
+[01:19:40.751] Server  LOG     === PRICING-CONFIG POST ===
+[01:19:40.753] Server  LOG     RAW BODY: {}
+[01:19:40.754] Server  LOG     CLIENT PASSWORD (trimmed): "orion@diamonds$4647"
+[01:19:40.754] Server  LOG     SERVER ADMIN_PASSWORD (trimmed): "orion@diamonds"
+[01:27:22.410] Server  LOG      ✓ Compiled in 105ms
+[01:27:58.961] Server  LOG     🔑 Admin password configured: "orion@diamonds"
+[01:28:13.877] Server  LOG        Reload env: .env
+[01:28:33.484] Server  LOG     🔑 Admin password configured: "try"
+[01:28:33.493] Server  LOG     === PRICING-CONFIG POST ===
+[01:28:33.494] Server  LOG     Request body keys: ["config","password","updatedBy"]
+[01:28:33.494] Server  LOG     Password received: "***"
+[01:28:33.494] Server  LOG     Password length: 3
+[01:28:33.495] Server  LOG     Expected password: "try"
+[01:28:33.495] Server  LOG     Match: true
+[01:28:33.495] Server  LOG     ✅ Password verified
+[01:28:33.497] Server  LOG     ✅ Config saved successfully
+[01:28:33.540] Browser LOG     Sending request with password length: 3
+[01:28:43.491] Server  LOG     === PRICING-CONFIG POST ===
+[01:28:43.492] Server  LOG     Request body keys: ["config","password","updatedBy"]
+[01:28:43.492] Server  LOG     Password received: "***"
+[01:28:43.492] Server  LOG     Password length: 3
+[01:28:43.492] Server  LOG     Expected password: "try"
+[01:28:43.493] Server  LOG     Match: true
+[01:28:43.493] Server  LOG     ✅ Password verified
+[01:28:43.494] Server  LOG     ✅ Config saved successfully
+[01:28:43.579] Browser LOG     Sending request with password length: 3
+[01:28:44.201] Server  LOG     === PRICING-CONFIG POST ===
+[01:28:44.201] Server  LOG     Request body keys: ["config","password","updatedBy"]
+[01:28:44.202] Server  LOG     Password received: "***"
+[01:28:44.202] Server  LOG     Password length: 3
+[01:28:44.202] Server  LOG     Expected password: "try"
+[01:28:44.203] Server  LOG     Match: true
+[01:28:44.203] Server  LOG     ✅ Password verified
+[01:28:44.205] Server  LOG     ✅ Config saved successfully
+[01:28:44.292] Browser LOG     Sending request with password length: 3
+[01:28:44.440] Server  LOG     === PRICING-CONFIG POST ===
+[01:28:44.441] Server  LOG     Request body keys: ["config","password","updatedBy"]
+[01:28:44.441] Server  LOG     Password received: "***"
+[01:28:44.441] Server  LOG     Password length: 3
+[01:28:44.441] Server  LOG     Expected password: "try"
+[01:28:44.442] Server  LOG     Match: true
+[01:28:44.442] Server  LOG     ✅ Password verified
+[01:28:44.444] Server  LOG     ✅ Config saved successfully
+[01:28:44.530] Browser LOG     Sending request with password length: 3
+[01:28:44.872] Server  LOG     === PRICING-CONFIG POST ===
+[01:28:44.873] Server  LOG     Request body keys: ["config","password","updatedBy"]
+[01:28:44.873] Server  LOG     Password received: "***"
+[01:28:44.874] Server  LOG     Password length: 3
+[01:28:44.874] Server  LOG     Expected password: "try"
+[01:28:44.874] Server  LOG     Match: true
+[01:28:44.874] Server  LOG     ✅ Password verified
+[01:28:44.876] Server  LOG     ✅ Config saved successfully
+[01:28:44.961] Browser LOG     Sending request with password length: 3
+[01:28:52.961] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:28:59.122] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.141] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.142] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.142] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.143] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.143] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.144] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.144] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.145] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.146] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.146] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.147] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.148] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.148] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.149] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.150] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.151] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.152] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.155] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.156] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.156] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.157] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.157] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.158] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.159] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.159] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.160] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.160] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.161] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.162] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.162] Server  WARN    Duplicate headers found and renamed.
+[01:28:59.163] Server  WARN    Duplicate headers found and renamed.
+[01:30:27.947] Server  LOG     Fetching fresh gold price from Groww...
+[01:30:27.958] Server  LOG     Fetching fresh gold price from Groww...
+[01:30:27.994] Server  LOG     Fetching fresh gold price from Groww...
+[01:30:28.572] Server  LOG     ✅ Price updated: ₹13151.31/gram
+[01:30:28.766] Server  LOG     ✅ Price updated: ₹13151.31/gram
+[01:30:28.980] Server  LOG     ✅ Price updated: ₹13148.54/gram
+[01:32:03.285] Server  LOG        Reload env: .env
+[01:32:07.789] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:32:07.869] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[01:32:09.986] Server  LOG     🔑 Admin password configured: "orion@diamonds"
+[01:32:10.283] Server  LOG     Fetching fresh gold price from Groww...
+[01:32:10.286] Server  LOG     Fetching fresh gold price from Groww...
+[01:32:10.844] Server  LOG     ✅ Price updated: ₹13151.31/gram
+[01:32:11.080] Server  LOG     ✅ Price updated: ₹13151.31/gram
+[01:44:41.614] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:56:53.941] Server  LOG        Reload env: .env
+[01:58:38.754] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:58:39.038] Server  LOG     🔑 Admin password configured: "orion@diamonds"
+[02:08:04.998] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:08:05.131] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[02:08:14.648] Server  LOG     Fetching fresh gold price from Groww...
+[02:08:15.388] Server  LOG     ✅ Price updated: ₹13192.47/gram
+[02:14:24.114] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:31.960] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:33.197] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:24:16.288] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:24:16.586] Server  LOG     Fetching fresh gold price from Groww...
+[14:24:17.539] Server  LOG     ✅ Price updated: ₹13157.77/gram
+[14:26:51.741] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[14:26:59.608] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.639] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.640] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.641] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.642] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.643] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.644] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.645] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.646] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.648] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.649] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.650] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.651] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.652] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.653] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.654] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.655] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.656] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.657] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.658] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.658] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.660] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.661] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.662] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.663] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.665] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.666] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.667] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.668] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.669] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.670] Server  WARN    Duplicate headers found and renamed.
+[14:26:59.671] Server  WARN    Duplicate headers found and renamed.
+[14:27:16.001] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:27:27.183] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:27:30.396] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[14:27:31.970] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:27:33.411] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:27:34.618] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[14:28:02.975] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[14:29:24.941] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

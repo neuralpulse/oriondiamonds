@@ -1,8 +1,14 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/pricing/page": "app/admin/pricing/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/gold-price/route": "app/api/gold-price/route.js",
+  "/api/pricing-config/reset/route": "app/api/pricing-config/reset/route.js",
+  "/api/pricing-config/route": "app/api/pricing-config/route.js",
   "/bracelets/page": "app/bracelets/page.js",
   "/earrings/page": "app/earrings/page.js",
   "/page": "app/page.js",
-  "/pendants/page": "app/pendants/page.js",
-  "/product/[handle]/page": "app/product/[handle]/page.js"
+  "/product/[handle]/page": "app/product/[handle]/page.js",
+  "/rings/page": "app/rings/page.js",
+  "/search/page": "app/search/page.js"
 }
