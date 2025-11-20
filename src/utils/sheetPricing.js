@@ -12,7 +12,7 @@ export async function getSheetPricing() {
   }
 
   const csvUrl =
-    "https://docs.google.com/spreadsheets/d/1D3CY-ehqCLo9dd7LzjxEu2vnts8f8BSaUW146Pha3uI/export?format=csv&id=1D3CY-ehqCLo9dd7LzjxEu2vnts8f8BSaUW146Pha3uI&gid=284657393";
+    "https://docs.google.com/spreadsheets/d/1Eb0AMDHBkZmjTqR8FNJZeul2krlD_DFKHuJvIVGqELQ/gviz/tq?tqx=out:csv&sheet=Extracted%20Prices";
 
   const res = await fetch(csvUrl);
   const csv = await res.text();
