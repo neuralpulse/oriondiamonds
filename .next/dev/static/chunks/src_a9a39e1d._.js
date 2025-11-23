@@ -174,7 +174,9 @@ function Landing() {
         email: "",
         phone: "",
         itemType: "",
-        message: ""
+        message: "",
+        image: null,
+        imagePreview: ""
     });
     const handleChange = (e)=>{
         const { name, value } = e.target;
@@ -183,27 +185,76 @@ function Landing() {
                 [name]: value
             }));
     };
-    const handleSubmit = ()=>{
-        // Validate all fields are filled
-        if (!formData.name || !formData.email || !formData.phone || !formData.itemType || !formData.message) {
-            alert("Please fill in all fields");
+    const handleImageUpload = (e)=>{
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onloadend = ()=>{
+            setFormData((prev)=>({
+                    ...prev,
+                    image: file,
+                    imagePreview: reader.result
+                }));
+        };
+        reader.readAsDataURL(file);
+    };
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        if (!formData.phone) {
+            alert("Phone number is mandatory");
             return;
         }
-        // Format the message for WhatsApp
-        const whatsappMessage = `*New Customization Request*%0A%0A` + `*Name:* ${encodeURIComponent(formData.name)}%0A` + `*Email:* ${encodeURIComponent(formData.email)}%0A` + `*Phone:* ${encodeURIComponent(formData.phone)}%0A` + `*Item Type:* ${encodeURIComponent(formData.itemType)}%0A` + `*Message:* ${encodeURIComponent(formData.message)}`;
-        // WhatsApp number (remove the + sign and any spaces)
-        const whatsappNumber = "917022253092";
-        // Open WhatsApp with pre-filled message
-        window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
-        // Reset form
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            itemType: "",
-            message: ""
+        const form = new FormData();
+        form.append("name", formData.name);
+        form.append("email", formData.email);
+        form.append("phone", formData.phone);
+        form.append("itemType", formData.itemType);
+        form.append("message", formData.message);
+        if (formData.image) {
+            form.append("image", formData.image);
+        }
+        const res = await fetch("/api/sendCustomization", {
+            method: "POST",
+            body: form
         });
+        if (res.ok) {
+            alert("Your customization request has been sent successfully!");
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                itemType: "",
+                message: "",
+                image: null,
+                imagePreview: ""
+            });
+        } else {
+            alert("Failed to send. Try again.");
+        }
     };
+    const [currentIndex, setCurrentIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const mobileImages = [
+        "/newhero.jpg",
+        "/hero2.png"
+    ];
+    const desktopImages = [
+        "/newhero.jpg",
+        "/hero3.png"
+    ];
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Landing.useEffect": ()=>{
+            const interval = setInterval({
+                "Landing.useEffect.interval": ()=>{
+                    setCurrentIndex({
+                        "Landing.useEffect.interval": (prev)=>(prev + 1) % 2
+                    }["Landing.useEffect.interval"]);
+                }
+            }["Landing.useEffect.interval"], 5000);
+            return ({
+                "Landing.useEffect": ()=>clearInterval(interval)
+            })["Landing.useEffect"];
+        }
+    }["Landing.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         id: "hero",
         className: "min-h-screen text-gray-900 antialiased",
@@ -213,124 +264,196 @@ function Landing() {
                 className: "relative min-h-screen overflow-hidden bg-[#0a1833]",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex sm:hidden relative items-center justify-center min-h-screen",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/newhero.jpg",
-                                alt: "Hero Mobile",
-                                className: "absolute inset-0 w-full h-full object-cover animate-heroZoomOut"
-                            }, void 0, false, {
-                                fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 83,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "absolute inset-0 bg-black/40"
-                            }, void 0, false, {
-                                fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 88,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative z-10 max-w-4xl text-center px-6",
-                                style: {
-                                    transform: "translateY(-2.5rem)"
-                                },
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "text-5xl mt-70 pt-20 font-serif font-semibold leading-tight text-white",
-                                        children: "Orion Diamonds"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 94,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-15 pt-20 text-lg max-w-2xl mx-auto text-white",
-                                        children: "Lab-grown diamonds inspired by the celestial brilliance of the Orion constellation"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 97,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 90,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                        className: "flex sm:hidden relative items-center justify-center min-h-screen w-full",
+                        children: currentIndex === 1 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/mobcust.png",
+                                    className: "absolute inset-0 w-full h-full object-cover"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 114,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-0 bg-black/40"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 119,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>router.push("#customizations"),
+                                    className: "absolute bottom-16 z-20 bg-white/80 text-[#0a1833] px-6 py-3 rounded-full font-semibold backdrop-blur-md shadow-lg",
+                                    children: "Customize Now"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 122,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/newhero.jpg",
+                                    className: "absolute inset-0 w-full h-full object-cover"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 132,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-0 bg-black/40"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 138,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "relative z-10 max-w-4xl text-center px-6",
+                                    style: {
+                                        transform: "translateY(-2.5rem)"
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "text-5xl mt-70 pt-20 font-serif font-semibold leading-tight text-white",
+                                            children: "Orion Diamonds"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 145,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "mt-15 pt-20 text-lg max-w-2xl mx-auto text-white",
+                                            children: "Lab-grown diamonds inspired by the celestial brilliance of the Orion constellation."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 148,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 141,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
                         fileName: "[project]/src/app/page.jsx",
-                        lineNumber: 82,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "hidden sm:flex flex-row items-center justify-between min-h-screen relative",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "z-20 w-1/2 flex flex-col items-start text-left px-8 md:px-16 lg:px-24",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "text-6xl md:text-7xl font-serif font-semibold leading-tight text-white drop-shadow-lg",
-                                        style: {
-                                            textShadow: "0 0 10px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 50px rgba(255,255,255,0.2)"
-                                        },
-                                        children: "Orion Diamonds"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 108,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "mt-6 text-xl max-w-xl text-white drop-shadow-md",
-                                        children: "Lab-grown diamonds inspired by the celestial brilliance of the Orion constellation."
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 117,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 107,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative w-1/2 h-full",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: "/newhero.jpg",
-                                        alt: "Hero Desktop",
-                                        className: "w-full h-full object-cover animate-heroZoomOut sm:rounded-l-4xl"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 125,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute inset-y-0 left-0 w-32 bg-linear-to-r from-[#0a1833] to-transparent pointer-events-none"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 130,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 124,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                        className: "hidden sm:flex relative min-h-screen w-full ",
+                        children: currentIndex === 1 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/descust.png",
+                                    className: "absolute inset-0 w-full h-full object-cover object-center md:object-[50%_15%]"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 162,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute inset-0 bg-black/40"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 167,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>router.push("#customizations"),
+                                    className: "absolute bottom-20 left-1/2 -translate-x-1/2 z-20 bg-white/85 text-[#0a1833] px-8 py-4 rounded-full text-xl font-semibold backdrop-blur-md shadow-lg hover:bg-white",
+                                    children: "Customize Now"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 170,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "z-20 w-1/2 flex flex-col object-left items-start text-left px-16 lg:px-24 lg:py-45",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "text-6xl md:text-7xl font-serif font-semibold leading-tight text-white",
+                                            children: "Orion Diamonds"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 181,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "mt-6 text-xl max-w-xl text-white",
+                                            children: "Lab-grown diamonds inspired by the celestial brilliance of the Orion constellation."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 184,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 180,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "relative w-1/2 h-screen",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                            src: "/newhero.jpg",
+                                            className: "w-full h-screen object-right sm:rounded-l-4xl"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 192,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "absolute inset-y-0 left-0 w-32 bg-linear-to-r from-[#0a1833] to-transparent pointer-events-none"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/page.jsx",
+                                            lineNumber: 196,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/page.jsx",
+                                    lineNumber: 191,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
                         fileName: "[project]/src/app/page.jsx",
-                        lineNumber: 105,
+                        lineNumber: 158,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2 z-30",
+                        children: [
+                            0,
+                            1
+                        ].map((index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>setCurrentIndex(index),
+                                className: `w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-white w-8" : "bg-white/50 hover:bg-white/75"}`,
+                                "aria-label": `Go to slide ${index + 1}`
+                            }, index, false, {
+                                fileName: "[project]/src/app/page.jsx",
+                                lineNumber: 205,
+                                columnNumber: 13
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/page.jsx",
+                        lineNumber: 203,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 77,
+                lineNumber: 105,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -344,7 +467,7 @@ function Landing() {
                             children: "Collections"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 138,
+                            lineNumber: 222,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -380,7 +503,7 @@ function Landing() {
                                             className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 154,
+                                            lineNumber: 238,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -388,7 +511,7 @@ function Landing() {
                                             children: item.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 161,
+                                            lineNumber: 245,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -398,34 +521,34 @@ function Landing() {
                                                 children: item.name
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 167,
+                                                lineNumber: 251,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 166,
+                                            lineNumber: 250,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 149,
+                                    lineNumber: 233,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 142,
+                            lineNumber: 226,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 137,
+                    lineNumber: 221,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 136,
+                lineNumber: 220,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -439,7 +562,7 @@ function Landing() {
                             children: "About Orion Diamonds"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 181,
+                            lineNumber: 265,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -453,12 +576,12 @@ function Landing() {
                                         className: "rounded-xl shadow-lg w-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 187,
+                                        lineNumber: 271,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 186,
+                                    lineNumber: 270,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -472,35 +595,35 @@ function Landing() {
                                                     children: "Orion"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 197,
+                                                    lineNumber: 281,
                                                     columnNumber: 20
                                                 }, this),
                                                 ", our story began with a simple yet defining moment – the search for the perfect engagement ring. What should have been a joyful experience turned into a journey of uncertainty and unanswered questions."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 196,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "That moment inspired our vision: to make diamond shopping effortless, transparent, and meaningful. Founded and led by a young female entrepreneur and certified Diamond Graduate, Orion is built on expertise, integrity, and a deep passion for craftsmanship."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 203,
+                                            lineNumber: 287,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "With a modern perspective and a genuine understanding of what today's buyers seek, we bring clarity, confidence, and care to every diamond journey. Each of our diamonds is hand-selected, ethically grown, and crafted to perfection – ensuring brilliance that reflects both light and emotion."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 211,
+                                            lineNumber: 295,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "More than just a jewellery brand, we are a trusted companion in celebrating life's most cherished moments – guiding you towards pieces that are timeless, personal, and truly yours."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 219,
+                                            lineNumber: 303,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -511,7 +634,7 @@ function Landing() {
                                                     children: "Founder"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 309,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -519,41 +642,41 @@ function Landing() {
                                                     children: "– Vandana Jain"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 310,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 224,
+                                            lineNumber: 308,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 195,
+                                    lineNumber: 279,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 184,
+                            lineNumber: 268,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 177,
+                    lineNumber: 261,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 176,
+                lineNumber: 260,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$promise$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 236,
+                lineNumber: 320,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -567,7 +690,7 @@ function Landing() {
                             children: "The Orion Difference"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 241,
+                            lineNumber: 325,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -575,7 +698,7 @@ function Landing() {
                             children: "Lab grown vs Natural Diamonds"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 244,
+                            lineNumber: 328,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -586,26 +709,26 @@ function Landing() {
                                     children: "View Full Comparison"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 251,
+                                    lineNumber: 335,
                                     columnNumber: 13
                                 }, this),
                                 open ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {
                                     size: 22
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 252,
+                                    lineNumber: 336,
                                     columnNumber: 21
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                     size: 22
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 252,
+                                    lineNumber: 336,
                                     columnNumber: 47
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 247,
+                            lineNumber: 331,
                             columnNumber: 11
                         }, this),
                         open && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -622,7 +745,7 @@ function Landing() {
                                                     children: "Feature"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 261,
+                                                    lineNumber: 345,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -630,7 +753,7 @@ function Landing() {
                                                     children: "Lab-Grown Diamonds (The Orion Choice)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 262,
+                                                    lineNumber: 346,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -638,18 +761,18 @@ function Landing() {
                                                     children: "Mined Diamonds (The Classic Choice)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 265,
+                                                    lineNumber: 349,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 260,
+                                            lineNumber: 344,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 259,
+                                        lineNumber: 343,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -663,7 +786,7 @@ function Landing() {
                                                         children: "What They Really Are"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 356,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -671,7 +794,7 @@ function Landing() {
                                                         children: "A true diamond. Made of 100% crystallized carbon, sharing the exact same chemical, physical, and optical properties as their mined counterparts."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 273,
+                                                        lineNumber: 357,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -679,13 +802,13 @@ function Landing() {
                                                         children: "A true diamond. Also 100% carbon, formed deep underground."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 278,
+                                                        lineNumber: 362,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 271,
+                                                lineNumber: 355,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -696,7 +819,7 @@ function Landing() {
                                                         children: "The Brilliance"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 283,
+                                                        lineNumber: 367,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -704,7 +827,7 @@ function Landing() {
                                                         children: "Identical. They have the same fire, scintillation, and shine. They are just as hard and durable (10 on the Mohs scale) for a lifetime of wear."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 284,
+                                                        lineNumber: 368,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -712,13 +835,13 @@ function Landing() {
                                                         children: "Identical. They display the same stunning visual qualities."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 289,
+                                                        lineNumber: 373,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 282,
+                                                lineNumber: 366,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -729,7 +852,7 @@ function Landing() {
                                                         children: "The Story (Origin)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 379,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -737,7 +860,7 @@ function Landing() {
                                                         children: "Born of Innovation. Grown in a modern, controlled lab environment using advanced technology that mimics the Earth's natural process."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 296,
+                                                        lineNumber: 380,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -745,13 +868,13 @@ function Landing() {
                                                         children: "Born of the Earth. Formed by immense heat and pressure over billions of years."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 301,
+                                                        lineNumber: 385,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 294,
+                                                lineNumber: 378,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -762,7 +885,7 @@ function Landing() {
                                                         children: "The Price"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 307,
+                                                        lineNumber: 391,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -770,7 +893,7 @@ function Landing() {
                                                         children: "Smarter Value. Because the production chain is efficient, you get a much larger or higher-quality diamond for your budget."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 308,
+                                                        lineNumber: 392,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -778,13 +901,13 @@ function Landing() {
                                                         children: "Premium Cost. Prices are higher due to the significant expenses of complex mining operations and perceived rarity."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 313,
+                                                        lineNumber: 397,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 306,
+                                                lineNumber: 390,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -795,7 +918,7 @@ function Landing() {
                                                         children: "The Ethics"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 320,
+                                                        lineNumber: 404,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -803,7 +926,7 @@ function Landing() {
                                                         children: "Guaranteed Conflict-Free. Every stone is fully traceable from its origin in the lab directly to you. No ethical ambiguity."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 321,
+                                                        lineNumber: 405,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -811,13 +934,13 @@ function Landing() {
                                                         children: "Sourcing requires checks (like the Kimberley Process) to ensure stones are conflict-free."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 326,
+                                                        lineNumber: 410,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 319,
+                                                lineNumber: 403,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -828,7 +951,7 @@ function Landing() {
                                                         children: "The Environment"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 332,
+                                                        lineNumber: 416,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -836,7 +959,7 @@ function Landing() {
                                                         children: "A Responsible Choice. Production avoids the large-scale land disruption, ecological damage, and excessive energy and water use of mining."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 333,
+                                                        lineNumber: 417,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -844,13 +967,13 @@ function Landing() {
                                                         children: "Requires digging and excavation, which carries a larger environmental footprint."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 338,
+                                                        lineNumber: 422,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 331,
+                                                lineNumber: 415,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -861,7 +984,7 @@ function Landing() {
                                                         children: "Certification"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 344,
+                                                        lineNumber: 428,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -869,7 +992,7 @@ function Landing() {
                                                         children: 'Fully Certified. Graded by the same independent labs (GIA, IGI) on the same 4Cs. They are inscribed as "LAB GROWN" for complete transparency.'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 345,
+                                                        lineNumber: 429,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -877,30 +1000,30 @@ function Landing() {
                                                         children: "Fully Certified and graded on the same 4Cs."
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 350,
+                                                        lineNumber: 434,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 343,
+                                                lineNumber: 427,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 270,
+                                        lineNumber: 354,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 258,
+                                lineNumber: 342,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 257,
+                            lineNumber: 341,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -911,7 +1034,7 @@ function Landing() {
                                     children: "The Orion Promise: Brilliance Without Compromise"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 361,
+                                    lineNumber: 445,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -919,24 +1042,24 @@ function Landing() {
                                     children: "At Orion Diamonds, the choice between lab-grown and mined is no longer about quality – it's about values. Our diamonds deliver the same fire, brilliance, and lasting beauty as mined ones, with an origin you can feel proud of – offering smarter value, a clear conscience, and zero compromise."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 364,
+                                    lineNumber: 448,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 360,
+                            lineNumber: 444,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 240,
+                    lineNumber: 324,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 239,
+                lineNumber: 323,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -953,7 +1076,7 @@ function Landing() {
                                     children: "The Orion Care Guide: Keep the Sparkle Alive"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 380,
+                                    lineNumber: 464,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -961,13 +1084,13 @@ function Landing() {
                                     children: 'Even the most brilliant diamond can lose its sparkle over time as oils, lotions, and dust settle on its surface. The good news? You can easily bring back that "just-bought" shine right at home – with gentle care and a few simple steps.'
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 383,
+                                    lineNumber: 467,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 379,
+                            lineNumber: 463,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -978,26 +1101,26 @@ function Landing() {
                                     children: "View Care Instructions"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 396,
+                                    lineNumber: 480,
                                     columnNumber: 13
                                 }, this),
                                 openCare ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {
                                     size: 22
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 397,
+                                    lineNumber: 481,
                                     columnNumber: 25
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                     size: 22
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 397,
+                                    lineNumber: 481,
                                     columnNumber: 51
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 392,
+                            lineNumber: 476,
                             columnNumber: 11
                         }, this),
                         openCare && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1016,20 +1139,20 @@ function Landing() {
                                                             children: "1. Clean with Care"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 408,
+                                                            lineNumber: 492,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Soak your piece in warm, soapy water for a few minutes and gently brush with a soft toothbrush."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 411,
+                                                            lineNumber: 495,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 407,
+                                                    lineNumber: 491,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1039,20 +1162,20 @@ function Landing() {
                                                             children: "2. Rinse & Dry"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 418,
+                                                            lineNumber: 502,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Rinse under clean water and dry with a soft, lint-free cloth."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 421,
+                                                            lineNumber: 505,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 417,
+                                                    lineNumber: 501,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1062,20 +1185,20 @@ function Landing() {
                                                             children: "3. Avoid Harsh Chemicals"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 428,
+                                                            lineNumber: 512,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Keep your jewellery away from bleach, acetone, and abrasive cleaners."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 431,
+                                                            lineNumber: 515,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 427,
+                                                    lineNumber: 511,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1085,20 +1208,20 @@ function Landing() {
                                                             children: "4. Handle Gently"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 438,
+                                                            lineNumber: 522,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "Hold by the band or edges to maintain the diamond's brilliance."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 441,
+                                                            lineNumber: 525,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 437,
+                                                    lineNumber: 521,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1108,26 +1231,26 @@ function Landing() {
                                                             children: "5. Professional Care"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 448,
+                                                            lineNumber: 532,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             children: "A professional cleaning once or twice a year keeps your diamonds secure and radiant."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/page.jsx",
-                                                            lineNumber: 451,
+                                                            lineNumber: 535,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/page.jsx",
-                                                    lineNumber: 447,
+                                                    lineNumber: 531,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 406,
+                                            lineNumber: 490,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1138,18 +1261,18 @@ function Landing() {
                                                 className: "rounded-2xl shadow-lg w-full object-cover"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 460,
+                                                lineNumber: 544,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 459,
+                                            lineNumber: 543,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 404,
+                                    lineNumber: 488,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1160,7 +1283,7 @@ function Landing() {
                                             children: "Orion Tip:"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 470,
+                                            lineNumber: 554,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1168,30 +1291,30 @@ function Landing() {
                                             children: "Store your diamond pieces separately in soft pouches or lined boxes to prevent scratches – and let your brilliance shine, every day."
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 471,
+                                            lineNumber: 555,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 469,
+                                    lineNumber: 553,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 402,
+                            lineNumber: 486,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 377,
+                    lineNumber: 461,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 376,
+                lineNumber: 460,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1205,7 +1328,7 @@ function Landing() {
                             children: "Customization - Bring your vision to life with us"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 485,
+                            lineNumber: 569,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1224,7 +1347,7 @@ function Landing() {
                                                         children: "First & Last Name"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 494,
+                                                        lineNumber: 578,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1237,13 +1360,13 @@ function Landing() {
                                                         className: "w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 497,
+                                                        lineNumber: 581,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 493,
+                                                lineNumber: 577,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1253,7 +1376,7 @@ function Landing() {
                                                         children: "Email Address"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 509,
+                                                        lineNumber: 593,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1266,13 +1389,13 @@ function Landing() {
                                                         className: "w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 512,
+                                                        lineNumber: 596,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 508,
+                                                lineNumber: 592,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1282,7 +1405,7 @@ function Landing() {
                                                         children: "Phone Number"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 524,
+                                                        lineNumber: 608,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1295,13 +1418,13 @@ function Landing() {
                                                         className: "w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 527,
+                                                        lineNumber: 611,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 523,
+                                                lineNumber: 607,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1311,7 +1434,7 @@ function Landing() {
                                                         children: "Item Type"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 539,
+                                                        lineNumber: 623,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1326,7 +1449,7 @@ function Landing() {
                                                                 children: "Select an item"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 549,
+                                                                lineNumber: 633,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1334,7 +1457,7 @@ function Landing() {
                                                                 children: "Ring"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 550,
+                                                                lineNumber: 634,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1342,7 +1465,7 @@ function Landing() {
                                                                 children: "Necklace / Pendant"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 551,
+                                                                lineNumber: 635,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1350,7 +1473,7 @@ function Landing() {
                                                                 children: "Earrings"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 554,
+                                                                lineNumber: 638,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1358,7 +1481,7 @@ function Landing() {
                                                                 children: "Bracelet"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 555,
+                                                                lineNumber: 639,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1366,19 +1489,19 @@ function Landing() {
                                                                 children: "Other"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/page.jsx",
-                                                                lineNumber: 556,
+                                                                lineNumber: 640,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 542,
+                                                        lineNumber: 626,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 538,
+                                                lineNumber: 622,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1388,7 +1511,7 @@ function Landing() {
                                                         children: "Message"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 561,
+                                                        lineNumber: 645,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1401,13 +1524,48 @@ function Landing() {
                                                         className: "w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/page.jsx",
-                                                        lineNumber: 564,
+                                                        lineNumber: 648,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 560,
+                                                lineNumber: 644,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        className: "block text-[#0a1833] mb-2 font-medium",
+                                                        children: "Upload Image (Optional)"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/page.jsx",
+                                                        lineNumber: 660,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                        type: "file",
+                                                        accept: "image/*",
+                                                        onChange: handleImageUpload,
+                                                        className: "w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/page.jsx",
+                                                        lineNumber: 664,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    formData.imagePreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                        src: formData.imagePreview,
+                                                        alt: "Preview",
+                                                        className: "mt-3 h-32 rounded-lg object-cover shadow"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/app/page.jsx",
+                                                        lineNumber: 672,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/src/app/page.jsx",
+                                                lineNumber: 659,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1416,18 +1574,18 @@ function Landing() {
                                                 children: "SUBMIT"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 575,
+                                                lineNumber: 680,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 492,
+                                        lineNumber: 576,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 491,
+                                    lineNumber: 575,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1438,18 +1596,18 @@ function Landing() {
                                         className: "rounded-2xl shadow-md w-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 586,
+                                        lineNumber: 691,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 585,
+                                    lineNumber: 690,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 489,
+                            lineNumber: 573,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1466,12 +1624,12 @@ function Landing() {
                                             children: "info@oriondiamonds.in"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/page.jsx",
-                                            lineNumber: 599,
+                                            lineNumber: 704,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 598,
+                                        lineNumber: 703,
                                         columnNumber: 15
                                     }, this),
                                     " ",
@@ -1486,36 +1644,36 @@ function Landing() {
                                                 children: "+91 7022253092"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 606,
+                                                lineNumber: 711,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 604,
+                                        lineNumber: 709,
                                         columnNumber: 15
                                     }, this),
                                     "."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 596,
+                                lineNumber: 701,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 595,
+                            lineNumber: 700,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 484,
+                    lineNumber: 568,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 483,
+                lineNumber: 567,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1529,7 +1687,7 @@ function Landing() {
                             children: "Frequently Asked Questions"
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.jsx",
-                            lineNumber: 619,
+                            lineNumber: 724,
                             columnNumber: 11
                         }, this),
                         [
@@ -1540,7 +1698,7 @@ function Landing() {
                                     children: "Lab-grown diamonds are real diamonds created in a lab using advanced technology. They have the same physical, chemical, and optical properties as mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 626,
+                                    lineNumber: 731,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1551,7 +1709,7 @@ function Landing() {
                                     children: "Yes, lab-grown diamonds are 100% real. They are certified and graded just like mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 636,
+                                    lineNumber: 741,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1562,7 +1720,7 @@ function Landing() {
                                     children: "They are made using two methods: HPHT (High Pressure High Temperature) or CVD (Chemical Vapor Deposition), replicating the natural diamond-growing process. We prefer and use the CVD method."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 645,
+                                    lineNumber: 750,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1573,7 +1731,7 @@ function Landing() {
                                     children: "Lab-grown diamonds do not hold resale value like mined diamonds. They're ideal for value-conscious buyers who prioritize ethics and aesthetics."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 657,
+                                    lineNumber: 762,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1584,7 +1742,7 @@ function Landing() {
                                     children: "Yes. Just like mined diamonds, they are extremely durable and will last a lifetime."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 667,
+                                    lineNumber: 772,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1595,7 +1753,7 @@ function Landing() {
                                     children: "Lab-grown diamonds offer the same beauty at a better price, with ethical sourcing and lower environmental impact."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 676,
+                                    lineNumber: 781,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1606,7 +1764,7 @@ function Landing() {
                                     children: "Absolutely. At Orion, we craft each piece to match your vision – from rings to earrings, every design is tailored to your style and preferences."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 685,
+                                    lineNumber: 790,
                                     columnNumber: 17
                                 }, this)
                             },
@@ -1617,7 +1775,7 @@ function Landing() {
                                     children: "Absolutely. They are certified by reputable labs like IGI, GIA, or SGL, just like mined diamonds."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.jsx",
-                                    lineNumber: 695,
+                                    lineNumber: 800,
                                     columnNumber: 17
                                 }, this)
                             }
@@ -1631,13 +1789,13 @@ function Landing() {
                                             section.title,
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FiMenu"], {}, void 0, false, {
                                                 fileName: "[project]/src/app/page.jsx",
-                                                lineNumber: 708,
+                                                lineNumber: 813,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 703,
+                                        lineNumber: 808,
                                         columnNumber: 15
                                     }, this),
                                     activeAccordion === idx && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1645,34 +1803,34 @@ function Landing() {
                                         children: section.content
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/page.jsx",
-                                        lineNumber: 711,
+                                        lineNumber: 816,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, idx, true, {
                                 fileName: "[project]/src/app/page.jsx",
-                                lineNumber: 702,
+                                lineNumber: 807,
                                 columnNumber: 13
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/page.jsx",
-                    lineNumber: 618,
+                    lineNumber: 723,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/page.jsx",
-                lineNumber: 617,
+                lineNumber: 722,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/page.jsx",
-        lineNumber: 75,
+        lineNumber: 103,
         columnNumber: 5
     }, this);
 }
-_s(Landing, "YCDw4H5ZFnlBntg0p9rU02AKQA4=", false, function() {
+_s(Landing, "GLkAZmf0dwrb+deUOjLQ+m3KCIk=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

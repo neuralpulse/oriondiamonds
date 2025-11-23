@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import OurPromise from "../components/promise";
@@ -20,6 +20,8 @@ export default function Landing() {
     phone: "",
     itemType: "",
     message: "",
+    image: null, // NEW FIELD
+    imagePreview: "",
   });
 
   const handleChange = (e) => {
@@ -29,47 +31,73 @@ export default function Landing() {
       [name]: value,
     }));
   };
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const handleSubmit = () => {
-    // Validate all fields are filled
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.itemType ||
-      !formData.message
-    ) {
-      alert("Please fill in all fields");
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData((prev) => ({
+        ...prev,
+        image: file,
+        imagePreview: reader.result,
+      }));
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.phone) {
+      alert("Phone number is mandatory");
       return;
     }
 
-    // Format the message for WhatsApp
-    const whatsappMessage =
-      `*New Customization Request*%0A%0A` +
-      `*Name:* ${encodeURIComponent(formData.name)}%0A` +
-      `*Email:* ${encodeURIComponent(formData.email)}%0A` +
-      `*Phone:* ${encodeURIComponent(formData.phone)}%0A` +
-      `*Item Type:* ${encodeURIComponent(formData.itemType)}%0A` +
-      `*Message:* ${encodeURIComponent(formData.message)}`;
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("phone", formData.phone);
+    form.append("itemType", formData.itemType);
+    form.append("message", formData.message);
 
-    // WhatsApp number (remove the + sign and any spaces)
-    const whatsappNumber = "917022253092";
+    if (formData.image) {
+      form.append("image", formData.image);
+    }
 
-    // Open WhatsApp with pre-filled message
-    window.open(
-      `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`,
-      "_blank"
-    );
-
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      itemType: "",
-      message: "",
+    const res = await fetch("/api/sendCustomization", {
+      method: "POST",
+      body: form,
     });
+
+    if (res.ok) {
+      alert("Your customization request has been sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        itemType: "",
+        message: "",
+        image: null,
+        imagePreview: "",
+      });
+    } else {
+      alert("Failed to send. Try again.");
+    }
   };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const mobileImages = ["/newhero.jpg", "/hero2.png"];
+  const desktopImages = ["/newhero.jpg", "/hero3.png"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % 2);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div id="hero" className="min-h-screen text-gray-900 antialiased">
@@ -79,56 +107,112 @@ export default function Landing() {
         className="relative min-h-screen overflow-hidden bg-[#0a1833]"
       >
         {/* --- MOBILE VERSION --- */}
-        <div className="flex sm:hidden relative items-center justify-center min-h-screen">
-          <img
-            src="/newhero.jpg"
-            alt="Hero Mobile"
-            className="absolute inset-0 w-full h-full object-cover animate-heroZoomOut"
-          />
-          <div className="absolute inset-0 bg-black/40"></div>
+        <div className="flex sm:hidden relative items-center justify-center min-h-screen w-full">
+          {/* FULLSCREEN MODE for slide 2 (hero2.png) */}
+          {currentIndex === 1 ? (
+            <>
+              <img
+                src="/mobcust.png"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
 
-          <div
-            className="relative z-10 max-w-4xl text-center px-6"
-            style={{ transform: "translateY(-2.5rem)" }}
-          >
-            <h1 className="text-5xl mt-70 pt-20 font-serif font-semibold leading-tight text-white">
-              Orion Diamonds
-            </h1>
-            <p className="mt-15 pt-20 text-lg max-w-2xl mx-auto text-white">
-              Lab-grown diamonds inspired by the celestial brilliance of the
-              Orion constellation
-            </p>
-          </div>
+              <div className="absolute inset-0 bg-black/40"></div>
+
+              {/* CUSTOMIZE BUTTON ON MOBILE HERO2 */}
+              <button
+                onClick={() => router.push("#customizations")}
+                className="absolute bottom-16 z-20 bg-white/80 text-[#0a1833] px-6 py-3 rounded-full font-semibold backdrop-blur-md shadow-lg"
+              >
+                Customize Now
+              </button>
+            </>
+          ) : (
+            <>
+              {/* Normal mode for newhero.jpg */}
+              <img
+                src="/newhero.jpg"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/40"></div>
+
+              {/* Text Section */}
+              <div
+                className="relative z-10 max-w-4xl text-center px-6"
+                style={{ transform: "translateY(-2.5rem)" }}
+              >
+                <h1 className="text-5xl mt-70 pt-20 font-serif font-semibold leading-tight text-white">
+                  Orion Diamonds
+                </h1>
+                <p className="mt-15 pt-20 text-lg max-w-2xl mx-auto text-white">
+                  Lab-grown diamonds inspired by the celestial brilliance of the
+                  Orion constellation.
+                </p>
+              </div>
+            </>
+          )}
         </div>
 
         {/* --- DESKTOP VERSION --- */}
-        <div className="hidden sm:flex flex-row items-center justify-between min-h-screen relative">
-          {/* Left Side */}
-          <div className="z-20 w-1/2 flex flex-col items-start text-left px-8 md:px-16 lg:px-24">
-            <h1
-              className="text-6xl md:text-7xl font-serif font-semibold leading-tight text-white drop-shadow-lg"
-              style={{
-                textShadow:
-                  "0 0 10px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3), 0 0 50px rgba(255,255,255,0.2)",
-              }}
-            >
-              Orion Diamonds
-            </h1>
-            <p className="mt-6 text-xl max-w-xl text-white drop-shadow-md">
-              Lab-grown diamonds inspired by the celestial brilliance of the
-              Orion constellation.
-            </p>
-          </div>
+        <div className="hidden sm:flex relative min-h-screen w-full ">
+          {/* If current slide is hero3 → fullscreen mode */}
+          {currentIndex === 1 ? (
+            <>
+              <img
+                src="/descust.png"
+                className="absolute inset-0 w-full h-full object-cover object-center md:object-[50%_15%]"
+              />
 
-          {/* Right Side */}
-          <div className="relative w-1/2 h-full">
-            <img
-              src="/newhero.jpg"
-              alt="Hero Desktop"
-              className="w-full h-full object-cover animate-heroZoomOut sm:rounded-l-4xl"
+              <div className="absolute inset-0 bg-black/40"></div>
+
+              {/* CUSTOMIZE BUTTON ON DESKTOP HERO3 */}
+              <button
+                onClick={() => router.push("#customizations")}
+                className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 bg-white/85 text-[#0a1833] px-8 py-4 rounded-full text-xl font-semibold backdrop-blur-md shadow-lg hover:bg-white"
+              >
+                Customize Now
+              </button>
+            </>
+          ) : (
+            <>
+              {/* LEFT SIDE TEXT */}
+              <div className="z-20 w-1/2 flex flex-col object-left items-start text-left px-16 lg:px-24 lg:py-45">
+                <h1 className="text-6xl md:text-7xl font-serif font-semibold leading-tight text-white">
+                  Orion Diamonds
+                </h1>
+                <p className="mt-6 text-xl max-w-xl text-white">
+                  Lab-grown diamonds inspired by the celestial brilliance of the
+                  Orion constellation.
+                </p>
+              </div>
+
+              {/* RIGHT SIDE IMAGE */}
+              <div className="relative w-1/2 h-screen">
+                <img
+                  src="/newhero.jpg"
+                  className="w-full h-screen object-right sm:rounded-l-4xl"
+                />
+                <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-[#0a1833] to-transparent pointer-events-none"></div>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
+          {[0, 1].map((index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
-            <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-[#0a1833] to-transparent pointer-events-none"></div>
-          </div>
+          ))}
         </div>
       </header>
 
@@ -570,6 +654,27 @@ export default function Landing() {
                     required
                     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
                   ></textarea>
+                </div>
+
+                <div>
+                  <label className="block text-[#0a1833] mb-2 font-medium">
+                    Upload Image (Optional)
+                  </label>
+
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#0a1833]"
+                  />
+
+                  {formData.imagePreview && (
+                    <img
+                      src={formData.imagePreview}
+                      alt="Preview"
+                      className="mt-3 h-32 rounded-lg object-cover shadow"
+                    />
+                  )}
                 </div>
 
                 <button

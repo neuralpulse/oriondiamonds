@@ -173,7 +173,7 @@ async function getSheetPricing() {
     if (pricingCache && now - lastFetch < 3600 * 1000) {
         return pricingCache;
     }
-    const csvUrl = "https://docs.google.com/spreadsheets/d/1D3CY-ehqCLo9dd7LzjxEu2vnts8f8BSaUW146Pha3uI/export?format=csv&id=1D3CY-ehqCLo9dd7LzjxEu2vnts8f8BSaUW146Pha3uI&gid=284657393";
+    const csvUrl = "https://docs.google.com/spreadsheets/d/1Eb0AMDHBkZmjTqR8FNJZeul2krlD_DFKHuJvIVGqELQ/gviz/tq?tqx=out:csv&sheet=Extracted%20Prices";
     const res = await fetch(csvUrl);
     const csv = await res.text();
     const parsed = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$papaparse$2f$papaparse$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].parse(csv, {
