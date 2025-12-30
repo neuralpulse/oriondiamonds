@@ -1,27 +1,20 @@
 // src/app/api/pricing-config/route.js
 import { NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { PricingConfig } from "../../../models/PricingConfig.js";
+import connectDB from "../../../utils/mongodb.js"; // CORRECT: mongodb.js is in utils folder
 
-const CONFIG_FILE = path.join(process.cwd(), "pricing-config.json");
-
-// Get admin password with proper fallback
+// Get admin password
 const ADMIN_PASSWORD = (process.env.ADMIN_PASSWORD || "changeme123").trim();
 
-console.log("🔑 Admin password configured:", ADMIN_PASSWORD); // Debug log on startup
+console.log("🔑 Admin password configured:", ADMIN_PASSWORD);
 
-// Health check endpoint
-export async function HEAD() {
-  return new NextResponse(null, { status: 200 });
-}
-
-// Default configuration
+// Default configuration (used only if no document exists)
 const DEFAULT_CONFIG = {
   diamondMargins: {
     lessThan1ct: {
-      multiplier: 2.2,
+      multiplier: 5,
       flatAddition: 900,
-      description: "For diamonds < 1ct: multiply by 2.2 and add ₹900",
+      description: "For diamonds < 1ct: multiply by 5 and add ₹900",
     },
     greaterThan1ct: {
       multiplier: 2.7,
@@ -51,39 +44,25 @@ const DEFAULT_CONFIG = {
   updatedBy: "system",
 };
 
-// Initialize config file if it doesn't exist
-async function initializeConfig() {
-  try {
-    await fs.access(CONFIG_FILE);
-  } catch {
-    await fs.writeFile(CONFIG_FILE, JSON.stringify(DEFAULT_CONFIG, null, 2));
-    console.log("✅ Initialized pricing config file");
-  }
-}
+// Helper to get or create the singleton config
+async function getOrCreateConfig() {
+  await connectDB();
 
-// Read config
-async function getConfig() {
-  try {
-    await initializeConfig();
-    const data = await fs.readFile(CONFIG_FILE, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Error reading config:", error);
-    return DEFAULT_CONFIG;
+  let config = await PricingConfig.findOne();
+  if (!config) {
+    config = await PricingConfig.create(DEFAULT_CONFIG);
+    console.log("✅ Initialized pricing config in MongoDB");
   }
-}
-
-// Write config
-async function saveConfig(config) {
-  await fs.writeFile(CONFIG_FILE, JSON.stringify(config, null, 2));
+  return config;
 }
 
 // GET - Fetch current configuration (public)
 export async function GET() {
   try {
-    const config = await getConfig();
-    return NextResponse.json(config);
+    const config = await getOrCreateConfig();
+    return NextResponse.json(config.toObject());
   } catch (error) {
+    console.error("Error loading config:", error);
     return NextResponse.json(
       { error: "Failed to load configuration" },
       { status: 500 }
@@ -94,58 +73,49 @@ export async function GET() {
 // POST - Update configuration (protected)
 export async function POST(request) {
   try {
-    const body = await request.json().catch(() => ({}));
-    const { password, config, updatedBy } = body || {};
+    await connectDB();
 
-    // Debug logs
+    const body = await request.json();
+    const { password, config: newConfig, updatedBy } = body;
+
     console.log("=== PRICING-CONFIG POST ===");
-    console.log("Request body keys:", Object.keys(body));
     console.log("Password received:", password ? "***" : "EMPTY");
-    console.log("Password length:", String(password || "").length);
     console.log("Expected password:", ADMIN_PASSWORD);
     console.log("Match:", String(password || "").trim() === ADMIN_PASSWORD);
 
-    // Verify password exists
-    if (!password) {
-      return NextResponse.json(
-        { error: "Password is required" },
-        { status: 401 }
-      );
-    }
-
-    // Verify admin password
-    const receivedPassword = String(password).trim();
-    if (receivedPassword !== ADMIN_PASSWORD) {
+    // Verify password
+    if (!password || String(password).trim() !== ADMIN_PASSWORD) {
       console.log("❌ Password mismatch!");
-      console.log("Received (trimmed):", receivedPassword);
-      console.log("Expected:", ADMIN_PASSWORD);
       return NextResponse.json(
         { error: "Invalid admin password" },
         { status: 401 }
       );
     }
 
-    console.log("✅ Password verified");
-
-    // Validate config structure
-    if (!config || !config.diamondMargins || !config.makingCharges) {
+    if (!newConfig || !newConfig.diamondMargins || !newConfig.makingCharges) {
       return NextResponse.json(
         { error: "Invalid configuration structure" },
         { status: 400 }
       );
     }
 
-    // Add metadata
-    const updatedConfig = {
-      ...config,
-      lastUpdated: new Date().toISOString(),
-      updatedBy: updatedBy || "admin",
-    };
+    // Update the singleton document
+    const updatedConfig = await PricingConfig.findOneAndUpdate(
+      {}, // Find the only document
+      {
+        ...newConfig,
+        lastUpdated: new Date(),
+        updatedBy: updatedBy || "admin",
+      },
+      { new: true, upsert: true } // Create if not exists
+    );
 
-    await saveConfig(updatedConfig);
-    console.log("✅ Config saved successfully");
+    console.log("✅ Config saved to MongoDB");
 
-    return NextResponse.json({ success: true, config: updatedConfig });
+    return NextResponse.json({
+      success: true,
+      config: updatedConfig.toObject(),
+    });
   } catch (error) {
     console.error("Error saving config:", error);
     return NextResponse.json(

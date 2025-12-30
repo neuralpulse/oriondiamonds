@@ -1,4 +1,4 @@
-// src/components/AdminPricingPage.jsx (FIXED)
+// src/app/admin/pricing/page.jsx
 "use client";
 import { useState, useEffect } from "react";
 import {
@@ -95,17 +95,13 @@ export default function AdminPricingPortal() {
     try {
       setSaving(true);
 
-      // Prepare the request body
       const requestBody = {
-        config: JSON.parse(JSON.stringify(config)), // Deep clone
+        config: JSON.parse(JSON.stringify(config)),
         password: password.trim(),
         updatedBy: updatedBy.trim(),
       };
 
-      console.log(
-        "Sending request with password length:",
-        requestBody.password.length
-      );
+      console.log("Attempting to save configuration...");
 
       const response = await fetch("/api/pricing-config", {
         method: "POST",
@@ -537,9 +533,6 @@ export default function AdminPricingPortal() {
                 placeholder="Enter admin password"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0a1833] focus:border-transparent"
               />
-              <p className="text-xs text-gray-500 mt-1">
-                Default password: changeme123 (change in .env)
-              </p>
             </div>
 
             <div className="flex gap-3 pt-4">

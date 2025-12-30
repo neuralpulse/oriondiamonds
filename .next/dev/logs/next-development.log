@@ -1,426 +1,71 @@
-[00:00:01.683] Server  LOG      ✓ Ready in 1441ms
-[00:00:46.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:47.824] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
-[00:00:52.271] Server  ERROR    ⨯ ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-
-./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-[00:00:52.402] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.402] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.844] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.844] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.844] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.844] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:52.993] Browser ERROR   uncaughtError: Error: ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-[00:00:53.148] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:53.148] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:53.148] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:00:53.148] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[00:01:07.977] Server  LOG      ✓ Compiled in 101ms
-[00:01:08.320] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:45.861] Server  LOG      ✓ Compiled in 95ms
-[00:01:51.861] Server  LOG      ✓ Compiled in 18ms
-[00:02:02.064] Server  LOG      ✓ Compiled in 42ms
-[00:02:19.964] Server  LOG      ✓ Compiled in 46ms
-[00:02:32.815] Server  LOG      ✓ Compiled in 23ms
-[00:04:01.070] Server  LOG      ✓ Compiled in 43ms
-[00:04:06.811] Server  LOG      ✓ Compiled in 35ms
-[00:05:42.554] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:05:42.922] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:08.750] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:09.363] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:09.994] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:27.433] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:28.565] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:29.130] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:29.415] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:29.681] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[00:07:29.882] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[04:13:39.212] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[04:14:07.818] Browser ERROR   unhandledRejection: TypeError: __turbopack_context__.x is not a function
-[04:23:23.895] Server  LOG      ✓ Compiled in 177ms
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:24.597] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:28.985] Server  ERROR    ⨯ ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-
-./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-[04:23:29.276] Browser ERROR   uncaughtError: Error: ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-
-
-
-
-[04:23:29.477] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:29.477] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:29.477] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:29.477] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:23:40.874] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[04:23:41.002] Browser ERROR   Error reading from storage: {}
-[04:23:42.726] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[04:23:42.830] Browser ERROR   Error reading from storage: {}
-[04:24:33.384] Server  LOG      ✓ Compiled in 25ms
-[04:24:38.138] Browser ERROR   Error saving to storage: {}
-[04:24:40.903] Browser ERROR   Error reading from storage: {}
-[04:24:40.903] Browser ERROR   Error reading from storage: {}
-[04:24:40.903] Browser ERROR   Error reading from storage: {}
-[04:24:40.903] Browser ERROR   Error reading from storage: {}
-[04:34:56.642] Server  LOG      ✓ Compiled in 122ms
-[04:34:57.596] Browser ERROR   ./src/app/customers/page.jsx:1:27
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                           ^^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:34:57.596] Browser ERROR   ./src/app/customers/page.jsx:1:17
-Ecmascript file had an error
-> 1 | import React, { useState, useEffect } from "react";
-    |                 ^^^^^^^^
-  2 | import {
-  3 |   Plus,
-  4 |   Edit2,
-
-You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
-
- Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
-[04:35:03.205] Server  LOG      ✓ Compiled in 26ms
-[04:35:03.572] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[04:35:03.666] Server  LOG      ✓ Compiled in 6ms
-[04:35:04.600] Browser ERROR   Error reading from storage: {}
-[04:35:05.936] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[04:35:06.043] Browser ERROR   Error reading from storage: {}
-[04:35:20.300] Server  LOG      ✓ Compiled in 60ms
-[04:35:21.531] Server  LOG      ✓ Compiled in 35ms
-[04:35:27.085] Browser ERROR   Error saving to storage: {}
-[04:35:31.006] Browser ERROR   Error reading from storage: {}
-[04:35:31.006] Browser ERROR   Error reading from storage: {}
-[04:35:31.006] Browser ERROR   Error reading from storage: {}
-[04:35:31.006] Browser ERROR   Error reading from storage: {}
-[04:37:30.743] Browser ERROR   Error reading from storage: {}
-[04:37:30.743] Browser ERROR   Error saving to storage: {}
-[04:37:30.743] Browser ERROR   Error reading from storage: {}
-[04:37:30.743] Browser ERROR   Error reading from storage: {}
-[06:20:15.759] Server  LOG      ✓ Compiled in 214ms
-[06:36:58.112] Server  LOG      ✓ Compiled in 154ms
-[06:37:13.747] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[06:41:29.698] Server  LOG      ✓ Compiled in 110ms
-[06:41:46.849] Server  LOG      ✓ Compiled in 45ms
-[06:42:00.008] Server  LOG      ✓ Compiled in 37ms
-[06:42:18.713] Server  LOG      ✓ Compiled in 30ms
-[06:43:00.605] Server  LOG      ✓ Compiled in 52ms
-[06:43:15.313] Server  LOG      ✓ Compiled in 28ms
-[06:43:17.530] Server  LOG      ✓ Compiled in 31ms
-[06:53:54.224] Server  LOG      ✓ Compiled in 147ms
-[06:54:27.771] Server  LOG      ✓ Compiled in 33ms
-[06:58:25.200] Server  LOG      ✓ Compiled in 74ms
-[07:00:39.777] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[07:00:44.072] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[07:25:52.688] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:00.747] Server  LOG     ✓ Ready in 516ms
+[00:00:02.032] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:02.666] Server  LOG     🔑 Admin password configured: "orion@diamonds"
+[00:00:02.771] Server  LOG     Fetching fresh gold price from Groww...
+[00:00:02.836] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:00:03.409] Server  LOG     ✅ Price updated: ₹14235.60/gram
+[00:00:03.459] Server  LOG     ✅ MongoDB connected
+[00:00:04.060] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.701] Server  LOG     === PRICING-CONFIG POST ===
+[00:00:32.701] Server  LOG     Password received: "***"
+[00:00:32.702] Server  LOG     Expected password: "orion@diamonds"
+[00:00:32.702] Server  LOG     Match: false
+[00:00:32.702] Server  LOG     ❌ Password mismatch!
+[00:00:32.811] Browser LOG     Attempting to save configuration...
+[00:00:32.811] Browser ERROR   Save error: {}
+[00:01:01.942] Server  LOG       Reload env: .env
+[00:01:15.303] Server  LOG     🔑 Admin password configured: "orion@diamonds"
+[00:01:15.314] Server  LOG     === PRICING-CONFIG POST ===
+[00:01:15.314] Server  LOG     Password received: "***"
+[00:01:15.314] Server  LOG     Expected password: "orion@diamonds"
+[00:01:15.314] Server  LOG     Match: true
+[00:01:15.353] Browser LOG     Attempting to save configuration...
+[00:01:15.356] Server  LOG     ✅ Config saved to MongoDB
+[00:03:18.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:19.045] Server  WARN    [next-auth][warn][DEBUG_ENABLED] "\nhttps://next-auth.js.org/warnings#debug_enabled"
+[00:03:27.850] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:03:28.987] Server  LOG     Fetching fresh gold price from Groww...
+[00:03:28.994] Server  LOG     Fetching fresh gold price from Groww...
+[00:03:29.272] Server  LOG     Fetching fresh gold price from Groww...
+[00:03:30.459] Server  LOG     ✅ Price updated: ₹14263.83/gram
+[00:03:30.668] Server  LOG     ✅ Price updated: ₹14263.83/gram
+[00:03:30.894] Server  LOG     ✅ Price updated: ₹14263.83/gram
+[00:03:48.245] Server  LOG     === PRICING-CONFIG POST ===
+[00:03:48.245] Server  LOG     Password received: "***"
+[00:03:48.246] Server  LOG     Expected password: "orion@diamonds"
+[00:03:48.246] Server  LOG     Match: true
+[00:03:48.292] Server  LOG     ✅ Config saved to MongoDB
+[00:03:48.331] Browser LOG     Attempting to save configuration...
+[00:04:11.664] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:33.661] Server  LOG     === PRICING-CONFIG POST ===
+[00:04:33.662] Server  LOG     Password received: "***"
+[00:04:33.662] Server  LOG     Expected password: "orion@diamonds"
+[00:04:33.662] Server  LOG     Match: true
+[00:04:33.700] Server  LOG     ✅ Config saved to MongoDB
+[00:04:33.747] Browser LOG     Attempting to save configuration...
+[00:04:38.069] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:40.592] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:09.476] Server  LOG     === PRICING-CONFIG POST ===
+[00:05:09.477] Server  LOG     Password received: "***"
+[00:05:09.477] Server  LOG     Expected password: "orion@diamonds"
+[00:05:09.477] Server  LOG     Match: true
+[00:05:09.520] Server  LOG     ✅ Config saved to MongoDB
+[00:05:09.551] Browser LOG     Attempting to save configuration...
+[00:05:14.114] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:15.737] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:06:49.400] Server  LOG     === PRICING-CONFIG POST ===
+[00:06:49.403] Server  LOG     Password received: "***"
+[00:06:49.403] Server  LOG     Expected password: "orion@diamonds"
+[00:06:49.403] Server  LOG     Match: true
+[00:06:49.434] Browser LOG     Attempting to save configuration...
+[00:06:49.448] Server  LOG     ✅ Config saved to MongoDB
+[00:06:54.009] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:58.772] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:02.597] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:46.687] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:22.496] Server  LOG     === PRICING-CONFIG POST ===
+[00:09:22.496] Server  LOG     Password received: "***"
+[00:09:22.497] Server  LOG     Expected password: "orion@diamonds"
+[00:09:22.497] Server  LOG     Match: true
+[00:09:22.536] Server  LOG     ✅ Config saved to MongoDB
+[00:09:22.586] Browser LOG     Attempting to save configuration...

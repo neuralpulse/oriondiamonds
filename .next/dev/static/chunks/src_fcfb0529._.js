@@ -1106,13 +1106,13 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/app/providers.jsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// app/providers.jsx
 __turbopack_context__.s([
     "Providers",
     ()=>Providers
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/react/index.js [app-client] (ecmascript)");
+// app/providers.jsx
 "use client";
 ;
 ;
@@ -1461,7 +1461,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/components/CartSyncProvider.jsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/components/CartSyncProvider.jsx - MongoDB Version
 __turbopack_context__.s([
     "default",
     ()=>CartSyncProvider
@@ -1474,6 +1473,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$cartCleanup$
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+// src/components/CartSyncProvider.jsx - MongoDB Version
 "use client";
 ;
 ;

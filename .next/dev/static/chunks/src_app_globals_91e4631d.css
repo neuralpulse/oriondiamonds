@@ -702,16 +702,8 @@
     margin-top: calc(var(--spacing) * 20);
   }
 
-  .mt-25 {
-    margin-top: calc(var(--spacing) * 25);
-  }
-
   .mt-30 {
     margin-top: calc(var(--spacing) * 30);
-  }
-
-  .mt-39 {
-    margin-top: calc(var(--spacing) * 39);
   }
 
   .mt-70 {
@@ -720,10 +712,6 @@
 
   .mt-auto {
     margin-top: auto;
-  }
-
-  .mr-2 {
-    margin-right: calc(var(--spacing) * 2);
   }
 
   .mr-3 {
@@ -760,10 +748,6 @@
 
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
-  }
-
-  .mb-20 {
-    margin-bottom: calc(var(--spacing) * 20);
   }
 
   .ml-2 {

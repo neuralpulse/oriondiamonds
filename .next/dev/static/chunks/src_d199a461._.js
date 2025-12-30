@@ -66,8 +66,6 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/utils/price.js [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/utils/price.js (UPDATED VERSION)
-// Cache for pricing config
 __turbopack_context__.s([
     "calculateFinalPrice",
     ()=>calculateFinalPrice,
@@ -79,6 +77,8 @@ __turbopack_context__.s([
     ()=>clearPricingCache
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
+// src/utils/price.js (UPDATED VERSION)
+// Cache for pricing config
 let cachedConfig = null;
 let lastConfigFetch = 0;
 const CONFIG_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes

@@ -63,8 +63,6 @@ const GET_PRODUCT_BY_HANDLE = `
 "[project]/src/utils/price.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/utils/price.js (UPDATED VERSION)
-// Cache for pricing config
 __turbopack_context__.s([
     "calculateFinalPrice",
     ()=>calculateFinalPrice,
@@ -75,6 +73,8 @@ __turbopack_context__.s([
     "clearPricingCache",
     ()=>clearPricingCache
 ]);
+// src/utils/price.js (UPDATED VERSION)
+// Cache for pricing config
 let cachedConfig = null;
 let lastConfigFetch = 0;
 const CONFIG_CACHE_DURATION = 5 * 60 * 1000; // 5 minutes

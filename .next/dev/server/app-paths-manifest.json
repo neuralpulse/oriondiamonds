@@ -1,5 +1,9 @@
 {
+  "/admin/pricing/page": "app/admin/pricing/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/customers/page": "app/customers/page.js",
-  "/page": "app/page.js"
+  "/api/gold-price/route": "app/api/gold-price/route.js",
+  "/api/pricing-config/route": "app/api/pricing-config/route.js",
+  "/earrings/page": "app/earrings/page.js",
+  "/page": "app/page.js",
+  "/product/[handle]/page": "app/product/[handle]/page.js"
 }
