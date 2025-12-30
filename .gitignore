@@ -1,2 +1,8 @@
-node_modules
+# Add this to .gitignore
+.next/
+node_modules/
 .env
+.env.local
+.env.production.local
+.DS_Store
+*.loggit reset --soft HEAD~1
